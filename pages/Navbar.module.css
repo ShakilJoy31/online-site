@@ -4,3 +4,17 @@
     background-color: white;
     color: black;
 }
+
+.downloadBtn{
+    transition-duration: 200ms;
+    background-color: black;
+    color: white;
+}
+
+
+.downloadBtn:hover{
+    box-shadow: 2px 2px 15px 5px black;
+    transition-duration: 200ms;
+    background-color: white;
+    color: black;
+}
