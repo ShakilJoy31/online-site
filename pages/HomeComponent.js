@@ -8,7 +8,7 @@ const HomeComponent = () => {
     }
     return (
         <div>
-            <div className="hero">
+            <div className="hero lg:mx-0 md:mx-0 mx-4">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src="https://khelo.live/wp-content/uploads/2020/07/MV5BM2U5ZTIxMzUtMmQ5MC00YTdhLThjOWYtODUzNDQ0MThmMmQ4XkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_.jpg" className="max-w-sm rounded-lg shadow-2xl" />
                     <div>

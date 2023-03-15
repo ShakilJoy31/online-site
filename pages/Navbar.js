@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import NavbarCss from './Navbar.module.css'; 
+import NavbarCss from './Navbar.module.css';
+// import { FcDownload } from 'react-icons/fc';
 
 const Navbar = () => {
     const [freeFire, setFreeFire] = useState(true);
@@ -40,7 +41,7 @@ const Navbar = () => {
                                 setScreenShot(false);
                                 setFreeFire(false);
                             }} tabIndex={0}>
-                                <a className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center my-2 ${download ? NavbarCss.navbarItem : ''}`}>Download App</a>
+                                <a className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center my-2 ${download ? NavbarCss.navbarItem : ''}`}>Download</a>
                             </li>
 
                             <li onClick={() => {
@@ -97,7 +98,7 @@ const Navbar = () => {
                         }} tabIndex={0}>
                             <a style={{
                                 borderRadius: '3px'
-                            }} className={` cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white mx-2 ${download ? NavbarCss.navbarItem : ''}`}>Download App</a>
+                            }} className={` cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white mx-2 ${download ? NavbarCss.navbarItem : ''}`}> <span className='flex justify-center'>Download</span></a>
                         </li>
 
                         <li onClick={() => {
@@ -131,7 +132,7 @@ const Navbar = () => {
                         setDownload(false);
                         setScreenShot(false);
                         setFreeFire(false);
-                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${downloadApp ? NavbarCss.navbarItem : ''}`}>Download App</a>
+                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${downloadApp ? NavbarCss.navbarItem : ''}`}><span className='flex justify-center'>Download</span></a>
                 </div>
             </div>
         </div>
