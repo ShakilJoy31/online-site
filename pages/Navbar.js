@@ -72,7 +72,7 @@ const Navbar = () => {
                         setDownload(false);
                         setScreenShot(false);
                         setFreeFire(true);
-                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${freeFire ? NavbarCss.navbarItem : ''}`}>Free fire</a>
+                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 ml-2 hover:text-black hover:bg-white rounded-sm ${freeFire ? NavbarCss.navbarItem : ''}`}>Free fire</a>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
