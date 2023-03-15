@@ -1,0 +1,6 @@
+.navbarItem{
+    box-shadow: 2px 2px 15px 5px lightblue;
+    transition-duration: 200ms;
+    background-color: white;
+    color: black;
+}

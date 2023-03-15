@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import NavbarCss from './Navbar.module.css'; 
 
 const Navbar = () => {
+    const [freeFire, setFreeFire] = useState(true);
+    const [screenShot, setScreenShot] = useState(false);
+    const [download, setDownload] = useState(false);
+    const [aboutUs, setAboutUs] = useState(false);
+    const [contactUs, setContact] = useState(false);
+    const [downloadApp, setDownloadApp] = useState(false);
+    console.log(freeFire, screenShot, download, aboutUs, contactUs, downloadApp);
     return (
         <div>
             <div style={{
-                        backgroundColor: '#247f9e',
-                    }} className="navbar">
+                backgroundColor: '#247f9e',
+            }} className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="lg:hidden">
@@ -15,45 +23,115 @@ const Navbar = () => {
                             backgroundColor: '#247f9e',
                         }} tabIndex={0} className="menu menu-compact dropdown-content mt-6 rounded-sm w-72">
 
-                            <li><a className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center ">Screenshots</a></li>
+                            <li onClick={() => {
+                                setDownloadApp(false);
+                                setContact(false);
+                                setAboutUs(false);
+                                setDownload(false);
+                                setScreenShot(true);
+                                setFreeFire(false);
+                            }}><a className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center ${screenShot ? NavbarCss.navbarItem : ''}`}>Screenshots</a></li>
 
-                            <li tabIndex={0}>
-                                <a className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center my-2">Download App</a>
+                            <li onClick={() => {
+                                setDownloadApp(false);
+                                setContact(false);
+                                setAboutUs(false);
+                                setDownload(true);
+                                setScreenShot(false);
+                                setFreeFire(false);
+                            }} tabIndex={0}>
+                                <a className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center my-2 ${download ? NavbarCss.navbarItem : ''}`}>Download App</a>
                             </li>
 
-                            <li><a className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center">About Us</a></li>
+                            <li onClick={() => {
+                                setDownloadApp(false);
+                                setContact(false);
+                                setAboutUs(true);
+                                setDownload(false);
+                                setScreenShot(false);
+                                setFreeFire(false);
+                            }}><a className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center ${aboutUs ? NavbarCss.navbarItem : ''}`}>About Us</a></li>
 
-                            <li><a className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center mt-2">Contact Us</a></li>
+                            <li onClick={() => {
+                                setDownloadApp(false);
+                                setContact(true);
+                                setAboutUs(false);
+                                setDownload(false);
+                                setScreenShot(false);
+                                setFreeFire(false);
+                            }}><a className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm flex justify-center mt-2 ${contactUs ? NavbarCss.navbarItem : ''}`}>Contact Us</a></li>
 
                         </ul>
                     </div>
 
-                    <a className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm">Free fire</a>
+                    <a onClick={() => {
+                        setDownloadApp(false);
+                        setContact(false);
+                        setAboutUs(false);
+                        setDownload(false);
+                        setScreenShot(false);
+                        setFreeFire(true);
+                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${freeFire ? NavbarCss.navbarItem : ''}`}>Free fire</a>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a style={{
-                            borderRadius:'3px'
-                        }} className=" cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white">Screenshots</a></li>
-                        
-                        <li tabIndex={0}>
+                        <li onClick={() => {
+                            setDownloadApp(false);
+                            setContact(false);
+                            setAboutUs(false);
+                            setDownload(false);
+                            setScreenShot(true);
+                            setFreeFire(false);
+                        }}><a style={{
+                            borderRadius: '3px'
+                        }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white ${screenShot ? NavbarCss.navbarItem : ''}`}>Screenshots</a></li>
+
+                        <li onClick={() => {
+                            setDownloadApp(false);
+                            setContact(false);
+                            setAboutUs(false);
+                            setDownload(true);
+                            setScreenShot(false);
+                            setFreeFire(false);
+                        }} tabIndex={0}>
                             <a style={{
-                            borderRadius:'3px'
-                        }} className=" cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white">Download App</a>
+                                borderRadius: '3px'
+                            }} className={` cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white mx-2 ${download ? NavbarCss.navbarItem : ''}`}>Download App</a>
                         </li>
 
-                        <li><a style={{
-                            borderRadius:'3px'
-                        }} className=" cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white">About us</a></li>
+                        <li onClick={() => {
+                            setDownloadApp(false);
+                            setContact(false);
+                            setAboutUs(true);
+                            setDownload(false);
+                            setScreenShot(false);
+                            setFreeFire(false);
+                        }}><a style={{
+                            borderRadius: '3px'
+                        }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white ${aboutUs ? NavbarCss.navbarItem : ''}`}>About us</a></li>
 
-                        <li><a style={{
-                            borderRadius:'3px'
-                        }} className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white">Contact Us</a></li>
+                        <li onClick={() => {
+                            setDownloadApp(false);
+                            setContact(true);
+                            setAboutUs(false);
+                            setDownload(false);
+                            setScreenShot(false);
+                            setFreeFire(false);
+                        }}><a style={{
+                            borderRadius: '3px'
+                        }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white ml-2 ${contactUs ? NavbarCss.navbarItem : ''}`}>Contact Us</a></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm">Download App</a>
+                    <a onClick={() => {
+                        setDownloadApp(true);
+                        setContact(false);
+                        setAboutUs(false);
+                        setDownload(false);
+                        setScreenShot(false);
+                        setFreeFire(false);
+                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${downloadApp ? NavbarCss.navbarItem : ''}`}>Download App</a>
                 </div>
             </div>
         </div>
