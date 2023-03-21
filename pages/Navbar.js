@@ -9,7 +9,6 @@ const Navbar = () => {
     const [aboutUs, setAboutUs] = useState(false);
     const [contactUs, setContact] = useState(false);
     const [downloadApp, setDownloadApp] = useState(false);
-    console.log(freeFire, screenShot, download, aboutUs, contactUs, downloadApp);
     return (
         <div>
             <div style={{
@@ -18,11 +17,11 @@ const Navbar = () => {
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul style={{
                             backgroundColor: '#247f9e',
-                        }} tabIndex={0} className="menu menu-compact dropdown-content mt-6 rounded-sm w-72">
+                        }} tabIndex={0} className="mt-6 rounded-sm menu menu-compact dropdown-content w-72">
 
                             <li onClick={() => {
                                 setDownloadApp(false);
@@ -72,11 +71,11 @@ const Navbar = () => {
                         setDownload(false);
                         setScreenShot(false);
                         setFreeFire(true);
-                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 ml-2 hover:text-black hover:bg-white rounded-sm ${freeFire ? NavbarCss.navbarItem : ''}`}>Free fire</a>
+                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 ml-2 hover:text-black hover:bg-white rounded-sm ${freeFire ? NavbarCss.navbarItem : ''}`}>Home</a>
                 </div>
 
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                <div className="hidden navbar-center lg:flex">
+                    <ul className="px-1 menu menu-horizontal">
                         <li onClick={() => {
                             setDownloadApp(false);
                             setContact(false);
@@ -132,7 +131,7 @@ const Navbar = () => {
                         setDownload(false);
                         setScreenShot(false);
                         setFreeFire(false);
-                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${downloadApp ? NavbarCss.navbarItem : ''}`}><span className='flex justify-center'>Download</span></a>
+                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${downloadApp ? NavbarCss.navbarItem : ''}`}><span className='flex justify-center'>Sign Up</span></a>
                 </div>
             </div>
         </div>
