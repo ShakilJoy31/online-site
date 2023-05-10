@@ -1,35 +1,167 @@
 import React, { useState } from 'react';
 import allData from './heliverse_mock_data.json';
+import { paginatedData } from './paginatedData';
+import { BsSearch } from "react-icons/bs";
+import MyStyle from './Navbar.module.css'; 
 
 const HomeComponent = () => {
-    const [data, setData] = useState(allData.slice(0,20)); 
-    const [current, setCurrent] = useState(1); 
-
+    const [current, setCurrent] = useState(1);
+    const [iniData, setIniData] = useState(allData.slice(0, 20));
+    const [data, setData] = useState(allData.slice(0, 20));
     // const forPagination = Math.ceil(allData.length / 20);
-
-    const handlePrevious = () =>{
+    paginatedData(current);
+    const handlePrevious = () => {
         setCurrent(current - 1);
-        setData();
-        
+        const previousData = paginatedData(current);
+        setData(previousData);
+        setIniData(previousData); 
     }
-    const handleNext = () =>{
-        setCurrent(current + 1); 
+    const handleNext = () => {
+        // setData()
+        setCurrent(current + 1);
+        const nextData = paginatedData(current);
+        setData(nextData);
+        setIniData(nextData); 
     }
-    console.log(current); 
+    const handleSearchByInput = (e) => {
+        if (!e) {
+            setData(allData.slice(0, 20))
+        }
+        else {
+            const input = e.toLowerCase();
+            const specificData = data.filter(gotData => (gotData.first_name + gotData.last_name).toLowerCase().match(input));
+            console.log(input)
+            setData(specificData);
+        }
+    }
+    const handleCatagory = (catagory) => {
+        if (catagory == 'domain') {
+            // const domainData = data.filter()
+        }
+        else if (catagory == 'gender') {
+
+        }
+        else {
+
+        }
+    }
+    const handleDoimainInput = (event) =>{
+        const inputDomain = event?.target.value; 
+        const specificData = iniData.filter(gotData => gotData?.domain == inputDomain);
+        setData(specificData);
+    }
+    const [female, setFemale] = useState([]); 
+
+    // Male
+    const handleGenderMale = (event) =>{
+        const inputGender = event.target.checked; 
+        if(inputGender){
+            const specificData = iniData.filter(gotData => gotData?.gender == 'Male');
+            setData(specificData); 
+        }
+        else{
+            setData(iniData); 
+        }
+    }
+
+    // Female
+    const handleGenderFemale = (event) =>{
+        const inputGender = event.target.checked; 
+        if(inputGender){
+            const specificData = iniData.filter(gotData => gotData?.gender == 'Female');
+            setData(specificData); 
+        }
+        else{
+            setData(iniData); 
+        }
+    }
+
+    // Agender
+    const handleGenderAgender = (event) =>{
+        const inputGender = event.target.checked; 
+        if(inputGender){
+            const specificData = iniData.filter(gotData => gotData?.gender == 'Agender');
+            setData(specificData); 
+        }
+        else{
+            setData(iniData); 
+        }
+    }
+    const handleAvailability = (aval) =>{
+        if(aval == 'Available'){
+            const specificData = iniData.filter(gotData => gotData?.available == true );
+            setData(specificData);
+        }
+        else if(aval == 'notAvailable'){
+            const specificData = iniData.filter(gotData => gotData?.available == false );
+            setData(specificData);
+        }
+        else{
+            setData(iniData); 
+        }
+    }
+    const handleChecked = (getId) =>{
+        console.log(getId); //Now tomorrow will be searching.
+    }
     return (
+
         <div>
+            <div className='flex items-center justify-center mt-6 form-control'>
+                <div className='grid items-center justify-between w-full lg:flex md:flex'>
+                    <input onChange={(e) => handleSearchByInput(e.target.value)} type='text' placeholder='Search by name' className="w-full lg:w-64 md:w-64 focus:outline-none input" />
+
+                    <div className='flex items-center justify-between my-4 lg:justify-center md:justify-center gap-x-4 lg:my-0 md:my-0'>
+                    <label htmlFor="domain-modal" onClick={() => handleCatagory('domain')} style={{
+                            backgroundImage: "linear-gradient(45deg, #E08E6D, #E1D4BB)",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                        }} className={`normal-case btn btn-sm border-0 text-black`}>Make Team</label>
+                        <label htmlFor="domain-modal" onClick={() => handleCatagory('domain')} style={{
+                            backgroundImage: "linear-gradient(45deg, #E08E6D, #E1D4BB)",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                        }} className={`normal-case btn btn-sm border-0 text-black`}>Explore Team</label>
+                    </div>
+
+                    <div className='flex items-center justify-between lg:justify-center md:justify-center gap-x-4'>
+
+                        <label htmlFor="domain-modal" onClick={() => handleCatagory('domain')} style={{
+                            backgroundImage: "linear-gradient(45deg, #E08E6D, #E1D4BB)",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                        }} className={`normal-case btn btn-sm border-0 text-black`}>Domain</label>
+
+                        <label htmlFor="gender-modal" onClick={() => handleCatagory('gender')} style={{
+                            backgroundImage: "linear-gradient(45deg, #E08E6D, #E1D4BB)",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                        }} className={`normal-case btn btn-sm border-0 text-black`}>Gender</label>
+
+                        <label htmlFor="availability-modal" onClick={() => handleCatagory('availability')} style={{
+                            backgroundImage: "linear-gradient(45deg, #E08E6D, #E1D4BB)",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                        }} className={`normal-case btn btn-sm border-0 text-black`}>Availability</label>
+                    </div>
+                </div>
+
+            </div>
+
             <div className='grid grid-cols-1 gap-4 mt-4 lg:grid-cols-4 md:grid-cols-2'>
                 {
-                    data.map(singleData => <div className="bg-blue-300 shadow-xl w-80 card md:w-64 lg:w-72">
+                    data.map(singleData => <div className={`bg-blue-300 ${MyStyle.element} w-80 card md:w-64 lg:w-72`}>
                         <div className="p-2">
                             <div className="flex items-center card-actions">
                                 <div className="avatar">
                                     <div className="w-16 border border-red-500 rounded-full">
-                                        <img src="https://robohash.org/sintessequaerat.png?size=50x50&set=set1" />
+                                        <img src={singleData.avatar} />
                                     </div>
                                 </div>
                                 <div>
+                                    <div className='flex items-center justify-between gap-x-2'>
                                     <h1>{singleData?.first_name + " " + singleData?.last_name}</h1>
+                                    <input onChange={()=>handleChecked(singleData?.id)} type="checkbox" className="bg-red-300 checkbox checkbox-success" />
+                                    </div>
                                     <p>{singleData?.email.slice(0, 20)}</p>
                                 </div>
                             </div>
@@ -47,14 +179,75 @@ const HomeComponent = () => {
                     <button className="btn">Page {current}</button>
                     <button onClick={handleNext} className="btn" disabled={current == 50}>»</button>
                 </div>
-
-                {/* <div className="btn-group ">
-                    {
-                        [...Array(forPagination).keys()].map((btn, index) => <button className="btn">{index}</button>)
-                    }
-                </div> */}
             </div>
 
+            <div>
+                <input type="checkbox" id="domain-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="relative bg-blue-400 modal-box">
+                        <label htmlFor="domain-modal" className="absolute btn btn-sm btn-circle right-2 top-2">✕</label>
+                        <h3 className="text-lg font-bold">Select a domain</h3>
+                        <select onChange={(e)=>handleDoimainInput(e)} className="w-full my-2 select focus:outline-none">
+                            <option disabled selected>Pick your favorite Simpson</option>
+                            {
+                                allData.slice(0,20).map(forDomain => <option>{forDomain.domain}</option>)
+                            }
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <input type="checkbox" id="gender-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="relative bg-black modal-box">
+                        <label htmlFor="gender-modal" className="absolute text-black bg-white btn btn-sm btn-circle right-2 top-2">✕</label>
+                        <h3 className="flex justify-center mb-2 text-lg font-bold">Select a Gender</h3>
+                        <div className='flex items-center justify-between'>
+                                <div className="form-control">
+                                    <label className="cursor-pointer label">
+                                        <span className="mr-4 text-xl text-white">Male</span>
+                                        <input onChange={(e)=>handleGenderMale(e)} type="checkbox" className="checkbox checkbox-white" />
+                                    </label>
+                                </div>
+                                <div className="form-control">
+                                    <label className="cursor-pointer label">
+                                        <span className="mr-4 text-xl text-white">Female</span>
+                                        <input onChange={(e)=>handleGenderFemale(e)} type="checkbox" className="checkbox checkbox-white" />
+                                    </label>
+                                </div>
+                                
+                                <div className="form-control">
+                                    <label className="cursor-pointer label">
+                                        <span className="mr-4 text-xl text-white">Agender</span>
+                                        <input onChange={(e)=>handleGenderAgender(e)} type="checkbox" className="checkbox checkbox-white" />
+                                    </label>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                <input type="checkbox" id="availability-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="relative bg-black modal-box">
+                        <label htmlFor="availability-modal" className="absolute text-black bg-white btn btn-sm btn-circle right-2 top-2">✕</label>
+                        <h3 className="flex justify-center mb-2 text-lg font-bold text-white">Select a Availability</h3>
+                        <div className='flex items-center justify-around'>
+                            <button onClick={()=>handleAvailability('notAvailable')} className="text-white normal-case bg-red-700 btn btn-sm">Not Available</button>
+
+                            <button onClick={()=>handleAvailability('Available')} className="text-white normal-case bg-green-700 btn btn-sm">Available</button>
+
+                            <button onClick={()=>handleAvailability('reset')} className="text-black normal-case bg-white hover:bg:black hover:text-white btn btn-sm">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

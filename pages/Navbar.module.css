@@ -5,6 +5,19 @@
     color: black;
 }
 
+.element{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.element:hover{
+    box-shadow: 2px 2px 15px 5px black;
+    transition-duration: 200ms;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
 .downloadBtn{
     transition-duration: 200ms;
     background-color: black;
