@@ -188,7 +188,7 @@ const HomeComponent = () => {
 
             <div className='grid grid-cols-1 gap-4 mt-4 lg:grid-cols-4 md:grid-cols-2'>
                 {
-                    data.map(singleData => <div className={`bg-blue-300 ${MyStyle.element} w-80 card md:w-64 lg:w-72`}>
+                    data.map((singleData, index) => <div key={index} className={`bg-blue-300 ${MyStyle.element} w-80 card md:w-64 lg:w-72`}>
                         <div className="p-2">
                             <div className="flex items-center card-actions">
                                 <div className="avatar">
