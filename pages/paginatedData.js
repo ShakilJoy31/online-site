@@ -1,6 +1,5 @@
 import allData from './heliverse_mock_data.json';
 export const paginatedData = (current=1) => {
-    console.log(current)
     if(current == 1){
         const lessData = allData.slice(0,20); 
         return lessData; 
