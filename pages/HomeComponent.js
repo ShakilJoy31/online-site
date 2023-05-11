@@ -193,7 +193,7 @@ const HomeComponent = () => {
                             <div className="flex items-center card-actions">
                                 <div className="avatar">
                                     <div className="w-16 border border-red-500 rounded-full">
-                                        <img src={singleData.avatar} alt="" />
+                                        <img src={singleData.avatar} alt="" loading="lazy" />
                                     </div>
                                 </div>
                                 <div>
@@ -305,7 +305,7 @@ const HomeComponent = () => {
                                 teamMember.map((user, index) => 
                                     <div key={index} className={`flex items-center w-full p-2 border border-red-400 rounded hover:cursor-pointer ${MyStyle.team_card}`}>
                                         <div className='w-24'>
-                                            <img className='w-24' src={user?.avatar} alt="" />
+                                            <img className='w-24' src={user?.avatar} alt="" loading="lazy" />
                                         </div>
 
                                         <div>
