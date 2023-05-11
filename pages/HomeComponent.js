@@ -193,7 +193,7 @@ const HomeComponent = () => {
                             <div className="flex items-center card-actions">
                                 <div className="avatar">
                                     <div className="w-16 border border-red-500 rounded-full">
-                                        <img src={singleData.avatar} />
+                                        <img src={singleData.avatar} alt="" />
                                     </div>
                                 </div>
                                 <div>
