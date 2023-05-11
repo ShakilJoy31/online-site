@@ -232,7 +232,7 @@ const HomeComponent = () => {
                         <select onChange={(e) => handleDoimainInput(e)} className="w-full my-2 select focus:outline-none">
                             <option disabled selected>Pick your favorite Simpson</option>
                             {
-                                allData.slice(0, 20).map(forDomain => <option>{forDomain.domain}</option>)
+                                allData.slice(0, 20).map((forDomain, index) => <option key={key}>{forDomain.domain}</option>)
                             }
 
                         </select>
@@ -302,8 +302,8 @@ const HomeComponent = () => {
                         <div className='grid grid-cols-1 gap-4 mt-4 lg:grid-cols-4 md:grid-cols-2'>
                             {/* Show the user by card */}
                             {
-                                teamMember.map(user => 
-                                    <div className={`flex items-center w-full p-2 border border-red-400 rounded hover:cursor-pointer ${MyStyle.team_card}`}>
+                                teamMember.map((user, index) => 
+                                    <div key={index} className={`flex items-center w-full p-2 border border-red-400 rounded hover:cursor-pointer ${MyStyle.team_card}`}>
                                         <div className='w-24'>
                                             <img className='w-24' src={user?.avatar} alt="" />
                                         </div>
