@@ -181,7 +181,7 @@ const HomeComponent = () => {
                             backgroundSize: "100%",
                             backgroundRepeat: "repeat",
                         }} className={`normal-case btn btn-sm border-0 text-black`}>Availability</label>
-                    </div>
+                    </div> 
                 </div>
 
             </div>
