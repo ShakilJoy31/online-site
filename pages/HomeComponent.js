@@ -232,7 +232,7 @@ const HomeComponent = () => {
                         <select onChange={(e) => handleDoimainInput(e)} className="w-full my-2 select focus:outline-none">
                             <option disabled selected>Pick your favorite Simpson</option>
                             {
-                                allData.slice(0, 20).map((forDomain, index) => <option key={key}>{forDomain.domain}</option>)
+                                allData.slice(0, 20).map((forDomain, index) => <option key={index}>{forDomain.domain}</option>)
                             }
 
                         </select>
