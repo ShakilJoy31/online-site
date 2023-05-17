@@ -11,11 +11,11 @@ const Login = ({ setLogin }) => {
     const router = useRouter(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [rememberPassword, setRememberPassword] = useState(null); 
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
-    // const { user, setUser } = UserStore.useContainer();
-    // const [loading, setLoading] = useState(false);
     const handleLoginButton = () => {
         if(email == 'shakil@gmail.com' && password == '12345'){
+            localStorage.setItem('tradingUser', JSON.stringify({email: email, password: password}))
             router.push('/dashboard');
         }
         // console.log(email, password); 

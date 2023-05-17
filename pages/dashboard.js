@@ -1,9 +1,8 @@
 
 const Dashboard = () => {
     return (
-        <div className='mx-12'>
+        <div className='mx-2 mt-4 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <div className="w-full carousel">
-                
                 <div id="slide1" className="relative w-full carousel-item">
                     <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">

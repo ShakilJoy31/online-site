@@ -13,13 +13,20 @@ export default function App({ Component, pageProps }) {
       }} className='min-h-screen'
       >
         <div className='flex justify-center'>
-          <div>
+          <div style={{backgroundColor: '#247f9e'}} className='hidden lg:block md:block'>
             <Sidebar></Sidebar>
           </div>
           <div>
             <Component {...pageProps} />
           </div>
         </div>
+        <div style={{
+          position:'fixed',
+          bottom: '0px',
+          backgroundColor: '#247f9e'
+        }} className='block w-full lg:hidden md:hidden'>
+            <Sidebar></Sidebar>
+          </div>
       </div>
     </div>
   )
