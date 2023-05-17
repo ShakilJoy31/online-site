@@ -69,7 +69,7 @@ const Signup = () => {
                         <select className="w-full mt-2 select focus:outline-none">
                             <option selected>Select Country</option>
                             {
-                                countries.map(country => <option>{country}</option>)
+                                countries.map((country, index) => <option key={index}>{country}</option>)
                             }
                         </select>
                     </div>
