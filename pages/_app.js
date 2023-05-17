@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
         backgroundRepeat: "repeat",
       }} className='min-h-screen'
       >
-        <div className='flex justify-center'>
+        <div className='flex'>
           <div style={{backgroundColor: '#247f9e'}} className='hidden lg:block md:block'>
             <Sidebar></Sidebar>
           </div>

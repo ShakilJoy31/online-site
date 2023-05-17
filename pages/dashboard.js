@@ -1,7 +1,7 @@
 
 const Dashboard = () => {
     return (
-        <div className='mx-2 mt-4 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
+        <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <div className="w-full carousel">
                 <div id="slide1" className="relative w-full carousel-item">
                     <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" className="w-full h-4/6" />
@@ -37,9 +37,94 @@ const Dashboard = () => {
                         <a href="#slide1" className="btn btn-circle">❯</a>
                     </div>
                 </div>
-
             </div>
 
+            {/* Statics */}
+            <div className='lg:mt-[-250px] mt-[-50px] grid justify-between gap-x-6 lg:flex md:flex'>
+                <div className="w-full card bg-base-100 hover:shadow-2xl">
+                    <div className="card-body">
+                        <h2 className="card-title">Card title!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="justify-end card-actions">
+                            <button className="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* More card */}
+                <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
+                            <div className="card-body">
+                                <h2 className="card-title">Card title!</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Market Analysis */}
+            <div className='mt-4 lg:mt-8 md:mt-6'>
+                <div className="w-full card bg-base-100 hover:shadow-2xl">
+                    <div className="card-body">
+                        <h2 className="card-title">Card title!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="justify-end card-actions">
+                            <button className="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     );
 };
