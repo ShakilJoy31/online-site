@@ -1,8 +1,11 @@
 import '@/styles/globals.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
+import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  console.log(router.pathname)
   return (
     <div>
       <Navbar></Navbar>
@@ -13,10 +16,11 @@ export default function App({ Component, pageProps }) {
       }} className='min-h-screen'
       >
         <div className='flex'>
-          <div style={{backgroundColor: '#247f9e'}} className='hidden lg:block md:block'>
+          <div className='hidden h-6 lg:block md:block'>
             <Sidebar></Sidebar>
           </div>
-          <div>
+          {/* //className={`${router.pathname == '/profile' ? 'lg:w-full md:w-full' : ''}`} */}
+          <div className={`${router.pathname == '/profile' ? 'w-full' : ''}`}>
             <Component {...pageProps} />
           </div>
         </div>

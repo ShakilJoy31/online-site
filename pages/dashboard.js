@@ -1,3 +1,5 @@
+import { IoLogoUsd } from 'react-icons/io';
+import { RiLuggageDepositFill } from 'react-icons/ri';
 
 const Dashboard = () => {
     return (
@@ -40,13 +42,33 @@ const Dashboard = () => {
             </div>
 
             {/* Statics */}
-            <div className='lg:mt-[-250px] mt-[-50px] grid justify-between gap-x-6 lg:flex md:flex'>
-                <div className="w-full card bg-base-100 hover:shadow-2xl">
-                    <div className="card-body">
-                        <h2 className="card-title">Card title!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="justify-end card-actions">
-                            <button className="btn btn-primary">Buy Now</button>
+            <div className='lg:mt-[-250px] mt-[-50px] grid lg:justify-between md:justify-between gap-x-6 lg:flex md:flex'>
+                <div style={{ background: '#19A7CE' }} className="w-full card hover:shadow-2xl">
+                    <div className="p-3 lg:p-8 md:p-6">
+                        <h2 className="mb-2 text-black card-title md:mb-4 lg:mb-6">Statistics</h2>
+                        <div style={{
+                            borderRadius: '5px',
+                            backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                        }} className='p-4 lg:p-8 md:p-6 '>
+                            <div className='flex items-center'>
+                                <div style={{
+                                    padding: '10px',
+                                    borderRadius: '50%',
+                                    backgroundImage: "linear-gradient(45deg, #BFEAF5, #FEA1BF)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} className='mr-6'>
+                                    <span onClick={() => router.push('/deposit')} className=''><RiLuggageDepositFill size={25} color='Blue'></RiLuggageDepositFill></span>
+                                </div>
+
+                                <div>
+                                    <p className='text-xl'>Current Balance</p>
+                                    <p className='text-2xl'>$00.00</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -54,57 +76,78 @@ const Dashboard = () => {
                 {/* More card */}
                 <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/tb2.png" alt="" />
+                                    <p className='flex justify-center text-black'>Trade Boot</p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/trade.png" alt="" />
+                                    <p className='flex justify-center text-black'>My Trade</p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/team1.png" alt="" />
+                                    <p className='flex justify-center text-black'>Team</p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/trade.png" alt="" />
+                                    <p className='flex justify-center text-black'>Charts</p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/support.png" alt="" />
+                                    <p className='flex justify-center text-black'>Support</p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/certi.png" alt="" />
+                                    <p className='flex justify-center text-black'>Certificate</p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 w-42 card bg-base-100 hover:shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">Card title!</h2>
+                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                            <div className="pt-4">
+                                <div>
+                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/tgg.png" alt="" />
+                                    <p className='flex justify-center text-black'>Chanel</p>
+                                </div>
 
                             </div>
                         </div>
@@ -114,17 +157,77 @@ const Dashboard = () => {
 
             {/* Market Analysis */}
             <div className='mt-4 lg:mt-8 md:mt-6'>
-                <div className="w-full card bg-base-100 hover:shadow-2xl">
-                    <div className="card-body">
-                        <h2 className="card-title">Card title!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="justify-end card-actions">
-                            <button className="btn btn-primary">Buy Now</button>
+                <div style={{ background: '#19A7CE' }} className="w-full card hover:shadow-2xl">
+                    <div className="">
+                        <h2 className="p-4 text-black card-title lg:p-8 md:p-6 ">Market Analysis</h2>
+                        <div className='p-4 lg:p-8 md:p-6 '>
+                            <div className='flex items-center'>
+                                <div className='grid w-full grid-cols-1 gap-2 lg:grid-cols-3 md:grid-cols-2 lg:gap-4 md:gap-4'>
+                                <div style={{
+                                    borderRadius: '5px',
+                                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} className='w-full'>
+                                    <div className='flex items-center justify-between w-full'>
+                                        <div className='flex items-center justify-center pt-4 pl-4 pr-4 mb-2'>
+                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCUSDT.svg" alt="" />
+                                            <p>USDTUSD</p>
+                                            <p>TETHER/USD</p>
+                                        </div>
+                                        <span>B</span>
+                                    </div>
+                                    <p className='pl-4 text-2xl text-red-500'>0.0000</p>
+                                </div>
+
+                                
+                                <div style={{
+                                    borderRadius: '5px',
+                                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} className='w-full'>
+                                    <div className='flex items-center justify-between w-full'>
+                                        <div className='flex items-center justify-center pt-4 pl-4 pr-4 mb-2'>
+                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCUSDT.svg" alt="" />
+                                            <p>USDTUSD</p>
+                                            <p>TETHER/USD</p>
+                                        </div>
+                                        <span>B</span>
+                                    </div>
+                                    <p className='pl-4 text-2xl text-red-500'>0.0000</p>
+                                </div>
+
+
+
+                                <div style={{
+                                    borderRadius: '5px',
+                                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} className='w-full'>
+                                    <div className='flex items-center justify-between w-full'>
+                                        <div className='flex items-center justify-center pt-4 pl-4 pr-4 mb-2'>
+                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCUSDT.svg" alt="" />
+                                            <p>USDTUSD</p>
+                                            <p>TETHER/USD</p>
+                                        </div>
+                                        <span>B</span>
+                                    </div>
+                                    <p className='pl-4 text-2xl text-red-500'>0.0000</p>
+                                </div>
+
+                                
+                                </div>
+
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 };
