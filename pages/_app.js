@@ -16,14 +16,15 @@ export default function App({ Component, pageProps }) {
       }} className='min-h-screen'
       >
         <div className='flex'>
-          <div className='hidden h-6 lg:block md:block'>
+          <div className='hidden h-auto lg:block md:block'>
             <Sidebar></Sidebar>
           </div>
-          {/* //className={`${router.pathname == '/profile' ? 'lg:w-full md:w-full' : ''}`} */}
-          <div className={`${router.pathname == '/profile' ? 'w-full' : ''}`}>
+
+          <div className={`${(router.pathname == '/profile' || router.pathname == '/login' || router.pathname == '/signup' ) ? 'w-full' : ''}`}>
             <Component {...pageProps} />
           </div>
         </div>
+        
         <div style={{
           position:'fixed',
           bottom: '0px',

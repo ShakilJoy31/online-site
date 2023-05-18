@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import { IoLogoUsd } from 'react-icons/io';
 import { RiLuggageDepositFill } from 'react-icons/ri';
+import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 
 const Dashboard = () => {
     return (
@@ -43,7 +45,7 @@ const Dashboard = () => {
 
             {/* Statics */}
             <div className='lg:mt-[-250px] mt-[-50px] grid lg:justify-between md:justify-between gap-x-6 lg:flex md:flex'>
-                <div style={{ background: '#19A7CE' }} className="w-full card hover:shadow-2xl">
+                <div style={{ background: '#19A7CE' }} className={`w-full card hover:shadow-2xl ${FoodProductStyle.moreFoodButton}`}>
                     <div className="p-3 lg:p-8 md:p-6">
                         <h2 className="mb-2 text-black card-title md:mb-4 lg:mb-6">Statistics</h2>
                         <div style={{
@@ -76,7 +78,7 @@ const Dashboard = () => {
                 {/* More card */}
                 <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/tb2.png" alt="" />
@@ -87,7 +89,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/trade.png" alt="" />
@@ -98,7 +100,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/team1.png" alt="" />
@@ -109,7 +111,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/trade.png" alt="" />
@@ -120,7 +122,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/support.png" alt="" />
@@ -131,7 +133,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/certi.png" alt="" />
@@ -142,7 +144,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="h-24 bg-white w-42 card hover:shadow-2xl">
+                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-4">
                                 <div>
                                     <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/tgg.png" alt="" />
@@ -163,59 +165,96 @@ const Dashboard = () => {
                         <div className='p-4 lg:p-8 md:p-6 '>
                             <div className='flex items-center'>
                                 <div className='grid w-full grid-cols-1 gap-2 lg:grid-cols-3 md:grid-cols-2 lg:gap-4 md:gap-4'>
-                                <div style={{
+                                    <Link target='_blank' href='https://in.tradingview.com/symbols/USDTUSD/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com'>
+                                    <div style={{
                                     borderRadius: '5px',
                                     backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                                     backgroundSize: "100%",
                                     backgroundRepeat: "repeat",
-                                }} className='w-full'>
+                                }} className={`w-full p-4 cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                                     <div className='flex items-center justify-between w-full'>
-                                        <div className='flex items-center justify-center pt-4 pl-4 pr-4 mb-2'>
+                                        <div className='flex items-center justify-center'>
                                         <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCUSDT.svg" alt="" />
                                             <p>USDTUSD</p>
                                             <p>TETHER/USD</p>
                                         </div>
-                                        <span>B</span>
+                                        <span style={{
+                                            padding:'6px',
+                                            borderRadius: '5px',
+                                            background: 'black'
+                                        }} className='hidden lg:block md:block'>Trading view</span>
                                     </div>
-                                    <p className='pl-4 text-2xl text-red-500'>0.0000</p>
+                                    <div className='flex items-center justify-between'>
+                                    <p className='my-2 text-2xl text-white'>0.0000</p>
+                                    <span style={{
+                                            padding:'6px',
+                                            borderRadius: '5px',
+                                            background: 'black'
+                                        }} className='block mr-2 lg:hidden md:hidden'>Trading view</span>
+                                    </div>
                                 </div>
-
+                                    </Link>
                                 
+
+                                <Link target='_blank' href='https://in.tradingview.com/symbols/BTCUSDT/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com'>
                                 <div style={{
                                     borderRadius: '5px',
                                     backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                                     backgroundSize: "100%",
                                     backgroundRepeat: "repeat",
-                                }} className='w-full'>
+                                }} className={`w-full p-4 cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                                     <div className='flex items-center justify-between w-full'>
-                                        <div className='flex items-center justify-center pt-4 pl-4 pr-4 mb-2'>
-                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCUSDT.svg" alt="" />
+                                        <div className='flex items-center justify-center'>
+                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC.svg" alt="" />
                                             <p>USDTUSD</p>
                                             <p>TETHER/USD</p>
                                         </div>
-                                        <span>B</span>
+                                        <span style={{
+                                            padding:'6px',
+                                            borderRadius: '5px',
+                                            background: 'black'
+                                        }} className='hidden lg:block md:block'>Trading view</span>
                                     </div>
-                                    <p className='pl-4 text-2xl text-red-500'>0.0000</p>
+                                    <div className='flex items-center justify-between'>
+                                    <p className='my-2 text-2xl text-white'>0.0000</p>
+                                    <span style={{
+                                            padding:'6px',
+                                            borderRadius: '5px',
+                                            background: 'black'
+                                        }} className='block mr-2 lg:hidden md:hidden'>Trading view</span>
+                                    </div>
                                 </div>
+                                </Link>
 
-
-
+                                <Link target='_blank' href='https://in.tradingview.com/symbols/ETHUSD/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com'>
                                 <div style={{
                                     borderRadius: '5px',
                                     backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                                     backgroundSize: "100%",
                                     backgroundRepeat: "repeat",
-                                }} className='w-full'>
+                                }} className={`w-full p-4 cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                                     <div className='flex items-center justify-between w-full'>
-                                        <div className='flex items-center justify-center pt-4 pl-4 pr-4 mb-2'>
-                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCUSDT.svg" alt="" />
+                                        <div className='flex items-center justify-center'>
+                                        <img style={{borderRadius:'50%'}} className='w-10 h-10 mr-4' src="https://s3-symbol-logo.tradingview.com/crypto/XTVCETH.svg" alt="" />
                                             <p>USDTUSD</p>
                                             <p>TETHER/USD</p>
                                         </div>
-                                        <span>B</span>
+                                        <span style={{
+                                            padding:'6px',
+                                            borderRadius: '5px',
+                                            background: 'black'
+                                        }} className='hidden mt-2 mr-2 lg:block md:block'>Trading view</span>
                                     </div>
-                                    <p className='pl-4 text-2xl text-red-500'>0.0000</p>
+                                    <div className='flex items-center justify-between'>
+                                    <p className='my-2 text-2xl text-white'>0.0000</p>
+                                    <span style={{
+                                            padding:'6px',
+                                            borderRadius: '5px',
+                                            background: 'black'
+                                        }} className='block mr-2 lg:hidden md:hidden'>Trading view</span>
+                                    </div>
                                 </div>
+                                </Link>
 
                                 
                                 </div>

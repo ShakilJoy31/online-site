@@ -25,7 +25,7 @@ const Deposit = () => {
 
                                 <div className={`${FoodProductStyle.customDivider}`}></div>
 
-                                <p className='flex justify-center my-2 font-mono text-2xl'>Deposit Amount: 100$</p>
+                                <p className='flex justify-center my-2 font-mono text-xl lg:text-2xl md:text-2xl'>Deposit Amount: 100$</p>
 
                                 {/* font-serif */}
 
