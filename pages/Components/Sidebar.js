@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const Sidebar = () => {
     const router = useRouter();
     return (
-        <div style={{backgroundColor: '#247f9e'}} className='w-full lg:w-32 md:w-32'>
+        <div style={{backgroundColor: '#247f9e'}} className='w-full lg:min-h-screen lg:w-32 md:w-32 md:min-h-screen'>
             <div className='flex items-center justify-center mx-4 lg:mx-0 md:mx-0'>
                 <div className='flex items-center justify-between w-full my-3 lg:w-0 md:w-0 lg:grid md:grid lg:mt-0 md:mt-0'>
                     <p>Logo</p>
