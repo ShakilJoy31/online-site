@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
             <Sidebar></Sidebar>
           </div>
 
-          <div className={`${(router.pathname == '/profile' || router.pathname == '/login' || router.pathname == '/signup' ) ? 'w-full' : ''}`}>
+          <div className={`${(router.pathname == '/profile' || router.pathname == '/login' || router.pathname == '/signup' || router.pathname == '/tradeBot' || router.pathname == '/alpha' ) ? 'w-full' : ''}`}>
             <Component {...pageProps} />
           </div>
         </div>

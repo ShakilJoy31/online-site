@@ -3,8 +3,10 @@ import { IoLogoUsd } from 'react-icons/io';
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import tradeBoot from './images/trade.png'
+import { useRouter } from 'next/router';
 
 const Dashboard = () => {
+    const router = useRouter(); 
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <div className="w-full carousel">
@@ -79,7 +81,7 @@ const Dashboard = () => {
                 {/* More card */}
                 <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
                     <div>
-                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
+                        <div onClick={()=>router.push('/tradeBot')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
                                     <img className='block mx-auto rounded-full w-14 h-14' src='https://i.ibb.co/5sKhkbt/images.jpg' alt="" />
@@ -90,7 +92,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
-                        <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
+                        <div onClick={()=>router.push('/myTrade')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
                                     <img className='block mx-auto rounded-full w-14 h-14' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bg469-A3XjN0w7263R_lWbw4gAogrTT_YA&usqp=CAU" alt="" />
@@ -104,7 +106,7 @@ const Dashboard = () => {
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
-                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/fnzJk1T/team.jpg" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/9VMpp5J/team-image.jpg" alt="" />
                                     <p className='flex justify-center text-black'>Team</p>
                                 </div>
 
