@@ -1,6 +1,6 @@
 import React from 'react';
 
-const myTrade = () => {
+const MyTrade = () => {
     return (
         <div>
             <h1>This is my trade page.</h1>
@@ -8,4 +8,4 @@ const myTrade = () => {
     );
 };
 
-export default myTrade;
+export default MyTrade;

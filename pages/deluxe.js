@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
-const deluxe = () => {
+const Deluxe = () => {
     const router = useRouter();
     return (
         <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
@@ -41,4 +41,4 @@ const deluxe = () => {
     );
 };
 
-export default deluxe;
+export default Deluxe;

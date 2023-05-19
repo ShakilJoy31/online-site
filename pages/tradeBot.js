@@ -2,7 +2,7 @@ import Link from 'next/link';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from 'next/router';
 
-const tradeBot = () => {
+const TradeBot = () => {
     const router = useRouter();
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
@@ -176,7 +176,7 @@ const tradeBot = () => {
     );
 };
 
-export default tradeBot;
+export default TradeBot;
 
 
 
