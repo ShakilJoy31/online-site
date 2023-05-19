@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { IoLogoUsd } from 'react-icons/io';
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
+import tradeBoot from './images/trade.png'
 
 const Dashboard = () => {
     return (
@@ -79,9 +80,9 @@ const Dashboard = () => {
                 <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/tb2.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src='https://i.ibb.co/5sKhkbt/images.jpg' alt="" />
                                     <p className='flex justify-center text-black'>Trade Boot</p>
                                 </div>
 
@@ -90,9 +91,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/trade.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bg469-A3XjN0w7263R_lWbw4gAogrTT_YA&usqp=CAU" alt="" />
                                     <p className='flex justify-center text-black'>My Trade</p>
                                 </div>
 
@@ -101,9 +102,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/team1.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/fnzJk1T/team.jpg" alt="" />
                                     <p className='flex justify-center text-black'>Team</p>
                                 </div>
 
@@ -112,9 +113,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/trade.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/3YF4djv/single.jpg" alt="" />
                                     <p className='flex justify-center text-black'>Charts</p>
                                 </div>
 
@@ -123,9 +124,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/images/support.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/JcSBgDT/support.png" alt="" />
                                     <p className='flex justify-center text-black'>Support</p>
                                 </div>
 
@@ -134,9 +135,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/certi.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/HVfcrxX/certificate.png" alt="" />
                                     <p className='flex justify-center text-black'>Certificate</p>
                                 </div>
 
@@ -145,9 +146,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div>
-                                    <img className='block w-12 h-12 mx-auto' src="https://www.combattradebots.com/tgg.png" alt="" />
+                                    <img className='block mx-auto rounded-full w-14 h-14' src="https://media.istockphoto.com/id/524018928/vector/icon-of-paper-plane-white-plane-on-a-blue-background.jpg?s=612x612&w=0&k=20&c=x_xtOUf4VFofptGasi8XO-y76prH0Ov5SRdmi6j6ZUI=" alt="" />
                                     <p className='flex justify-center text-black'>Chanel</p>
                                 </div>
 
