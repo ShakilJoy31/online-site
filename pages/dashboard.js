@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import { IoLogoUsd } from 'react-icons/io';
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
-import tradeBoot from './images/trade.png'
 import { useRouter } from 'next/router';
 
 const Dashboard = () => {
@@ -125,6 +123,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
+                        <Link href="https://t.me/UASOFFICIALSUPPORTBOT">
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
@@ -134,6 +133,8 @@ const Dashboard = () => {
 
                             </div>
                         </div>
+                        </Link>
+                        
                     </div>
                     <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>

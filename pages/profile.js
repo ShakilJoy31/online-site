@@ -1,7 +1,9 @@
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
+import { useRouter } from 'next/router';
 
 const Profile = () => {
+    const router = useRouter();
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
 
@@ -66,15 +68,24 @@ const Profile = () => {
                             <p className='text-2xl text-black'>Account Actions</p>
                             <p className='my-2 lg:my-4'>You can perform various actions on your trading account like deposit and withdrawal.</p>
                             <div>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Internal Transfer</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Wallet Address</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Payment Password</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal Reports</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit Reports</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Rebate Reports</p>
-                                <p className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</p>
+                                <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
+
+                                <p onClick={() => router.push("/withdrawal")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>
+
+                                <p onClick={() => router.push("/internalTransfer")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Internal Transfer</p>
+
+                                <p onClick={() => router.push("/walletAddress")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Wallet Address</p>
+
+                                <p onClick={() => router.push("/paymentPassword")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Payment Password</p>
+
+                                <p onClick={() => router.push("/withdrawalReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal Reports</p>
+
+                                <p onClick={() => router.push("/depositReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit Reports</p>
+
+                                <p onClick={() => router.push("/rebateReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Rebate Reports</p>
+
+                                <p onClick={() => router.push("/resetPin")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</p>
+
                             </div>
                         </div>
                     </div>
@@ -90,12 +101,12 @@ const Profile = () => {
                             <p className='text-2xl text-black'>Earn amazing rewards</p>
                             <p className='my-4'>Refer your friends and Earn rebate reward up to 2 levels</p>
                             <div>
-                            <label style={{
-                                backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
-                                backgroundSize: "100%",
-                                backgroundRepeat: "repeat",
-                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full lg:w-48 md:w-32 `}>Referral Program
-                            </label>
+                                <label style={{
+                                    backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full lg:w-48 md:w-32 `}>Referral Program
+                                </label>
                             </div>
                         </div>
 
@@ -103,7 +114,31 @@ const Profile = () => {
                 </div>
             </div>
 
-            <div></div>
+            <div className='w-full mt-4 lg:mt-8 md:mt-6'>
+                <div style={{
+                    borderRadius: '5px',
+                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat",
+                }} className='w-full p-4 mb-4 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
+                        <h1 className='mb-6 font-serif text-2xl'>User Information</h1>
+                        <div className='grid items-center justify-between lg:flex md:flex'>
+                            <div>
+                                <p className=''>Phone</p>
+                                <p className='text-xl text-black'>0235489</p>
+                            </div>
+                            <div className='my-2 lg:my-0 md:my-0'>
+                                <p className=''>Email</p>
+                                <p className='text-xl text-black'>shakil@gmail.com</p>
+                            </div>
+                            <div>
+                                <p className=''>Joined since</p>
+                                <p className='text-xl text-black'>4378939</p>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
         </div>
     );
 };

@@ -4,20 +4,42 @@ import { IoIosSettings } from 'react-icons/io';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import FoodProductStyle from '../CSSfile/FoodProductStyle.module.css';
+import { useState } from 'react';
 const Sidebar = () => {
     const router = useRouter();
+    const [home, setHome] = useState(false)
+    const [deposit, setDeposit] = useState(false)
+    const [profile, setProfile] = useState(false)
+    const handleHome = () =>{
+        router.push('/dashboard');
+        setDeposit(false);
+        setHome(true);
+        setProfile(false);
+    }
+    const handleDeposit = () =>{
+        router.push('/deposit');
+        setDeposit(true);
+        setHome(false);
+        setProfile(false);
+    }
+    const handleProfile = () =>{
+        router.push('/profile');
+        setDeposit(false);
+        setHome(false);
+        setProfile(true);
+    }
     return (
         <div style={{ backgroundColor: '#247f9e' }} className='w-full lg:min-h-screen lg:w-32 md:w-32 md:min-h-screen md:h-full lg:h-full'>
             <div className='flex items-center justify-center mx-4 lg:mx-0 md:mx-0'>
                 <div className='flex items-center justify-between w-full my-3 lg:w-0 md:w-0 lg:grid md:grid lg:mt-0 md:mt-0'>
 
-                    <span onClick={() => router.push('/dashboard')} className='lg:my-10 md:my-8'><ImHome3 size={25} color='#8B1874'></ImHome3></span>
+                    <span onClick={handleHome} className={` cursor-pointer lg:my-10 md:my-8 hover:text-white ${home ? 'text-white' : 'text-purple-800'}`}><ImHome3 size={25}></ImHome3></span>
 
-                    <span onClick={() => router.push('/deposit')} className=''><RiLuggageDepositFill size={25} color='#8B1874'></RiLuggageDepositFill></span>
+                    <span onClick={handleDeposit} className={` cursor-pointer hover:text-white ${deposit ? 'text-white' : 'text-purple-800'}`}><RiLuggageDepositFill size={25}></RiLuggageDepositFill></span>
 
-                    <span onClick={() => router.push('/profile')} className='lg:my-10 md:my-8'><IoIosSettings size={28} color='#8B1874'></IoIosSettings></span>
+                    <span onClick={handleProfile} className={` cursor-pointer lg:my-10 md:my-8 hover:text-white ${profile ? 'text-white' : 'text-purple-800'}`}><IoIosSettings size={28}></IoIosSettings></span>
 
-                    <label htmlFor="logoutModal" className=''><AiOutlineLogout size={28} color='#8B1874'></AiOutlineLogout></label>
+                    <label htmlFor="logoutModal" className='text-purple-800 cursor-pointer hover:text-red-600'><AiOutlineLogout size={28}></AiOutlineLogout></label>
 
                 </div>
             </div>
