@@ -59,6 +59,7 @@ const Sidebar = () => {
 
                                 <label onClick={() => {
                                     localStorage.removeItem('tradingUser')
+                                    localStorage.removeItem('myUser')
                                     router.push("/")
                                 }} htmlFor="logoutModal" style={{
                                     backgroundImage: "linear-gradient(45deg ,green ,white)",

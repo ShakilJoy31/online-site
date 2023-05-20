@@ -1,9 +1,11 @@
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Profile = () => {
     const router = useRouter();
+    const [checkingEmail, setCheckingEmail] = useState('')
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
 
@@ -84,7 +86,7 @@ const Profile = () => {
 
                                 <p onClick={() => router.push("/rebateReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Rebate Reports</p>
 
-                                <p onClick={() => router.push("/resetPin")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</p>
+                                <label htmlFor='resetPinModal' className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</label>
 
                             </div>
                         </div>
@@ -121,22 +123,55 @@ const Profile = () => {
                     backgroundSize: "100%",
                     backgroundRepeat: "repeat",
                 }} className='w-full p-4 mb-4 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
-                        <h1 className='mb-6 font-serif text-2xl'>User Information</h1>
-                        <div className='grid items-center justify-between lg:flex md:flex'>
-                            <div>
-                                <p className=''>Phone</p>
-                                <p className='text-xl text-black'>0235489</p>
-                            </div>
-                            <div className='my-2 lg:my-0 md:my-0'>
-                                <p className=''>Email</p>
-                                <p className='text-xl text-black'>shakil@gmail.com</p>
-                            </div>
-                            <div>
-                                <p className=''>Joined since</p>
-                                <p className='text-xl text-black'>4378939</p>
-                            </div>
+                    <h1 className='mb-6 font-serif text-2xl'>User Information</h1>
+                    <div className='grid items-center justify-between lg:flex md:flex'>
+                        <div>
+                            <p className=''>Phone</p>
+                            <p className='text-xl text-black'>0235489</p>
                         </div>
+                        <div className='my-2 lg:my-0 md:my-0'>
+                            <p className=''>Email</p>
+                            <p className='text-xl text-black'>shakil@gmail.com</p>
+                        </div>
+                        <div>
+                            <p className=''>Joined since</p>
+                            <p className='text-xl text-black'>4378939</p>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+
+            <div>
+                <input type="checkbox" id="resetPinModal" className="modal-toggle" />
+
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div style={{
+                    borderRadius: '5px',
+                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat",
+                }} className="modal-box">
+                        <h3 className="flex justify-center mb-4 text-lg font-bold text-black">Type your email first</h3>
+                        <input onChange={(e)=>setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-white bg-purple-500 input focus:outline-none" />
+                        <div className="w-full modal-action">
+                            <label style={{
+                                borderRadius: '5px',
+                                backgroundImage: "linear-gradient(45deg, #FC4F00, #8B1874)",
+                                backgroundSize: "100%",
+                                backgroundRepeat: "repeat",
+                            }} htmlFor="resetPinModal" className={`w-full border-0 cursor-pointer btn-sm ${FoodProductStyle.emailCheckButtonCancel}`}> <span className='flex items-center justify-center mt-1'>Cancel</span></label>
+                            {
+                                checkingEmail && <label style={{
+                                    borderRadius: '5px',
+                                    backgroundImage: "linear-gradient(45deg, green, black)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} htmlFor="resetPinModal" className={`w-full border-0 cursor-pointer btn-sm ${FoodProductStyle.emailCheckButtonOK}`}> <span className='flex items-center justify-center mt-1'>Reset Pin</span></label>
+                            }
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

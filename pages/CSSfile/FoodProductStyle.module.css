@@ -14,7 +14,7 @@
     /* color: #b23c89fd; */
 }
 
-.tradingRight:hover{
+.tradingRight:hover {
     box-shadow: 2px 2px 15px 5px black;
     transition-duration: 200ms;
 }
@@ -45,7 +45,7 @@
     transition-duration: 200ms;
 }
 
-.logOut:hover{
+.logOut:hover {
     box-shadow: 2px 2px 15px 5px red;
     transition-duration: 200ms;
 }
@@ -109,20 +109,20 @@
     background-repeat: repeat;
 }
 
-.overWriteSpinner{
+.overWriteSpinner {
     width: 20px !important;
     height: 20px !important;
 }
 
 
-.confirmOrder{
+.confirmOrder {
     transition-duration: 200ms;
     background-color: black;
     color: white;
 }
 
 
-.confirmOrder:hover{
+.confirmOrder:hover {
     box-shadow: 2px 2px 15px 5px black;
     transition-duration: 200ms;
     background-color: white;
@@ -130,27 +130,27 @@
 }
 
 
-.userUpdateButton{
+.userUpdateButton {
     transition-duration: 200ms;
     background-color: white;
     color: black;
 }
 
 
-.userUpdateButton:hover{
+.userUpdateButton:hover {
     box-shadow: 2px 2px 15px 5px white;
     transition-duration: 200ms;
     background-color: black;
     color: white;
 }
 
-.mytrade{
+.mytrade {
     border-bottom: 1px solid black;
     padding-top: 6px;
     padding-bottom: 6px;
 }
 
-.mytrade:hover{
+.mytrade:hover {
     box-shadow: 2px 2px 15px 5px white;
     transition-duration: 200ms;
     background-color: black;
@@ -169,36 +169,38 @@
 
 @keyframes spin {
     from {
-      transform: rotate(0);
+        transform: rotate(0);
     }
+
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 
 
-  /*  */
-  .customDivider{
+/*  */
+.customDivider {
     height: 1.5px;
     width: 100%;
     border-radius: 5px;
     background-color: rgba(255, 0, 0, 0.555);
-  }
+}
 
-  .customDividerAlpha{
+.customDividerAlpha {
     height: 1px;
     width: 100%;
     border-radius: 5px;
     background-color: black;
-  }
+}
 
-  .quickMenu{
+.quickMenu {
     background-color: white;
     color: black;
     border-radius: 5px;
     margin-bottom: 10px;
-  }
-  .quickMenu:hover{
+}
+
+.quickMenu:hover {
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -206,4 +208,31 @@
     box-shadow: 2px 2px 15px 5px white;
     transition-duration: 200ms;
     cursor: pointer;
-  }
+}
+
+.tableRow {
+    color: white;
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+
+.tableRow:hover {
+    color: orangered;
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+
+.newLevel{
+    transition-duration: 400ms;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px 5px black;
+}
+
+.emailCheckButtonOK:hover{
+    transition-duration: 200ms;
+    box-shadow: 2px 2px 15px 5px white;
+}
+.emailCheckButtonCancel:hover{
+    transition-duration: 200ms;
+    box-shadow: 2px 2px 15px 5px black;
+}

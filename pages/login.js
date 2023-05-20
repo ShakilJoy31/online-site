@@ -13,8 +13,9 @@ const Login = ({ setLogin }) => {
     const [password, setPassword] = useState('');
     const [rememberPassword, setRememberPassword] = useState(null); 
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
+    const [remember, setRemember] = useState(null);
     const handleLoginButton = () => {
-        if(email == 'shakil@gmail.com' && password == '12345'){
+        if((email == 'shakil@gmail.com' && password == '12345') && remember == true){
             localStorage.setItem('tradingUser', JSON.stringify({email: email, password: password}))
             router.push('/dashboard');
         }
@@ -27,29 +28,27 @@ const Login = ({ setLogin }) => {
                 <div style={{
                     backgroundColor: '#19A7CE',
                     borderRadius: '5px'
-                }} className='p-6 lg:w-[650px] md:w-[550px] w-[340px]'>
-
-                    {/* <h1 className='flex justify-center text-4xl'>Log in here</h1> */}
+                }} className='lg:p-6 md:p-4 p-2 lg:w-[650px] md:w-[550px] w-[340px]'>
 
                     <div className='my-4'>
                         <label className="">
                             <span className="text-white">Type your email</span>
                         </label>
-                        <input onChange={(e)=>setEmail(e?.target?.value)} type="text" placeholder="Type Email" className="w-full mt-2 focus:border-red-500 input" />
+                        <input onChange={(e)=>setEmail(e?.target?.value)} type="text" placeholder="Type Email" className="w-full mt-2 bg-black focus:border-red-500 input" />
                     </div>
 
                     <div>
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <input onChange={(e)=>setPassword(e?.target?.value)} type="text" placeholder="Type Password" className="w-full mt-2 focus:border-red-500 input" />
+                        <input onChange={(e)=>setPassword(e?.target?.value)} type="text" placeholder="Type Password" className="w-full mt-2 bg-black focus:border-red-500 input" />
                     </div>
 
                     <div className='my-4'>
                         <div className="form-control">
                             <label className="flex items-center cursor-pointer">
                                 <span className="mr-4 text-white">Remember Password</span>
-                                <input type="checkbox" className="checkbox checkbox-primary" />
+                                <input onChange={(e)=>setRemember(e.target.checked)} type="checkbox" className="checkbox checkbox-primary" />
                             </label>
                         </div>
                     </div>
