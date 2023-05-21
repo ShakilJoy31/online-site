@@ -1,5 +1,5 @@
-import { getUser, postUsers, updateUserWithFeedBack } from "./../../database/controller";
-import connectMongo from './../../database/connection';
+import { getUser, postUsers, updateUserWithFeedBack } from "../../../database/controller";
+import connectMongo from './../../../database/connection';
 
 export default function handler(req, res) {
     connectMongo().catch(() => res.status(405).json({ error: 'Error while connecting.' }));
