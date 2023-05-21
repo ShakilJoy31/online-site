@@ -1,11 +1,23 @@
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Profile = () => {
     const router = useRouter();
-    const [checkingEmail, setCheckingEmail] = useState('')
+    const [checkingEmail, setCheckingEmail] = useState('');
+    const [localStorageUser, setLocalStorageUser] = useState({});
+    useEffect(() => {
+        const localStorageUserSavedUser = JSON.parse(localStorage.getItem('tradingUser'));
+        const localStorageUncheckedUser = JSON.parse(localStorage.getItem('unSavedUser'));
+        if(localStorageUncheckedUser){
+            setLocalStorageUser(localStorageUncheckedUser);
+        }
+        else{
+            setLocalStorageUser(localStorageUserSavedUser); 
+        }
+      }, [])
+    //   console.log(localStorageUser); 
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
 
@@ -20,10 +32,10 @@ const Profile = () => {
                     backgroundRepeat: "repeat",
                 }} className="flex items-center w-full mb-4 lg:mb-0 md:mb-0">
                     <div className="flex items-center p-2 lg:p-6 md:p-4">
-                        <img style={{ borderRadius: '50%' }} className='w-20 h-20 mr-4' src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Trisha_at_World_Children%27s_Day_Press_Meet_%28cropped%29.png" alt="" />
+                        <img style={{ borderRadius: '50%' }} className='w-20 h-20 mr-4' src={localStorageUser ? localStorageUser?.userPhoto : 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Trisha_at_World_Children%27s_Day_Press_Meet_%28cropped%29.png'} alt="" />
 
                         <div>
-                            <h2 className="mb-4 font-serif text-2xl">Welcome <span className='font-bold text-black'>Shakil</span></h2>
+                            <h2 className="mb-4 font-serif text-2xl">Welcome <span className='font-bold text-black'>{localStorageUser?.fullName}</span></h2>
                             <p>User id: 4875643</p>
                         </div>
                     </div>

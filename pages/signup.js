@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 // import Spinner from "./Spinner";
 import { useRouter } from "next/router";
+import { addUser, getUser } from "./lib/healper";
 
 const Signup = () => {
     const router = useRouter();
@@ -30,6 +31,7 @@ const Signup = () => {
     const [image, setImage] = useState('');
     const [hostedImage, setHostedImage] = useState('');
     const [remember, setRemember] = useState(false);
+    const [signedInUser, setSignedInUser] = useState([]); 
     const ImageStorageKey = '1f2e07ae412954d520f52351b07dee66';
     if(image){
         const formDataImage = new FormData();
@@ -46,15 +48,21 @@ const Signup = () => {
                 })
                 setImage('');
     }
-    // const handleUploadedImage = (event) =>{
-        
-    // } 
-    const userData = {fullName: fullName, email: email, phone: phone, country: country, password: password, confirmPassword: confirmPassword, remember: remember, userPhoto: hostedImage }; 
+    const userData = {fullName: fullName, email: email, phone: phone, country: country, password: password, userPhoto: hostedImage };
 
+    useEffect(()=>{
+        getUser().then(res => setSignedInUser(res));
+    },[])
+    const databaseUser = signedInUser.find(user => user?.email ==  email);
     const handleSignUp = () =>{
-        
+        if((password == confirmPassword) && !databaseUser){
+            addUser(userData).then(res => router.push('/dashboard'))
+        }
         if(remember){
-            localStorage.setItem('myUser', JSON.stringify(userData));
+            localStorage.setItem('tradingUser', JSON.stringify(userData));
+        }
+        else{
+            localStorage.setItem('unsavedUser', JSON.stringify(userData))
         }
     }
     return (
@@ -62,13 +70,12 @@ const Signup = () => {
             <h1 className='flex justify-center mb-3 font-serif text-4xl text-blue-600'>Sign up here.</h1>
             <div className='flex items-center justify-center'>
                 <div style={{
-                    backgroundColor: '#19A7CE',
-                    borderRadius: '5px'
-                }} className='lg:p-6 md:p-4 p-2 lg:w-[650px] md:w-[550px] w-[340px]'>
-
-                    {/* <h1 className='flex justify-center text-4xl'>Log in here</h1> */}
-
-                    <div className='my-4'>
+                borderRadius: '5px',
+                backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                backgroundSize: "100%",
+                backgroundRepeat: "repeat",
+            }} className='lg:p-6 md:p-4 p-2 lg:w-[650px] md:w-[550px] w-[340px]'>
+                <div className='my-4'>
                         <label className="">
                             <span className="text-white">Type your full name</span>
                         </label>
@@ -80,6 +87,11 @@ const Signup = () => {
                             <span className="text-white">Type your email</span>
                         </label>
                         <input onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="hello@example.com" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        {
+                            databaseUser ? <label className="">
+                            <span className="flex justify-center text-red-700">{databaseUser?.email} is already exists on database.</span>
+                        </label> : ''
+                        }
                     </div>
 
                     <div className='my-4'>
@@ -146,7 +158,7 @@ const Signup = () => {
                     </div> */}
                     <div className={`${FoodProductStyle.customDivider} my-4`}></div>
                     <div>
-                        <h1>Already have an account?<span onClick={() => router.push('/login')} style={{ color: '#643843' }} className='ml-4 cursor-pointer hover:underline'>Log in</span></h1>
+                        <h1>Already have an account?<span onClick={() => router.push('/login')} style={{ color: 'black' }} className='ml-4 text-xl cursor-pointer hover:underline'>Log in</span></h1>
                     </div>
                 </div>
             </div>

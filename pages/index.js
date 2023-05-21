@@ -9,8 +9,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const router = useRouter(); 
   useEffect(()=>{
-    const localStorageElement = localStorage.getItem('tradingUser');
-    if(localStorageElement){
+    const localStorageSavedUser = localStorage.getItem('tradingUser');
+    const localStorageUnSavedUser = localStorage.getItem('savedUser');
+    if(localStorageUnSavedUser && localStorageSavedUser){
       router.push('/dashboard')
     }
     else{

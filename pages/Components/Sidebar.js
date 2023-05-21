@@ -59,7 +59,7 @@ const Sidebar = () => {
 
                                 <label onClick={() => {
                                     localStorage.removeItem('tradingUser')
-                                    localStorage.removeItem('myUser')
+                                    localStorage.removeItem('unSavedUser')
                                     router.push("/")
                                 }} htmlFor="logoutModal" style={{
                                     backgroundImage: "linear-gradient(45deg ,green ,white)",
@@ -67,7 +67,6 @@ const Sidebar = () => {
                                     backgroundRepeat: "repeat",
                                 }} className={`normal-case btn ${FoodProductStyle.logOut} btn-sm border-0 text-xl text-black mt-2 w-32`}>Yes
                                 </label>
-
                             </div>
                         </label>
                 </label>
