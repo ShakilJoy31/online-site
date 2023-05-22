@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 // import Spinner from "./Spinner";
 import { useRouter } from "next/router";
-import { addUser, getUser } from "./lib/healper";
+import { addUser, getUser } from "./../lib/healper";
 
 const Signup = () => {
     const router = useRouter();
