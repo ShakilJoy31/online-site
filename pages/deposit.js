@@ -3,6 +3,7 @@ import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 // import { IoCopySharp } from 'react-icons/io';
 const Deposit = () => {
     const [copiedAccountNumber, setCopiedAccountNumber] = useState(false);
+    const [copy, setCopy] = useState(false);
     const [amountToPay, setAmountToPay] = useState(0);
     useEffect(()=>{
         const amount = JSON.parse(localStorage.getItem('amount'));
@@ -35,7 +36,7 @@ const Deposit = () => {
                             <div className='p-6 text-black bg-white rounded-sm'>
                                 <div>
                                     <p className="text-red-500">NOTE: DEPOSIT METHOD IS USDT-TRC20 ONLY</p>
-                                    <img className='block mx-auto my-4 w-28 h-28' src="https://chart.googleapis.com/chart?cht=qr&chl=TURk7snCjbfASWYx5XvDFnfDGXpSU8223e&chs=180x180&choe=UTF-8&chld=L|2" alt="" />
+                                    <img className='block mx-auto my-4 w-36 h-36' src="https://i.ibb.co/zswYgY3/Whats-App-Image-2023-05-21-at-11-01-15-PM.jpg" alt="" />
     
                                     <div className={`${FoodProductStyle.customDivider}`}></div>
     
@@ -49,17 +50,21 @@ const Deposit = () => {
                                         <div>
                                             <div className="form-control">
                                                 <div className="input-group">
-                                                    <input value='TURk7snCjbfASWYx5XvDFnfDGXpSU8223e' type="text" className="w-full text-white bg-purple-500 input focus:outline-none" />
+                                                    <input value='TR41ZFhesqyNDVXLFY7XePj65kz7EQ47CH' type="text" className="w-full text-white bg-purple-500 input focus:outline-none" />
                                                     {
-                                                        copiedAccountNumber ? <span onClick={()=>navigator.clipboard.writeText('TURk7snCjbfASWYx5XvDFnfDGXpSU8223e')} style={{
+                                                        !copy ? <span onClick={()=>{
+                                                            navigator.clipboard.writeText('TR41ZFhesqyNDVXLFY7XePj65kz7EQ47CH')
+                                                            setCopy(true); 
+
+                                                        }} style={{
                                                             backgroundImage: "linear-gradient(45deg, #BFEAF5, #FEA1BF)",
                                                             backgroundSize: "100%",
                                                             backgroundRepeat: "repeat",
-                                                        }} className='text-white cursor-pointer hover:text-red-600'>Copied</span> : <span onClick={handleCopyButton} style={{
+                                                        }} className='text-white cursor-pointer hover:text-red-600'>Copy</span> : <span style={{
                                                             backgroundImage: "linear-gradient(45deg, #BFEAF5, #FEA1BF)",
                                                             backgroundSize: "100%",
                                                             backgroundRepeat: "repeat",
-                                                        }} className='text-white cursor-pointer hover:text-red-600'>Copy</span>
+                                                        }} className='text-white cursor-pointer hover:text-red-600'>Copied</span>
                                                     }
                                                 </div>
                                             </div>
