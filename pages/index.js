@@ -7,16 +7,23 @@ import { useRouter } from 'next/router';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const router = useRouter(); 
+  const router = useRouter();
   useEffect(()=>{
-    const localStorageSavedUser = localStorage.getItem('tradingUser');
-    const localStorageUnSavedUser = localStorage.getItem('savedUser');
+    const localStorageSavedUser = JSON.parse(localStorage.getItem('tradingUser'));
+    const localStorageUnSavedUser = JSON.parse(localStorage.getItem('savedUser'));
     if(localStorageUnSavedUser && localStorageSavedUser){
-      router.push('/dashboard')
+      if(localStorageSavedUser?.email == 'shakil@gmail.com' || localStorageUnSavedUser == 'shakil@gmail.com'){
+        router.push('/admin');
+      }
+      else{
+        router.push('/dashboard');
+      }
     }
     else{
       router.push('/login')
     }
+    console.log(localStorageSavedUser?.email)
+    console.log(localStorageUnSavedUser?.email)
   },[]);
   return (
     <>

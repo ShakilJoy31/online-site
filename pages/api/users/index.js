@@ -1,4 +1,4 @@
-import { getUser, postUsers, updateUserWithFeedBack } from "../../../database/controller";
+import { getUser, postUsers, updateUserWithTrId } from "../../../database/controller";
 import connectMongo from './../../../database/connection';
 
 export default function handler(req, res) {
@@ -13,7 +13,7 @@ export default function handler(req, res) {
             postUsers(req, res)
             break;
         case 'PUT':
-            updateUserWithFeedBack(req, res)
+            updateUserWithTrId(req, res)
             break;
         default:
             res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);

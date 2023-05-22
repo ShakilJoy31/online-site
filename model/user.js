@@ -6,7 +6,8 @@ const userSchema = new Schema({
     phone: Number,
     country: String,
     password: String,
-    userPhoto: String
+    userPhoto: String,
+    userTrId: String
 })
 
 const Users = models.users || model('users', userSchema)

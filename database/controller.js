@@ -40,15 +40,13 @@ export async function postUsers(req, res) {
     }
 }
 
-export async function updateUserWithFeedBack(req, res) {
+export async function updateUserWithTrId(req, res) {
     try {
         const { userId } = req.query;
         const formData = req.body;
-        console.log(formData);
         if (userId && formData) {
             const user = await Users.findByIdAndUpdate(userId, formData)
-            res.status(200).json(user);
-            console.log(user);
+            return res.status(200).json(user);
         }
         res.status(404).json({ error: 'User is not selected...!' });
     } catch (errors) {

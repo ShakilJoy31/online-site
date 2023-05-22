@@ -84,6 +84,17 @@
     border-radius: 5px;
 }
 
+.paymentActionButtonDec:hover{
+    box-shadow: 2px 2px 15px 5px lightblue;
+    transition-duration: 100ms;
+    border-radius: 2px;
+}
+.paymentActionButton:hover{
+    box-shadow: 2px 2px 15px 5px red;
+    transition-duration: 100ms;
+    border-radius: 2px;
+}
+
 /* style={{
     backgroundImage: "linear-gradient(45deg, black, white)",
     backgroundSize: "100%",
