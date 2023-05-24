@@ -4,10 +4,13 @@ const userSchema = new Schema({
     fullName: String,
     email: String,
     phone: Number,
-    country: String,
     password: String,
     userPhoto: String,
-    userTrId: String
+    userTrId: String,
+    amount: Number,
+    isVerified: Boolean,
+    referId: String,
+    amountFromRefer: Number
 })
 
 const Users = models.users || model('users', userSchema)

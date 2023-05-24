@@ -1,8 +1,9 @@
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
-import { useRouter } from 'next/router';
+import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 
 const InternalTransfer = () => {
+    const user = getDataFromLocalStore();
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
 
@@ -29,7 +30,9 @@ const InternalTransfer = () => {
 
                         <div>
                             <p className='text-xl'>Current Balance</p>
-                            <p className='text-2xl'>$00.00</p>
+                            {
+                                user?.isVerified ? <p className='text-2xl'>$ {user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0)}</p> : <p className='text-2xl'>$ 00.00</p>
+                            }
                         </div>
                     </div>
 
@@ -44,17 +47,17 @@ const InternalTransfer = () => {
                     <div className="w-full p-2 lg:p-6 md:p-4">
                         <div className='w-full'>
                             <span className="">Amount (USD)</span>
-                            <input type="number" className="w-full mt-1 text-white bg-purple-500 input focus:outline-none" />
+                            <input type="number" className="w-full mt-1 text-white bg-black input focus:outline-none" />
                         </div>
 
                         <div className='w-full my-4'>
                             <span className="">Enter Payment Pin</span>
-                            <input type="text" className="w-full mt-1 text-white bg-purple-500 input focus:outline-none" />
+                            <input type="text" className="w-full mt-1 text-white bg-black input focus:outline-none" />
                         </div>
 
                         <div className='w-full'>
                             <span className="">Wallet Address</span>
-                            <input type="text" className="w-full mt-1 text-white bg-purple-500 input focus:outline-none" />
+                            <input type="text" className="w-full mt-1 text-white bg-black input focus:outline-none" />
                         </div>
 
                         <div className='mt-10 mb-4'>

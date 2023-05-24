@@ -2,22 +2,27 @@ import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { updateUserWithTrId } from '@/lib/healper';
+import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 
 const Profile = () => {
     const router = useRouter();
     const [checkingEmail, setCheckingEmail] = useState('');
     const [localStorageUser, setLocalStorageUser] = useState({});
+    const [correctEmail, setCorrectEmail] = useState(false);
+    const [newPassword, setNewPassword] = useState('');
     useEffect(() => {
-        const localStorageUserSavedUser = JSON.parse(localStorage.getItem('tradingUser'));
-        const localStorageUncheckedUser = JSON.parse(localStorage.getItem('unSavedUser'));
-        if(localStorageUncheckedUser){
-            setLocalStorageUser(localStorageUncheckedUser);
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+        if (localStorageSavedUser) {
+            setLocalStorageUser(localStorageSavedUser);
         }
-        else{
-            setLocalStorageUser(localStorageUserSavedUser); 
-        }
-      }, [])
-    //   console.log(localStorageUser); 
+    }, [])
+    const user = getDataFromLocalStore();
+    console.log(user);
+
+    const handleResetPassword = () => {
+        updateUserWithTrId(localStorageUser?._id, { password: newPassword }).then(res => { })
+    }
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
 
@@ -35,8 +40,11 @@ const Profile = () => {
                         <img style={{ borderRadius: '50%' }} className='w-20 h-20 mr-4' src={localStorageUser ? localStorageUser?.userPhoto : 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Trisha_at_World_Children%27s_Day_Press_Meet_%28cropped%29.png'} alt="" />
 
                         <div>
-                            <h2 className="mb-4 font-serif text-2xl">Welcome <span className='font-bold text-black'>{localStorageUser?.fullName}</span></h2>
-                            <p>User id: 4875643</p>
+                            <h2 className="mb-2 font-serif text-2xl">Welcome <span className='font-bold text-black'>{localStorageUser?.fullName}</span></h2>
+                            <p>Refer Id: <span className='ml-2 text-green-600'>Click on id to copy</span></p>
+                            <p onClick={() => {
+                                navigator.clipboard.writeText(user?._id)
+                            }} className='font-bold text-black hover:cursor-pointer' > {user?._id}</p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +69,9 @@ const Profile = () => {
 
                         <div>
                             <p className='text-xl'>Current Balance</p>
-                            <p className='text-2xl'>$00.00</p>
+                            {
+                                user?.isVerified ? <p className='text-2xl'>$ {user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0)}</p> : <p className='text-2xl'>$ 00.00</p>
+                            }
                         </div>
                     </div>
 
@@ -82,7 +92,9 @@ const Profile = () => {
                             <p className='text-2xl text-black'>Account Actions</p>
                             <p className='my-2 lg:my-4'>You can perform various actions on your trading account like deposit and withdrawal.</p>
                             <div>
-                                <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
+                                {
+                                    !user?.isVerified && <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
+                                }
 
                                 <p onClick={() => router.push("/withdrawal")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>
 
@@ -115,7 +127,7 @@ const Profile = () => {
                             <p className='text-2xl text-black'>Earn amazing rewards</p>
                             <p className='my-4'>Refer your friends and Earn rebate reward up to 2 levels</p>
                             <div>
-                                <label style={{
+                                <label onClick={()=>router.push("/referral")} style={{
                                     backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                     backgroundSize: "100%",
                                     backgroundRepeat: "repeat",
@@ -139,11 +151,11 @@ const Profile = () => {
                     <div className='grid items-center justify-between lg:flex md:flex'>
                         <div>
                             <p className=''>Phone</p>
-                            <p className='text-xl text-black'>0235489</p>
+                            <p className='text-xl text-black'>{localStorageUser?.phone}</p>
                         </div>
                         <div className='my-2 lg:my-0 md:my-0'>
                             <p className=''>Email</p>
-                            <p className='text-xl text-black'>shakil@gmail.com</p>
+                            <p className='text-xl text-black'>{localStorageUser?.email}</p>
                         </div>
                         <div>
                             <p className=''>Joined since</p>
@@ -159,13 +171,21 @@ const Profile = () => {
 
                 <div className="modal modal-bottom sm:modal-middle">
                     <div style={{
-                    borderRadius: '5px',
-                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
-                    backgroundSize: "100%",
-                    backgroundRepeat: "repeat",
-                }} className="modal-box">
-                        <h3 className="flex justify-center mb-4 text-lg font-bold text-black">Type your email first</h3>
-                        <input onChange={(e)=>setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-white bg-purple-500 input focus:outline-none" />
+                        borderRadius: '5px',
+                        backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                        backgroundSize: "100%",
+                        backgroundRepeat: "repeat",
+                    }} className="modal-box">
+                        {
+                            correctEmail ? <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your new password</h3> : <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your email first</h3>
+                        }
+                        {
+                            correctEmail || <input onChange={(e) => setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-white bg-black input focus:outline-none" />
+                        }
+                        {
+                            correctEmail && <input onChange={(e) => setNewPassword(e.target.value)} type="email" placeholder='Your new password' className="w-full mt-4 text-white bg-black input focus:outline-none" />
+                        }
+
                         <div className="w-full modal-action">
                             <label style={{
                                 borderRadius: '5px',
@@ -174,19 +194,19 @@ const Profile = () => {
                                 backgroundRepeat: "repeat",
                             }} htmlFor="resetPinModal" className={`w-full border-0 cursor-pointer btn-sm ${FoodProductStyle.emailCheckButtonCancel}`}> <span className='flex items-center justify-center mt-1'>Cancel</span></label>
                             {
-                                checkingEmail && <label style={{
+                                checkingEmail && <label onClick={handleResetPassword} style={{
                                     borderRadius: '5px',
                                     backgroundImage: "linear-gradient(45deg, green, black)",
                                     backgroundSize: "100%",
                                     backgroundRepeat: "repeat",
                                 }} htmlFor="resetPinModal" className={`w-full border-0 cursor-pointer btn-sm ${FoodProductStyle.emailCheckButtonOK}`}> <span className='flex items-center justify-center mt-1'>Reset Pin</span></label>
                             }
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

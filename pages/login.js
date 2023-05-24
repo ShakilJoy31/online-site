@@ -12,9 +12,7 @@ const Login = ({ setLogin }) => {
     const router = useRouter(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [rememberPassword, setRememberPassword] = useState(null); 
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
-    const [remember, setRemember] = useState(null);
     const [signedInUser, setSignedInUser] = useState([]); 
 
     useEffect(()=>{
@@ -24,14 +22,13 @@ const Login = ({ setLogin }) => {
     
     const handleLoginButton = () => {
         if((databaseUser?.email == email) && (databaseUser?.password == password)){
-            if(remember == true){
-                localStorage.setItem('tradingUser', JSON.stringify(databaseUser))
-                localStorage.setItem('savedUser', JSON.stringify(databaseUser))
+            localStorage.setItem('savedUser', JSON.stringify(databaseUser))
+            if(email == 'shakil@gmail.com' && password == '12345'){
+                router.push('/admin');
             }
             else{
-                localStorage.setItem('unSavedUser', JSON.stringify(databaseUser))
+                router.push('/');
             }
-            router.push('/dashboard');
         }
     }
     return (
@@ -56,7 +53,12 @@ const Login = ({ setLogin }) => {
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <input onChange={(e)=>setPassword(e?.target?.value)} type="text" placeholder="Type Password" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <div className="flex items-center justify-between bg-black border-0 rounded-lg mt-2">
+                                <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="mr-4 bg-black border-0 w-full input focus:outline-none" />
+                                {
+                                    isPasswordVasible ? <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
+                                }
+                        </div>
                     </div>
 
                     <div className='my-4'>

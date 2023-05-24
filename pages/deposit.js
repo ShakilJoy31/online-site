@@ -1,17 +1,37 @@
 import { useState, useEffect } from 'react';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
-import { updateUserWithTrId } from '@/lib/healper';
+import { getUser, updateUserWithTrId } from '@/lib/healper';
 // import { IoCopySharp } from 'react-icons/io';
 const Deposit = () => {
     const [copiedAccountNumber, setCopiedAccountNumber] = useState(false);
     const [copy, setCopy] = useState(false);
     const [amountToPay, setAmountToPay] = useState(0);
+    const [amountToBeSentToDB, setAmountToBeSentToDB] = useState(amountToPay);
+    const [databaseUserFound, setDatabaseUserFound] = useState('');
+    const [trInput, setTrInput] = useState('');
     useEffect(() => {
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+        const localStorageUnsevedUser = JSON.parse(localStorage.getItem('unSavedUser'));
         const amount = JSON.parse(localStorage.getItem('amount'));
         if (amount) {
             setCopiedAccountNumber(true);
+            setAmountToBeSentToDB(parseInt(amount.amount))
         }
+        if(localStorageUnsevedUser){
+            getUser().then(res => {
+                const databaseUser = res.find(singleUser => singleUser?.email == localStorageUnsevedUser?.email);
+                setDatabaseUserFound(databaseUser?._id);
+            });
+        }
+        if(localStorageSavedUser){
+            getUser().then(res => {
+                const databaseUser = res.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                setDatabaseUserFound(databaseUser?._id);
+            });
+        }
+
     }, [])
+
     const handleProceedPayment = () => {
         if (amountToPay > 0) {
             setCopiedAccountNumber(true);
@@ -21,16 +41,11 @@ const Deposit = () => {
             console.log("Enter amount.")
         }
     }
-    const [trInput, setTrInput] = useState('');
+
+    const [closeModal, setCloseModal] = useState(false);
     const handleConfirmPayment = () => {
-        const localStorageUser = JSON.parse(localStorage.getItem('tradingUser'));
-        const localStorageUnsevedUser = JSON.parse(localStorage.getItem('unSavedUser'));
-        if(localStorageUnsevedUser){
-            updateUserWithTrId(localStorageUnsevedUser?._id, {userTrId: trInput}).then(res => console.log('Congratulations!')); 
-        }
-        else{
-            updateUserWithTrId(localStorageUser?._id, {userTrId: trInput}).then(res => console.log('Congratulations!')); 
-        }
+        const depositedAmount = JSON.parse(localStorage.getItem('amount')).amount
+        updateUserWithTrId(databaseUserFound, {userTrId: trInput, amount: depositedAmount, isVerified: false}).then(res => {if(res){setCloseModal(false)}});
     }
     return (
         <div>
@@ -99,7 +114,7 @@ const Deposit = () => {
                                     }} className={`normal-case btn ${FoodProductStyle.cancelPayment} border-0 text-xl text-black w-full lg:w-48 md:w-32 btn-sm`}>Cancel
                                     </label>
 
-                                    <label htmlFor="afterProceedModal" style={{
+                                    <label onClick={()=>setCloseModal(true)} htmlFor="afterProceedModal" style={{
                                         backgroundImage: "linear-gradient(45deg ,#5D9C59, #3E54AC)",
                                         backgroundSize: "100%",
                                         backgroundRepeat: "repeat",
@@ -137,29 +152,32 @@ const Deposit = () => {
                         </div>
                     </div>
             }
-                    <div>
-                    <input type="checkbox" id="afterProceedModal" className="modal-toggle" />
-                    <label htmlFor="afterProceedModal" className="cursor-pointer modal">
-                        <label style={{
-                            borderRadius: '5px',
-                            backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
-                            backgroundSize: "100%",
-                            backgroundRepeat: "repeat",
-                        }} className="relative modal-box" htmlFor="">
-                            <h3 className="flex justify-center mb-4 text-lg font-bold text-black">Enter your Tr id here!</h3>
-                            <div className="input-group">
-                                <input onChange={(e)=> setTrInput(e.target.value)} type="text" className="w-full text-white bg-black input focus:outline-none" placeholder='Enter Tr id here.' />
-                                    {
-                                        trInput ? <span htmlFor="afterProceedModal" onClick={handleConfirmPayment} style={{
-                                            backgroundImage: "linear-gradient(45deg, #5D9C59, #3E54AC)",
-                                            backgroundSize: "100%",
-                                            backgroundRepeat: "repeat",
-                                        }} className='text-white cursor-pointer hover:text-red-600'>Confirm</span> : ''
-                                    }
-                            </div>
-                        </label>
+            {
+                closeModal ? <div>
+                <input type="checkbox" id="afterProceedModal" className="modal-toggle" />
+                <label htmlFor="afterProceedModal" className="cursor-pointer modal">
+                    <label style={{
+                        borderRadius: '5px',
+                        backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                        backgroundSize: "100%",
+                        backgroundRepeat: "repeat",
+                    }} className="relative modal-box" htmlFor="">
+                        <h3 className="flex justify-center mb-4 text-lg font-bold text-black">Enter your Tr id here!</h3>
+                        <div className="input-group">
+                            <input onChange={(e)=> setTrInput(e.target.value)} type="text" className="w-full text-white bg-black input focus:outline-none" placeholder='Enter Tr id here.' />
+                                {
+                                    trInput ? <span onClick={handleConfirmPayment} style={{
+                                        backgroundImage: "linear-gradient(45deg, #5D9C59, #3E54AC)",
+                                        backgroundSize: "100%",
+                                        backgroundRepeat: "repeat",
+                                    }} className='text-white cursor-pointer hover:text-red-600'>Confirm</span> : ''
+                                }
+                        </div>
                     </label>
-                </div> 
+                </label>
+            </div> : ''
+            }
+                    
         </div>
     );
 };

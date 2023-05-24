@@ -9,21 +9,13 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const router = useRouter();
   useEffect(()=>{
-    const localStorageSavedUser = JSON.parse(localStorage.getItem('tradingUser'));
-    const localStorageUnSavedUser = JSON.parse(localStorage.getItem('savedUser'));
-    if(localStorageUnSavedUser && localStorageSavedUser){
-      if(localStorageSavedUser?.email == 'shakil@gmail.com' || localStorageUnSavedUser == 'shakil@gmail.com'){
-        router.push('/admin');
-      }
-      else{
-        router.push('/dashboard');
-      }
+    const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+    if(localStorageSavedUser){
+      router.push('/dashboard');
     }
     else{
       router.push('/login')
     }
-    console.log(localStorageSavedUser?.email)
-    console.log(localStorageUnSavedUser?.email)
   },[]);
   return (
     <>

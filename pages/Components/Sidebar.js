@@ -5,7 +5,7 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import FoodProductStyle from '../CSSfile/FoodProductStyle.module.css';
 import { useState } from 'react';
-const Sidebar = () => {
+const Sidebar = ({user}) => {
     const router = useRouter();
     const [home, setHome] = useState(false)
     const [deposit, setDeposit] = useState(false)
@@ -28,6 +28,15 @@ const Sidebar = () => {
         setHome(false);
         setProfile(true);
     }
+    const handleLogOutFromMobile = () =>{
+        const logOutConfirmation = window.confirm('Do you want to log out?')
+        console.log(logOutConfirmation);
+        if(logOutConfirmation){
+            localStorage.removeItem('savedUser')
+            localStorage.removeItem('amount')
+            router.push("/login")
+        }
+    }
     return (
         <div style={{ backgroundColor: '#247f9e' }} className='w-full lg:min-h-screen lg:w-32 md:w-32 md:min-h-screen md:h-full lg:h-full'>
             <div className='flex items-center justify-center mx-4 lg:mx-0 md:mx-0'>
@@ -35,11 +44,16 @@ const Sidebar = () => {
 
                     <span onClick={handleHome} className={` cursor-pointer lg:my-10 md:my-8 hover:text-white ${home ? 'text-white' : 'text-purple-800'}`}><ImHome3 size={25}></ImHome3></span>
 
-                    <span onClick={handleDeposit} className={` cursor-pointer hover:text-white ${deposit ? 'text-white' : 'text-purple-800'}`}><RiLuggageDepositFill size={25}></RiLuggageDepositFill></span>
+                    {
+                        !user?.isVerified && <span onClick={handleDeposit} className={` cursor-pointer hover:text-white ${deposit ? 'text-white' : 'text-purple-800'}`}><RiLuggageDepositFill size={25}></RiLuggageDepositFill></span>
+                    }
 
-                    <span onClick={handleProfile} className={` cursor-pointer lg:my-10 md:my-8 hover:text-white ${profile ? 'text-white' : 'text-purple-800'}`}><IoIosSettings size={28}></IoIosSettings></span>
+                    <span onClick={handleProfile} className={` cursor-pointer ${!user?.isVerified ?'lg:my-10 md:my-8':'lg:mb-10 md:mb-8'} hover:text-white ${profile ? 'text-white' : 'text-purple-800'}`}><IoIosSettings size={28}></IoIosSettings></span>
 
-                    <label htmlFor="logoutModal" className='text-purple-800 cursor-pointer hover:text-red-600'><AiOutlineLogout size={28}></AiOutlineLogout></label>
+                    <label htmlFor="logoutModal" className='text-purple-800 cursor-pointer hover:text-red-600 hidden lg:block md:block'><AiOutlineLogout size={28}></AiOutlineLogout></label>
+
+                    {/* For mobile */}
+                    <label onClick={handleLogOutFromMobile} className='text-purple-800 cursor-pointer hover:text-red-600 block lg:hidden md:hidden'><AiOutlineLogout size={28}></AiOutlineLogout></label>
 
                 </div>
             </div>
@@ -58,10 +72,9 @@ const Sidebar = () => {
                                 </label>
 
                                 <label onClick={() => {
-                                    localStorage.removeItem('tradingUser')
-                                    localStorage.removeItem('unSavedUser')
+                                    localStorage.removeItem('savedUser')
                                     localStorage.removeItem('amount')
-                                    router.push("/")
+                                    router.push("/login")
                                 }} htmlFor="logoutModal" style={{
                                     backgroundImage: "linear-gradient(45deg ,green ,white)",
                                     backgroundSize: "100%",

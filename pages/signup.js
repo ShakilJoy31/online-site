@@ -10,28 +10,29 @@ import { addUser, getUser } from "./../lib/healper";
 
 const Signup = () => {
     const router = useRouter();
-    const [countries, setCountries] = useState([]);
-    const allCountry = [];
-    useEffect(() => {
-        fetch('https://restcountries.com/v3.1/all')
-            .then(data => data.json())
-            .then(res => {
-                res.map(country => {
-                    allCountry.push(country.name.common);
-                    setCountries(allCountry);
-                });
-            })
-    }, [])
+    // const [countries, setCountries] = useState([]);
+    // const allCountry = [];
+    // useEffect(() => {
+    //     fetch('https://restcountries.com/v3.1/all')
+    //         .then(data => data.json())
+    //         .then(res => {
+    //             res.map(country => {
+    //                 allCountry.push(country.name.common);
+    //                 setCountries(allCountry);
+    //             });
+    //         })
+    // }, [])
     const [fullName, setFullName] = useState(''); 
     const [email, setEmail] = useState(''); 
     const [phone, setPhone] = useState(''); 
-    const [country, setCountry] = useState(''); 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [image, setImage] = useState('');
     const [hostedImage, setHostedImage] = useState('');
-    const [remember, setRemember] = useState(false);
     const [signedInUser, setSignedInUser] = useState([]); 
+    const [referId, setReferId] = useState(); 
+    const [isPasswordVasible, setIsPasswordVasible] = useState(true);
+    const [isConfirmPasswordVasible, setIsConfirmPasswordVasible] = useState(true);
     const ImageStorageKey = '1f2e07ae412954d520f52351b07dee66';
     if(image){
         const formDataImage = new FormData();
@@ -48,21 +49,16 @@ const Signup = () => {
                 })
                 setImage('');
     }
-    const userData = {fullName: fullName, email: email, phone: phone, country: country, password: password, userPhoto: hostedImage };
+    const userData = {fullName: fullName, email: email, phone: phone, password: password, userPhoto: hostedImage, referId: referId };
 
     useEffect(()=>{
         getUser().then(res => setSignedInUser(res));
     },[])
     const databaseUser = signedInUser.find(user => user?.email ==  email);
     const handleSignUp = () =>{
+        localStorage.setItem('savedUser', JSON.stringify(userData))
         if((password == confirmPassword) && !databaseUser){
-            addUser(userData).then(res => router.push('/dashboard'))
-        }
-        if(remember){
-            localStorage.setItem('tradingUser', JSON.stringify(userData));
-        }
-        else{
-            localStorage.setItem('unsavedUser', JSON.stringify(userData))
+            addUser(userData).then(res => router.push('/'))
         }
     }
     return (
@@ -101,38 +97,45 @@ const Signup = () => {
                         <input onChange={(e)=>setPhone(e.target.value)} type="number" placeholder="Type number" className="w-full mt-2 bg-black focus:border-red-500 input" />
                     </div>
 
-                    <div className=''>
-                        <label className="">
-                            <span className="text-white">Select Country</span>
-                        </label>
-                        <select onChange={(e)=>setCountry(e.target.value)} className="w-full mt-2 bg-black select focus:outline-none">
-                            <option selected>Select Country</option>
-                            {
-                                countries.map((country, index) => <option key={index}>{country}</option>)
-                            }
-                        </select>
-                    </div>
 
                     <div className='my-4'>
                         <label className="">
                             <span className="text-white">Upload Picture</span>
                         </label>
-                        <input onChange={(e) => setImage(event?.target?.files[0])} type="file" className="w-full bg-black file-input focus:outline-none focus:border-red-500 input " />
+                        <input onChange={(event) => setImage(event?.target?.files[0])} type="file" className="w-full bg-black file-input focus:outline-none focus:border-red-500 input " />
                     </div>
 
-                    <div className='my-4'>
+                    <div className=''>
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <input onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Type Password" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <div className="flex items-center justify-between bg-black border-0 rounded-lg mt-2">
+                                <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="mr-4 bg-black border-0 w-full input focus:outline-none" />
+                                {
+                                    isPasswordVasible ? <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
+                                }
+                        </div>
                     </div>
 
 
-                    <div>
+                    <div className="my-4">
                         <label className="">
                             <span className="text-white">Type your password again</span>
                         </label>
-                        <input onChange={(e)=>setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <div className="flex items-center justify-between bg-black border-0 rounded-lg mt-2">
+                                <input onChange={(e) => setConfirmPassword(e.target.value)} type={isConfirmPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="mr-4 bg-black border-0 w-full input focus:outline-none" />
+                                {
+                                    isConfirmPasswordVasible ? <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
+                                }
+                        </div>
+                    </div>
+
+                    <div className=''>
+                        <label className="">
+                            <span className="text-white">Refer Id</span>
+                            <input onChange={(event) => setReferId(event?.target?.value)} type="text" className="w-full mt-2 bg-black file-input focus:outline-none focus:border-red-500 input " placeholder="Enter your refer id" />
+                        </label>
+                        
                     </div>
 
                     <div className='my-4'>

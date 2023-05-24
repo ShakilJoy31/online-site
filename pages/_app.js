@@ -2,9 +2,11 @@ import '@/styles/globals.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import { useRouter } from 'next/router'
+import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const user = getDataFromLocalStore();
   return (
     <div>
       <Navbar></Navbar>
@@ -15,22 +17,29 @@ export default function App({ Component, pageProps }) {
       }} className='min-h-screen'
       >
         <div className='flex'>
-          <div className='hidden h-auto lg:block md:block'>
-            <Sidebar></Sidebar>
-          </div>
+          {
+            (router.pathname == '/login' || router.pathname == '/signup') || <div className='hidden h-auto lg:block md:block'>
+              <Sidebar user={user}></Sidebar>
+            </div>
+          }
+
 
           <div className={`${(router.pathname != '/deposit') ? 'w-full' : ''}`}>
             <Component {...pageProps} />
           </div>
         </div>
-        
-        <div style={{
-          position:'fixed',
-          bottom: '0px',
-          backgroundColor: '#247f9e'
-        }} className='block w-full lg:hidden md:hidden'>
-            <Sidebar></Sidebar>
+
+        {
+          (router.pathname == '/login' || router.pathname == '/signup') || <div style={{
+            position: 'fixed',
+            bottom: '0px',
+            backgroundColor: '#247f9e'
+          }} className='block w-full lg:hidden md:hidden'>
+            <Sidebar user={user}></Sidebar>
           </div>
+        }
+
+
       </div>
     </div>
   )
