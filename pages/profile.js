@@ -159,7 +159,7 @@ const Profile = () => {
                         </div>
                         <div>
                             <p className=''>Joined since</p>
-                            <p className='text-xl text-black'>4378939</p>
+                            <p className='text-xl text-black'>{localStorageUser?.joinedSince}</p>
                         </div>
                     </div>
 

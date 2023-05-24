@@ -49,7 +49,8 @@ const Signup = () => {
                 })
                 setImage('');
     }
-    const userData = {fullName: fullName, email: email, phone: phone, password: password, userPhoto: hostedImage, referId: referId };
+    const date = new Date().toString().slice(3,16); 
+    const userData = {fullName: fullName, email: email, phone: phone, password: password, userPhoto: hostedImage, referId: referId, joinedSince: date};
 
     useEffect(()=>{
         getUser().then(res => setSignedInUser(res));

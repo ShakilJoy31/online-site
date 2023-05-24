@@ -10,7 +10,8 @@ const userSchema = new Schema({
     amount: Number,
     isVerified: Boolean,
     referId: String,
-    amountFromRefer: Number
+    amountFromRefer: Number,
+    joinedSince: String
 })
 
 const Users = models.users || model('users', userSchema)

@@ -13,7 +13,10 @@ const Login = ({ setLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
-    const [signedInUser, setSignedInUser] = useState([]); 
+    const [signedInUser, setSignedInUser] = useState([]);
+    const [newPassword, setNewPassword] = useState('');
+    const [checkingEmail, setCheckingEmail] = useState('');
+    const [correctEmail, setCorrectEmail] = useState(false);
 
     useEffect(()=>{
         getUser().then(res => setSignedInUser(res));
@@ -23,13 +26,14 @@ const Login = ({ setLogin }) => {
     const handleLoginButton = () => {
         if((databaseUser?.email == email) && (databaseUser?.password == password)){
             localStorage.setItem('savedUser', JSON.stringify(databaseUser))
-            if(email == 'shakil@gmail.com' && password == '12345'){
-                router.push('/admin');
-            }
-            else{
-                router.push('/');
-            }
+            router.push('/');
         }
+        if(email == 'shakil@gmail.com' && password == '12345'){
+            router.push('/admin');
+        }
+    }
+    const handleResetPassword = () => {
+        updateUserWithTrId(localStorageUser?._id, { password: newPassword }).then(res => { })
     }
     return (
         <div className='py-20'>
@@ -80,11 +84,51 @@ const Login = ({ setLogin }) => {
                     </div>
 
                     <div className='my-4'>
-                        <h1>Forget your password?<span style={{color: 'black'}} className='ml-4 text-xl cursor-pointer hover:underline'>Reset Password</span></h1>
+                        <h1>Forget your password?<label htmlFor="resetPinModal" style={{color: 'black'}} className='ml-4 text-xl cursor-pointer hover:underline'>Reset Password</label></h1>
                     </div>
                     <div className={`${FoodProductStyle.customDivider}`}></div>
                     <div className='mt-4'>
                         <h1>New here?<span onClick={()=>router.push('/signup')} style={{color: 'black'}} className='ml-4 text-xl cursor-pointer hover:underline'>Sign up</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="checkbox" id="resetPinModal" className="modal-toggle" />
+
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div style={{
+                        borderRadius: '5px',
+                        backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                        backgroundSize: "100%",
+                        backgroundRepeat: "repeat",
+                    }} className="modal-box">
+                        {
+                            correctEmail ? <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your new password</h3> : <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your email first</h3>
+                        }
+                        {
+                            correctEmail || <input onChange={(e) => setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-white bg-black input focus:outline-none" />
+                        }
+                        {
+                            correctEmail && <input onChange={(e) => setNewPassword(e.target.value)} type="email" placeholder='Your new password' className="w-full mt-4 text-white bg-black input focus:outline-none" />
+                        }
+
+                        <div className="w-full modal-action">
+                            <label style={{
+                                borderRadius: '5px',
+                                backgroundImage: "linear-gradient(45deg, #FC4F00, #8B1874)",
+                                backgroundSize: "100%",
+                                backgroundRepeat: "repeat",
+                            }} htmlFor="resetPinModal" className={`w-full border-0 cursor-pointer btn-sm ${FoodProductStyle.emailCheckButtonCancel}`}> <span className='flex items-center justify-center mt-1'>Cancel</span></label>
+                            {
+                                checkingEmail && <label onClick={handleResetPassword} style={{
+                                    borderRadius: '5px',
+                                    backgroundImage: "linear-gradient(45deg, green, black)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} htmlFor="resetPinModal" className={`w-full border-0 cursor-pointer btn-sm ${FoodProductStyle.emailCheckButtonOK}`}> <span className='flex items-center justify-center mt-1'>Reset Pin</span></label>
+                            }
+
+                        </div>
                     </div>
                 </div>
             </div>

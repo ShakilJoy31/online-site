@@ -84,12 +84,13 @@
     border-radius: 5px;
 }
 
-.paymentActionButtonDec:hover{
+.paymentActionButtonDec:hover {
     box-shadow: 2px 2px 15px 5px lightblue;
     transition-duration: 100ms;
     border-radius: 2px;
 }
-.paymentActionButton:hover{
+
+.paymentActionButton:hover {
     box-shadow: 2px 2px 15px 5px red;
     transition-duration: 100ms;
     border-radius: 2px;
@@ -233,17 +234,18 @@
     cursor: pointer;
 }
 
-.newLevel{
+.newLevel {
     transition-duration: 400ms;
     border-radius: 5px;
     box-shadow: 2px 2px 15px 5px black;
 }
 
-.emailCheckButtonOK:hover{
+.emailCheckButtonOK:hover {
     transition-duration: 200ms;
     box-shadow: 2px 2px 15px 5px white;
 }
-.emailCheckButtonCancel:hover{
+
+.emailCheckButtonCancel:hover {
     transition-duration: 200ms;
     box-shadow: 2px 2px 15px 5px black;
 }

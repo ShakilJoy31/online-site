@@ -20,8 +20,9 @@ const Admin = () => {
         });
     }
     const [accepted, setAccepted] = useState(''); 
+    const [declined, setDeclined] = useState(false); 
     const handleAcceptUserToPay = (id) => {
-        updateUserWithTrId(id, {isVerified: true}).then(res => console.log('Congratulations!'));
+        updateUserWithTrId(id, {isVerified: true}).then(res => setDeclined(true));
         setAccepted(id); 
     }
     console.log(data); 
@@ -34,7 +35,10 @@ const Admin = () => {
                     backgroundSize: "100%",
                     backgroundRepeat: "repeat",
                 }} className="overflow-x-auto">
-                <table className="table w-full">
+                    {
+                        data.length == 0 ? <div>
+                        <p className='flex justify-center my-4 text-2xl font-serif text-black'>No User Found! </p>
+                    </div> : <table className="table w-full">
                     <thead>
                         <tr>
                             <th> <span className='flex justify-center'>SL</span></th>
@@ -49,7 +53,7 @@ const Admin = () => {
                         {
                             data.map((payAbleUser, index) => <tr key={index} className={`${FoodProductStyle.tableRow}`}>
                             <th> <span className='flex justify-center'>{index + 1}</span> </th>
-                            <th> <span className='flex justify-center'>{payAbleUser?._id?.slice(0, 8)}</span> </th>
+                            <th> <span className='flex justify-center'>{payAbleUser?._id}</span> </th>
                             <td> <span className='flex justify-center'>{payAbleUser?.email}</span> </td>
                             <td> <span className='flex justify-center'>{payAbleUser?.amount}</span> </td>
                             <td> <span className='flex justify-center'>{payAbleUser?.userTrId}</span> </td>
@@ -60,7 +64,7 @@ const Admin = () => {
                                         backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                         backgroundSize: "100%",
                                         backgroundRepeat: "repeat",
-                                    }} className={`normal-case btn ${FoodProductStyle.paymentActionButton} border-0 mr-4 text-black btn-sm`}>Decline
+                                    }} className={`normal-case btn ${FoodProductStyle.paymentActionButton} border-0 mr-4 text-black btn-sm`} disabled={declined}>Declined
                                     </label>
                                 }
                                     
@@ -81,6 +85,8 @@ const Admin = () => {
                         
                     </tbody>
                 </table>
+                    }
+                
             </div>
         </div>
     );
