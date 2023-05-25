@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
         <div className='flex'>
           {
             (router.pathname == '/login' || router.pathname == '/signup') || <div className='hidden h-auto lg:block md:block'>
-              <Sidebar user={user}></Sidebar>
+              <Sidebar></Sidebar>
             </div>
           }
 
@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
             bottom: '0px',
             backgroundColor: '#247f9e'
           }} className='block w-full lg:hidden md:hidden'>
-            <Sidebar user={user}></Sidebar>
+            <Sidebar></Sidebar>
           </div>
         }
 

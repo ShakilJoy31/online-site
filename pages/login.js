@@ -8,7 +8,7 @@ import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from "next/router";
 import { getUser } from "./../lib/healper";
 
-const Login = ({ setLogin }) => {
+const Login = () => {
     const router = useRouter(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,11 +18,17 @@ const Login = ({ setLogin }) => {
     const [checkingEmail, setCheckingEmail] = useState('');
     const [correctEmail, setCorrectEmail] = useState(false);
 
+    // const resetUser = res.find(user => user?.email ==  checkingEmail);
+    //         if(resetUser){
+    //             setCorrectEmail(resetUser); 
+    //         }
+
     useEffect(()=>{
-        getUser().then(res => setSignedInUser(res));
+        getUser().then(res => {
+            setSignedInUser(res);
+        });
     },[])
     const databaseUser = signedInUser.find(user => user?.email ==  email);
-    
     const handleLoginButton = () => {
         if((databaseUser?.email == email) && (databaseUser?.password == password)){
             localStorage.setItem('savedUser', JSON.stringify(databaseUser))

@@ -5,7 +5,10 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import FoodProductStyle from '../CSSfile/FoodProductStyle.module.css';
 import { useState } from 'react';
-const Sidebar = ({user}) => {
+import { getDataFromLocalStore } from './../../getDataFromLocalStorage';
+const Sidebar = () => {
+    const user = getDataFromLocalStore();
+    console.log(user);
     const router = useRouter();
     const [home, setHome] = useState(false)
     const [deposit, setDeposit] = useState(false)

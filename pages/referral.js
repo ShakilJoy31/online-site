@@ -69,7 +69,7 @@ const Referral = () => {
                 <h1 className='grid justify-center my-4 ml-2 font-serif text-3xl text-black lg:flex lg:justify-between md:justify-between'>My Networks</h1>
                 <div className={`grid items-center ${myRefers?.length > 2 ? 'justify-between':'gap-x-4'} lg:flex md:flex`}>
                 {
-                        myRefers.map((refer, index) => <div style={{
+                        myRefers.map((refer, index) => (refer.isVerified == true) && <div style={{
                             borderRadius: '5px',
                             backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                             backgroundSize: "100%",

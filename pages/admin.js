@@ -45,6 +45,7 @@ const Admin = () => {
                             <th> <span className='flex justify-center'>User id</span></th>
                             <th> <span className='flex justify-center'>Email</span> </th>
                             <th> <span className='flex justify-center'>Amount</span> </th>
+                            <th> <span className='flex justify-center'>Joined</span> </th>
                             <th> <span className='flex justify-center'>Tr Id</span> </th>
                             <th> <span className='flex justify-center'>Actions</span> </th>
                         </tr>
@@ -56,6 +57,7 @@ const Admin = () => {
                             <th> <span className='flex justify-center'>{payAbleUser?._id}</span> </th>
                             <td> <span className='flex justify-center'>{payAbleUser?.email}</span> </td>
                             <td> <span className='flex justify-center'>{payAbleUser?.amount}</span> </td>
+                            <td> <span className='flex justify-center'>{payAbleUser?.joinedSince}</span> </td>
                             <td> <span className='flex justify-center'>{payAbleUser?.userTrId}</span> </td>
                             <td> <div className='flex justify-center'>
                             <div className='items-center justify-between p-6 text-black rounded-sm'>
@@ -64,7 +66,7 @@ const Admin = () => {
                                         backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                         backgroundSize: "100%",
                                         backgroundRepeat: "repeat",
-                                    }} className={`normal-case btn ${FoodProductStyle.paymentActionButton} border-0 mr-4 text-black btn-sm`} disabled={declined}>Declined
+                                    }} className={`normal-case btn ${FoodProductStyle.paymentActionButton} border-0 mr-4 text-black btn-sm`}>Declined
                                     </label>
                                 }
                                     
