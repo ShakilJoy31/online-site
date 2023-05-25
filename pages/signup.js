@@ -19,7 +19,8 @@ const Signup = () => {
     const [referId, setReferId] = useState(); 
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
     const [isConfirmPasswordVasible, setIsConfirmPasswordVasible] = useState(true);
-    const [image, setImage] = useState(''); 
+    const [image, setImage] = useState('');
+    const [hostedImage, setHostedImage] = useState('');
     const ImageStorageKey = '1f2e07ae412954d520f52351b07dee66';
     if(image){
         const formDataImage = new FormData();
@@ -37,7 +38,7 @@ const Signup = () => {
                 setImage('');
     }
     const date = new Date().toString().slice(3,16); 
-    const userData = {fullName: fullName, email: email, phone: phone, password: password, referId: referId, joinedSince: date};
+    const userData = {fullName: fullName, email: email, phone: phone, userPhoto:hostedImage,  password: password, referId: referId, joinedSince: date};
 
     useEffect(()=>{
         getUser().then(res => setSignedInUser(res));
@@ -63,14 +64,14 @@ const Signup = () => {
                         <label className="">
                             <span className="text-white">Type your full name</span>
                         </label>
-                        <input onChange={(e)=>setFullName(e.target.value)} type="text" placeholder="Type Your Name" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <input onChange={(e)=>setFullName(e.target.value)} type="text" placeholder="Type Your Name" className="w-full mt-2 text-blue-600 bg-black input color-white" />
                     </div>
 
                     <div className=''>
                         <label className="">
                             <span className="text-white">Type your email</span>
                         </label>
-                        <input onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="hello@example.com" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <input onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="hello@example.com" className="w-full mt-2 text-blue-600 bg-black input" />
                         {
                             databaseUser ? <label className="">
                             <span className="flex justify-center text-red-700">{databaseUser?.email} is already exists on database.</span>
@@ -82,21 +83,21 @@ const Signup = () => {
                         <label className="">
                             <span className="text-white">Type your Phone</span>
                         </label>
-                        <input onChange={(e)=>setPhone(e.target.value)} type="number" placeholder="Type number" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <input onChange={(e)=>setPhone(e.target.value)} type="number" placeholder="Type number" className="w-full mt-2 text-blue-600 bg-black input" />
                     </div>
 
                     <div className='my-4'>
                         <label className="">
                             <span className="text-white">Upload Picture</span>
                         </label>
-                        <input onChange={(event) => setImage(event?.target?.files[0])} type="file" className="w-full bg-black file-input focus:outline-none focus:border-red-500 input " />
+                        <input onChange={(event) => setImage(event?.target?.files[0])} type="file" className="w-full text-blue-600 bg-black file-input focus:outline-none input " />
                     </div>
 
                     <div className=''>
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <div className="flex items-center justify-between mt-2 bg-black border-0 rounded-lg">
+                        <div className="flex items-center justify-between mt-2 text-blue-600 bg-black border-0 rounded-lg">
                                 <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 bg-black border-0 input focus:outline-none" />
                                 {
                                     isPasswordVasible ? <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
@@ -110,9 +111,9 @@ const Signup = () => {
                             <span className="text-white">Type your password again</span>
                         </label>
                         <div className="flex items-center justify-between mt-2 bg-black border-0 rounded-lg">
-                                <input onChange={(e) => setConfirmPassword(e.target.value)} type={isConfirmPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 bg-black border-0 input focus:outline-none" />
+                                <input onChange={(e) => setConfirmPassword(e.target.value)} type={isConfirmPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 text-blue-600 bg-black border-0 input focus:outline-none" />
                                 {
-                                    isConfirmPasswordVasible ? <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
+                                    isConfirmPasswordVasible ? <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2 text-blue-600"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2 text-blue-600"><AiFillEye size={25}></AiFillEye></span>
                                 }
                         </div>
                     </div>
@@ -120,7 +121,7 @@ const Signup = () => {
                     <div className=''>
                         <label className="">
                             <span className="text-white">Refer Id</span>
-                            <input onChange={(event) => setReferId(event?.target?.value)} type="text" className="w-full mt-2 bg-black file-input focus:outline-none focus:border-red-500 input " placeholder="Enter your refer id" />
+                            <input onChange={(event) => setReferId(event?.target?.value)} type="text" className="w-full mt-2 text-blue-600 bg-black file-input focus:outline-none input " placeholder="Enter your refer id" />
                         </label>
                         
                     </div>

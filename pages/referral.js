@@ -48,7 +48,7 @@ const Referral = () => {
                             <div className='my-4'>
                                 <input onClick={() => {
                                     navigator.clipboard.writeText(user?._id)
-                                }} type="text" value={user?._id} className="w-full mt-1 text-white bg-black input focus:outline-none lg:w-[400px] md:w-[330px]" />
+                                }} type="text" value={user?._id} className="w-full mt-1 text-blue-600 bg-black input focus:outline-none lg:w-[400px] md:w-[330px]" />
                             </div>
 
                             <label onClick={() => {

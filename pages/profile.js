@@ -179,10 +179,10 @@ const Profile = () => {
                             correctEmail ? <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your new password</h3> : <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your email first</h3>
                         }
                         {
-                            correctEmail || <input onChange={(e) => setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-white bg-black input focus:outline-none" />
+                            correctEmail || <input onChange={(e) => setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-blue-600 bg-black input focus:outline-none" />
                         }
                         {
-                            correctEmail && <input onChange={(e) => setNewPassword(e.target.value)} type="email" placeholder='Your new password' className="w-full mt-4 text-white bg-black input focus:outline-none" />
+                            correctEmail && <input onChange={(e) => setNewPassword(e.target.value)} type="email" placeholder='Your new password' className="w-full mt-4 text-blue-600 bg-black input focus:outline-none" />
                         }
 
                         <div className="w-full modal-action">

@@ -47,17 +47,17 @@ const InternalTransfer = () => {
                     <div className="w-full p-2 lg:p-6 md:p-4">
                         <div className='w-full'>
                             <span className="">Amount (USD)</span>
-                            <input type="number" className="w-full mt-1 text-white bg-black input focus:outline-none" />
+                            <input type="number" className="w-full mt-1 text-blue-600 bg-black input focus:outline-none" />
                         </div>
 
                         <div className='w-full my-4'>
                             <span className="">Enter Payment Pin</span>
-                            <input type="text" className="w-full mt-1 text-white bg-black input focus:outline-none" />
+                            <input type="text" className="w-full mt-1 text-blue-600 bg-black input focus:outline-none" />
                         </div>
 
                         <div className='w-full'>
                             <span className="">Wallet Address</span>
-                            <input type="text" className="w-full mt-1 text-white bg-black input focus:outline-none" />
+                            <input type="text" className="w-full mt-1 text-blue-600 bg-black input focus:outline-none" />
                         </div>
 
                         <div className='mt-10 mb-4'>

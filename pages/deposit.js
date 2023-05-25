@@ -164,7 +164,7 @@ const Deposit = () => {
                     }} className="relative modal-box" htmlFor="">
                         <h3 className="flex justify-center mb-4 text-lg font-bold text-black">Enter your Tr id here!</h3>
                         <div className="input-group">
-                            <input onChange={(e)=> setTrInput(e.target.value)} type="text" className="w-full text-white bg-black input focus:outline-none" placeholder='Enter Tr id here.' />
+                            <input onChange={(e)=> setTrInput(e.target.value)} type="text" className="w-full text-blue-600 bg-black input focus:outline-none" placeholder='Enter Tr id here.' />
                                 {
                                     trInput ? <span onClick={handleConfirmPayment} style={{
                                         backgroundImage: "linear-gradient(45deg, #5D9C59, #3E54AC)",

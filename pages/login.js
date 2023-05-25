@@ -17,12 +17,6 @@ const Login = () => {
     const [newPassword, setNewPassword] = useState('');
     const [checkingEmail, setCheckingEmail] = useState('');
     const [correctEmail, setCorrectEmail] = useState(false);
-
-    // const resetUser = res.find(user => user?.email ==  checkingEmail);
-    //         if(resetUser){
-    //             setCorrectEmail(resetUser); 
-    //         }
-
     useEffect(()=>{
         getUser().then(res => {
             setSignedInUser(res);
@@ -56,14 +50,14 @@ const Login = () => {
                         <label className="">
                             <span className="text-white">Type your email</span>
                         </label>
-                        <input onChange={(e)=>setEmail(e?.target?.value)} type="text" placeholder="Type Email" className="w-full mt-2 bg-black focus:border-red-500 input" />
+                        <input onChange={(e)=>setEmail(e?.target?.value)} type="text" placeholder="Type Email" className="w-full mt-2 text-blue-600 bg-black input" />
                     </div>
 
                     <div>
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <div className="flex items-center justify-between mt-2 bg-black border-0 rounded-lg">
+                        <div className="flex items-center justify-between mt-2 text-blue-600 bg-black border-0 rounded-lg">
                                 <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 bg-black border-0 input focus:outline-none" />
                                 {
                                     isPasswordVasible ? <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
@@ -112,10 +106,10 @@ const Login = () => {
                             correctEmail ? <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your new password</h3> : <h3 className="flex justify-center mb-4 text-lg font-bold text-white">Type your email first</h3>
                         }
                         {
-                            correctEmail || <input onChange={(e) => setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-white bg-black input focus:outline-none" />
+                            correctEmail || <input onChange={(e) => setCheckingEmail(e.target.value)} type="email" placeholder='Your email' className="w-full text-blue-600 bg-black input focus:outline-none" />
                         }
                         {
-                            correctEmail && <input onChange={(e) => setNewPassword(e.target.value)} type="email" placeholder='Your new password' className="w-full mt-4 text-white bg-black input focus:outline-none" />
+                            correctEmail && <input onChange={(e) => setNewPassword(e.target.value)} type="email" placeholder='Your new password' className="w-full mt-4 text-blue-600 bg-black input focus:outline-none" />
                         }
 
                         <div className="w-full modal-action">
