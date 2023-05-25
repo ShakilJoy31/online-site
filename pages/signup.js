@@ -10,47 +10,18 @@ import { addUser, getUser } from "./../lib/healper";
 
 const Signup = () => {
     const router = useRouter();
-    // const [countries, setCountries] = useState([]);
-    // const allCountry = [];
-    // useEffect(() => {
-    //     fetch('https://restcountries.com/v3.1/all')
-    //         .then(data => data.json())
-    //         .then(res => {
-    //             res.map(country => {
-    //                 allCountry.push(country.name.common);
-    //                 setCountries(allCountry);
-    //             });
-    //         })
-    // }, [])
     const [fullName, setFullName] = useState(''); 
     const [email, setEmail] = useState(''); 
     const [phone, setPhone] = useState(''); 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [image, setImage] = useState('');
-    const [hostedImage, setHostedImage] = useState('');
     const [signedInUser, setSignedInUser] = useState([]); 
     const [referId, setReferId] = useState(); 
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
     const [isConfirmPasswordVasible, setIsConfirmPasswordVasible] = useState(true);
-    const ImageStorageKey = '1f2e07ae412954d520f52351b07dee66';
-    if(image){
-        const formDataImage = new FormData();
-        formDataImage.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=${ImageStorageKey}`;
-            fetch(url, {
-                method: 'POST',
-                body: formDataImage
-            })
-                .then(res => res.json())
-                .then(result => {
-                    console.log(result)
-                    setHostedImage(result?.data?.display_url)
-                })
-                setImage('');
-    }
+    
     const date = new Date().toString().slice(3,16); 
-    const userData = {fullName: fullName, email: email, phone: phone, password: password, userPhoto: hostedImage, referId: referId, joinedSince: date};
+    const userData = {fullName: fullName, email: email, phone: phone, password: password, referId: referId, joinedSince: date};
 
     useEffect(()=>{
         getUser().then(res => setSignedInUser(res));
@@ -96,14 +67,6 @@ const Signup = () => {
                             <span className="text-white">Type your Phone</span>
                         </label>
                         <input onChange={(e)=>setPhone(e.target.value)} type="number" placeholder="Type number" className="w-full mt-2 bg-black focus:border-red-500 input" />
-                    </div>
-
-
-                    <div className='my-4'>
-                        <label className="">
-                            <span className="text-white">Upload Picture</span>
-                        </label>
-                        <input onChange={(event) => setImage(event?.target?.files[0])} type="file" className="w-full bg-black file-input focus:outline-none focus:border-red-500 input " />
                     </div>
 
                     <div className=''>

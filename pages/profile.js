@@ -37,7 +37,6 @@ const Profile = () => {
                     backgroundRepeat: "repeat",
                 }} className="flex items-center w-full mb-4 lg:mb-0 md:mb-0">
                     <div className="flex items-center p-2 lg:p-6 md:p-4">
-                        <img style={{ borderRadius: '50%' }} className='w-20 h-20 mr-4' src={localStorageUser ? localStorageUser?.userPhoto : 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Trisha_at_World_Children%27s_Day_Press_Meet_%28cropped%29.png'} alt="" />
 
                         <div>
                             <h2 className="mb-2 font-serif text-2xl">Welcome <span className='font-bold text-black'>{localStorageUser?.fullName}</span></h2>
