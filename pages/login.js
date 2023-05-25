@@ -34,7 +34,7 @@ const Login = () => {
             localStorage.setItem('savedUser', JSON.stringify(databaseUser))
             router.push('/');
         }
-        if(email == 'shakil@gmail.com' && password == '12345'){
+        if(email == 'Tradesent' && password == '12345'){
             router.push('/admin');
         }
     }
@@ -63,8 +63,8 @@ const Login = () => {
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <div className="flex items-center justify-between bg-black border-0 rounded-lg mt-2">
-                                <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="mr-4 bg-black border-0 w-full input focus:outline-none" />
+                        <div className="flex items-center justify-between mt-2 bg-black border-0 rounded-lg">
+                                <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 bg-black border-0 input focus:outline-none" />
                                 {
                                     isPasswordVasible ? <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
                                 }
