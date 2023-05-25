@@ -200,7 +200,15 @@ const Dashboard = () => {
                                     <Link target='_blank' href='https://in.tradingview.com/symbols/USDTUSD/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com'>
                                         <div className={`w-full rounded-lg cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                                             <div>
-                                                <img className='w-full rounded-lg h-48' src="https://i.ibb.co/PN9rGzx/Screenshot-1291.png" alt="" />
+                                                <img className='w-full h-48 rounded-lg' src="https://i.ibb.co/n8Yw1NH/images.png" alt="" />
+                                            </div>
+                                        </div>
+                                    </Link>
+
+                                    <Link target='_blank' href='https://in.tradingview.com/symbols/USDTUSD/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com'>
+                                        <div className={`w-full rounded-lg cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
+                                            <div>
+                                                <img className='w-full h-48 rounded-lg' src="https://i.ibb.co/m8FqpyD/images.jpg" alt="" />
                                             </div>
                                         </div>
                                     </Link>

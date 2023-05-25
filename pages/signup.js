@@ -19,7 +19,23 @@ const Signup = () => {
     const [referId, setReferId] = useState(); 
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
     const [isConfirmPasswordVasible, setIsConfirmPasswordVasible] = useState(true);
-    
+    const [image, setImage] = useState(''); 
+    const ImageStorageKey = '1f2e07ae412954d520f52351b07dee66';
+    if(image){
+        const formDataImage = new FormData();
+        formDataImage.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${ImageStorageKey}`;
+            fetch(url, {
+                method: 'POST',
+                body: formDataImage
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result)
+                    setHostedImage(result?.data?.display_url)
+                })
+                setImage('');
+    }
     const date = new Date().toString().slice(3,16); 
     const userData = {fullName: fullName, email: email, phone: phone, password: password, referId: referId, joinedSince: date};
 
@@ -69,12 +85,19 @@ const Signup = () => {
                         <input onChange={(e)=>setPhone(e.target.value)} type="number" placeholder="Type number" className="w-full mt-2 bg-black focus:border-red-500 input" />
                     </div>
 
+                    <div className='my-4'>
+                        <label className="">
+                            <span className="text-white">Upload Picture</span>
+                        </label>
+                        <input onChange={(event) => setImage(event?.target?.files[0])} type="file" className="w-full bg-black file-input focus:outline-none focus:border-red-500 input " />
+                    </div>
+
                     <div className=''>
                         <label className="">
                             <span className="text-white">Type your password</span>
                         </label>
-                        <div className="flex items-center justify-between bg-black border-0 rounded-lg mt-2">
-                                <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="mr-4 bg-black border-0 w-full input focus:outline-none" />
+                        <div className="flex items-center justify-between mt-2 bg-black border-0 rounded-lg">
+                                <input onChange={(e) => setPassword(e.target.value)} type={isPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 bg-black border-0 input focus:outline-none" />
                                 {
                                     isPasswordVasible ? <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsPasswordVasible(!isPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
                                 }
@@ -86,8 +109,8 @@ const Signup = () => {
                         <label className="">
                             <span className="text-white">Type your password again</span>
                         </label>
-                        <div className="flex items-center justify-between bg-black border-0 rounded-lg mt-2">
-                                <input onChange={(e) => setConfirmPassword(e.target.value)} type={isConfirmPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="mr-4 bg-black border-0 w-full input focus:outline-none" />
+                        <div className="flex items-center justify-between mt-2 bg-black border-0 rounded-lg">
+                                <input onChange={(e) => setConfirmPassword(e.target.value)} type={isConfirmPasswordVasible ? 'password' : 'text'} placeholder='Type your password' className="w-full mr-4 bg-black border-0 input focus:outline-none" />
                                 {
                                     isConfirmPasswordVasible ? <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2"><AiFillEyeInvisible size={25}></AiFillEyeInvisible></span> : <span onClick={()=>setIsConfirmPasswordVasible(!isConfirmPasswordVasible)} className="mr-2"><AiFillEye size={25}></AiFillEye></span>
                                 }

@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import NavbarCss from '../CSSfile/Navbar.module.css';
+import { useRouter } from 'next/router';
 // import { FcDownload } from 'react-icons/fc';
 
 const Navbar = () => {
-    const [freeFire, setFreeFire] = useState(true);
-    const [screenShot, setScreenShot] = useState(false);
-    const [download, setDownload] = useState(false);
-    const [aboutUs, setAboutUs] = useState(false);
-    const [contactUs, setContact] = useState(false);
-    const [downloadApp, setDownloadApp] = useState(false);
+    const router = useRouter(); 
     return (
         <div>
             <div style={{
@@ -22,30 +18,12 @@ const Navbar = () => {
                         <ul style={{
                             backgroundColor: '#247f9e',
                         }} tabIndex={0} className="mt-6 rounded-sm menu menu-compact dropdown-content w-72">
-
-                            
-
-                            
-
-                            
-
-                            
-
                         </ul>
                     </div>
                 </div>
 
-                
-
                 <div className="navbar-end">
-                    <a onClick={() => {
-                        setDownloadApp(true);
-                        setContact(false);
-                        setAboutUs(false);
-                        setDownload(false);
-                        setScreenShot(false);
-                        setFreeFire(false);
-                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm ${downloadApp ? NavbarCss.navbarItem : ''}`}><span className='flex justify-center'>Sign Up</span></a>
+                    <a onClick={() => router.push("/signup")} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm `}><span className='flex justify-center'>Sign Up</span></a>
                 </div>
             </div>
         </div>

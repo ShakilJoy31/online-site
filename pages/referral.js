@@ -75,6 +75,9 @@ const Referral = () => {
                             backgroundRepeat: "repeat",
                         }} key={index} className='w-full p-2 mb-4 lg:p-4 md:p-3'>
                             <div className='flex items-center w-full'>
+                            <div className='mr-2'>
+                                <img style={{ borderRadius: '50%' }} className='w-20 h-20 mr-4' src={ refer?.userPhoto || 'https://i.ibb.co/d6CBxZx/download-1.png'} alt="User photo." />
+                                </div>
                                 <div>
                                     <h2 className="mb-2 font-serif text-2xl"><span className='font-bold text-black'>{refer?.fullName}</span></h2>
                                     <p>Refer Id: <span onClick={() => {
