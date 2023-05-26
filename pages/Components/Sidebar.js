@@ -53,10 +53,10 @@ const Sidebar = () => {
 
                     <span onClick={handleProfile} className={` cursor-pointer ${!user?.isVerified ?'lg:my-10 md:my-8':'lg:mb-10 md:mb-8'} hover:text-white ${profile ? 'text-white' : 'text-purple-800'}`}><IoIosSettings size={28}></IoIosSettings></span>
 
-                    <label htmlFor="logoutModal" className='text-purple-800 cursor-pointer hover:text-red-600 hidden lg:block md:block'><AiOutlineLogout size={28}></AiOutlineLogout></label>
+                    <label htmlFor="logoutModal" className='hidden text-purple-800 cursor-pointer hover:text-red-600 lg:block md:block'><AiOutlineLogout size={28}></AiOutlineLogout></label>
 
                     {/* For mobile */}
-                    <label onClick={handleLogOutFromMobile} className='text-purple-800 cursor-pointer hover:text-red-600 block lg:hidden md:hidden'><AiOutlineLogout size={28}></AiOutlineLogout></label>
+                    <label onClick={handleLogOutFromMobile} className='block text-purple-800 cursor-pointer hover:text-red-600 lg:hidden md:hidden'><AiOutlineLogout size={28}></AiOutlineLogout></label>
 
                 </div>
             </div>
@@ -64,8 +64,13 @@ const Sidebar = () => {
             <div>
                 <input type="checkbox" id="logoutModal" className="modal-toggle" />
                 <label htmlFor="logoutModal" className="cursor-pointer modal">
-                <label className="relative modal-box" htmlFor="">
-                            <h3 className="flex justify-center py-4 text-3xl text-red-300">Are you sure to log out?</h3>
+                <label style={{
+                    borderRadius: '5px',
+                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat",
+                }} className="relative modal-box" htmlFor="">
+                            <h3 className="flex justify-center py-4 text-3xl text-white">Are you sure to log out?</h3>
                             <div className='flex justify-end gap-x-6'>
                                 <label htmlFor="logoutModal" style={{
                                     backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",

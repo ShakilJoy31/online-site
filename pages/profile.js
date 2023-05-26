@@ -69,7 +69,7 @@ const Profile = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified ? <p className='text-2xl'>$ {user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified ? <p className='text-2xl'>$ {user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>
@@ -97,11 +97,11 @@ const Profile = () => {
 
                                 <p onClick={() => router.push("/withdrawal")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>
 
-                                <p onClick={() => router.push("/internalTransfer")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Internal Transfer</p>
+                                {/* <p onClick={() => router.push("/internalTransfer")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Internal Transfer</p> */}
 
                                 <p onClick={() => router.push("/walletAddress")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Wallet Address</p>
 
-                                <p onClick={() => router.push("/paymentPassword")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Payment Password</p>
+                                {/* <p onClick={() => router.push("/paymentPassword")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Payment Password</p> */}
 
                                 <p onClick={() => router.push("/withdrawalReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal Reports</p>
 
@@ -109,7 +109,7 @@ const Profile = () => {
 
                                 <p onClick={() => router.push("/rebateReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Rebate Reports</p>
 
-                                <label htmlFor='resetPinModal' className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</label>
+                                {/* <label htmlFor='resetPinModal' className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</label> */}
 
                             </div>
                         </div>

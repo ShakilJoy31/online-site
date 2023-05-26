@@ -29,7 +29,7 @@ const Referral = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified ? <p className='text-2xl'>$ {user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0)}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified ? <p className='text-2xl'>$ {user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>

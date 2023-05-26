@@ -101,7 +101,7 @@ const Dashboard = () => {
                                 <div>
                                     <p className='text-xl'>Current Balance</p>
                                     {
-                                        user?.isVerified ? <p className='text-2xl'>${user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)}</p> : <p className='text-2xl'>$00.00</p>
+                                        user?.isVerified ? <p className='text-2xl'>$ {user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))}</p> : <p className='text-2xl'>$00.00</p>
                                     }
                                 </div>
                             </div>
@@ -112,7 +112,7 @@ const Dashboard = () => {
 
                 {/* More card */}
                 <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
-                    <div>
+                    {/* <div>
                         <div onClick={() => router.push('/tradeBot')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
@@ -122,7 +122,7 @@ const Dashboard = () => {
 
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div>
                         <div onClick={() => router.push('/myTrade')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
@@ -130,7 +130,6 @@ const Dashboard = () => {
                                     <img className='block mx-auto rounded-full w-14 h-14' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bg469-A3XjN0w7263R_lWbw4gAogrTT_YA&usqp=CAU" alt="" />
                                     <p className='flex justify-center text-black'>My Trade</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -146,6 +145,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div>
+                        <Link target='_blank' href='https://goldprice.org/live-gold-price.html'>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
@@ -155,6 +155,8 @@ const Dashboard = () => {
 
                             </div>
                         </div>
+                        </Link>
+                        
                     </div>
                     <div>
                         <Link href="https://t.me/UASOFFICIALSUPPORTBOT">
@@ -181,7 +183,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    {/* <div>
                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                             <div className="pt-2">
                                 <div>
@@ -191,7 +193,7 @@ const Dashboard = () => {
 
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

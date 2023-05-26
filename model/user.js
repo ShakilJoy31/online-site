@@ -13,7 +13,10 @@ const userSchema = new Schema({
     amountFromRefer: Number,
     joinedSince: String,
     amountFromSecondRefer: Number, 
-    amountFromThirdRefer: Number
+    amountFromThirdRefer: Number,
+    withDrawAmount: Number,
+    walletAddress: String,
+    restAmount: Number
 })
 
 const Users = models.users || model('users', userSchema)
