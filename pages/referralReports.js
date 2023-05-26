@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 
-const RebateReports = () => {
+const ReferralReports = () => {
     const [level1, setLevel1] = useState(true);
     const [level2, setLevel2] = useState(false);
+    const [level3, setLevel3] = useState(false);
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <h1 className='my-6 ml-2 text-3xl text-black'>Withdrawal Reports</h1>
@@ -15,9 +16,11 @@ const RebateReports = () => {
                 backgroundRepeat: "repeat",
                 }} className='flex'>
 
-                <div onClick={()=>{setLevel1(true); setLevel2(false)}} className={`${level1 ? FoodProductStyle.newLevel : ''} w-full hover:cursor-pointer`}><p className='flex justify-center py-2 text-xl'>Level 1</p></div>
+                <div onClick={()=>{setLevel1(true); setLevel2(false); setLevel3(false)}} className={`${level1 ? FoodProductStyle.newLevel : ''} w-full hover:cursor-pointer`}><p className='flex justify-center py-2 text-xl'>Level 1</p></div>
 
-                <div  onClick={()=>{setLevel1(false); setLevel2(true)}} className={`${level2 ? FoodProductStyle.newLevel : ''} w-full hover:cursor-pointer`}><p className='flex justify-center py-2 text-xl'>Level 2</p></div>
+                <div  onClick={()=>{setLevel1(false); setLevel2(true); setLevel3(false)}} className={`${level2 ? FoodProductStyle.newLevel : ''} w-full hover:cursor-pointer`}><p className='flex justify-center py-2 text-xl'>Level 2</p></div>
+
+                <div  onClick={()=>{setLevel1(false); setLevel2(false); setLevel3(true)}} className={`${level3 ? FoodProductStyle.newLevel : ''} w-full hover:cursor-pointer`}><p className='flex justify-center py-2 text-xl'>Level 3</p></div>
 
             </div>
 
@@ -66,4 +69,4 @@ const RebateReports = () => {
     );
 };
 
-export default RebateReports;
+export default ReferralReports;

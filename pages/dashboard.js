@@ -41,7 +41,7 @@ const Dashboard = () => {
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <div className="w-full carousel">
                 <div id="slide1" className="relative w-full carousel-item">
-                    <img src="https://i.ibb.co/bgLWf22/aakash-dhage-Krp-Ow-O4-AIw-M-unsplash-1-1.jpg" className="w-full h-4/6" />
+                    <img src="https://i.ibb.co/k9bCtfd/Whats-App-Image-2023-05-26-at-8-19-19-PM.jpg" className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
                         <a href="#slide4" className="btn btn-circle">❮</a>
                         <a href="#slide2" className="btn btn-circle">❯</a>
@@ -50,7 +50,7 @@ const Dashboard = () => {
 
 
                 <div id="slide2" className="relative w-full carousel-item">
-                    <img src="https://i.ibb.co/QPBNFRW/ishant-mishra-frzeoa1-Xg-A-unsplash-1.jpg" className="w-full h-4/6" />
+                    <img src="https://i.ibb.co/dLZmtNC/Whats-App-Image-2023-05-26-at-8-19-16-PM.jpg" className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
                         <a href="#slide1" className="btn btn-circle">❮</a>
                         <a href="#slide3" className="btn btn-circle">❯</a>
@@ -59,7 +59,7 @@ const Dashboard = () => {
 
 
                 <div id="slide3" className="relative w-full carousel-item">
-                    <img src="https://www.freecodecamp.org/news/content/images/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg" className="w-full h-4/6" />
+                    <img src="https://i.ibb.co/bgLWf22/aakash-dhage-Krp-Ow-O4-AIw-M-unsplash-1-1.jpg" className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
                         <a href="#slide2" className="btn btn-circle">❮</a>
                         <a href="#slide4" className="btn btn-circle">❯</a>
@@ -199,7 +199,7 @@ const Dashboard = () => {
 
             {/* Market Analysis */}
             <div className='mt-4 lg:mt-8 md:mt-6'>
-                <div style={{ background: '#19A7CE' }} className="w-full card hover:shadow-2xl">
+                <div style={{ background: '#19A7CE' }} className={`w-full card ${FoodProductStyle.moreFoodButton}`}>
                     <div className="">
                         <h2 className="p-4 text-black card-title ">Market Analysis</h2>
                         <div className='p-4'>

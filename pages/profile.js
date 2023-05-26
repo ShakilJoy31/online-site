@@ -107,7 +107,7 @@ const Profile = () => {
 
                                 <p onClick={() => router.push("/depositReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit Reports</p>
 
-                                <p onClick={() => router.push("/rebateReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Rebate Reports</p>
+                                <p onClick={() => router.push("/referralReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Referral Reports</p>
 
                                 {/* <label htmlFor='resetPinModal' className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</label> */}
 

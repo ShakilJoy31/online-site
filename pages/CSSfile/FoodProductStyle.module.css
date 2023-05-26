@@ -223,13 +223,13 @@
 }
 
 .tableRow {
-    color: white;
+    color: orangered;
     transition-duration: 200ms;
     cursor: pointer;
 }
 
 .tableRow:hover {
-    color: orangered;
+    color: rgba(255, 68, 0, 0.589);
     transition-duration: 200ms;
     cursor: pointer;
 }
