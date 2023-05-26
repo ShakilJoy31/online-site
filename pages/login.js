@@ -83,9 +83,9 @@ const Login = () => {
                         </label>
                     </div>
 
-                    <div className='my-4'>
+                    {/* <div className='my-4'>
                         <h1>Forget your password?<label htmlFor="resetPinModal" style={{color: 'black'}} className='ml-4 text-xl cursor-pointer hover:underline'>Reset Password</label></h1>
-                    </div>
+                    </div> */}
                     <div className={`${FoodProductStyle.customDivider}`}></div>
                     <div className='mt-4'>
                         <h1>New here?<span onClick={()=>router.push('/signup')} style={{color: 'black'}} className='ml-4 text-xl cursor-pointer hover:underline'>Sign up</span></h1>

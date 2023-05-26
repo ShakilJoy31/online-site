@@ -124,7 +124,7 @@ const Profile = () => {
                     }} className='w-full p-4 lg:p-8 md:p-6 lg:h-48 md:h-48'>
                         <div className=''>
                             <p className='text-2xl text-black'>Earn amazing rewards</p>
-                            <p className='my-4'>Refer your friends and Earn rebate reward up to 2 levels</p>
+                            <p className='my-4'>Refer your friends and Earn rebate reward up to 3 levels</p>
                             <div>
                                 <label onClick={()=>router.push("/referral")} style={{
                                     backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
