@@ -14,7 +14,9 @@ const Withdrawal = () => {
 
     const newBalance = user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0));
     
-    const restAmount = newBalance - (withdrawAbleBalance + tax);  
+    const restAmount = newBalance - (withdrawAbleBalance + tax);
+    
+    console.log(user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)), withdrawAbleBalance);
 
     const handleWithDraw = () =>{
         if (walletAddress && withdrawAbleBalance) {
@@ -60,7 +62,7 @@ const Withdrawal = () => {
                 }} className="flex items-center w-full mb-4 lg:mb-0 md:mb-0">
                     <div className="w-full p-2 lg:p-6 md:p-4">
                     {
-                ((user?.amount + (user?.amountFromRefer || 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)) < withdrawAbleBalance) ? <p className='flex justify-center p-3 mb-4 text-white bg-red-600 rounded-md'>UPPS! Insufficient Balance</p> : <p className='flex justify-center p-3 mb-4 text-white bg-blue-600 rounded-md'>Withdraw charge is 3%</p>
+                ((user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) ? <p className='flex justify-center p-3 mb-4 text-white bg-red-600 rounded-md'>UPPS! Insufficient Balance</p> : <p className='flex justify-center p-3 mb-4 text-white bg-blue-600 rounded-md'>Withdraw charge is 3%</p>
             }
                         <div className='w-full'>
                             <span className="">Amount (USD)</span>
@@ -78,16 +80,33 @@ const Withdrawal = () => {
                         </div>
 
                         <div className='mb-4 mt-7'>
-                            <label onClick={handleWithDraw} style={{
+                            <label htmlFor='withDrawModal' onClick={handleWithDraw} style={{
                                 backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                 backgroundSize: "100%",
                                 backgroundRepeat: "repeat",
-                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((user?.amount + (user?.amountFromRefer || 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)) < withdrawAbleBalance)}>Withdraw
+                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress)}>Withdraw
                             </label>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div>
+            <div>
+                <input type="checkbox" id="withDrawModal" className="modal-toggle" />
+                <label htmlFor="withDrawModal" className="cursor-pointer modal">
+                <label style={{
+                    borderRadius: '5px',
+                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat",
+                }} className="relative modal-box" htmlFor="">
+                            <h3 className="flex justify-center py-4 text-xl text-white">Wait for an admin to send ${withdrawAbleBalance} at {walletAddress}</h3>
+                            <h3 className="flex justify-center pb-4 text-xl text-green-600">Thanks for your patience!</h3>
 
+                        </label>
+                </label>
+            </div>
             </div>
         </div>
     );
