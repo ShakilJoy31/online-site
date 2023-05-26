@@ -7,8 +7,8 @@ const ReferralReports = () => {
     const [level3, setLevel3] = useState(false);
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
-            <h1 className='my-6 ml-2 text-3xl text-black'>Referral Reports</h1>
-            <h1 className='flex justify-center mb-3 text-2xl'>My Referral</h1>
+            <h1 className='my-6 ml-2 text-3xl text-black'>Withdrawal Reports</h1>
+            <h1 className='flex justify-center mb-3 text-2xl'>My Rebates</h1>
             <div style={{
                 borderRadius: '5px',
                 backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
