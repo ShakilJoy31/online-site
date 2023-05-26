@@ -140,7 +140,7 @@ const Signup = () => {
                             backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                             backgroundSize: "100%",
                             backgroundRepeat: "repeat",
-                        }} className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-black w-full`}>Sign up
+                        }} className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-black w-full`} disabled={!email}>Sign up
                         </label>
                     </div>
 

@@ -79,7 +79,7 @@ const Login = () => {
                             backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                             backgroundSize: "100%",
                             backgroundRepeat: "repeat",
-                        }} className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-black w-full`}>Log in
+                        }} className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-black w-full`} disabled={!email}>Log in
                         </label>
                     </div>
 
