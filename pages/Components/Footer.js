@@ -1,7 +1,4 @@
 import Link from 'next/link';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { BsFacebook, BsYoutube } from 'react-icons/bs';
-import { ImTwitter } from 'react-icons/im';
 const Footer = () => {
     return (
         <div className="pb-10 lg:pb-0 md:pb-0">
