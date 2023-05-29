@@ -77,7 +77,7 @@ const Dashboard = () => {
             </div>
 
             {/* Statics */}
-            <div className='lg:mt-[-250px] mt-[-50px] grid lg:justify-between md:justify-between gap-x-6 lg:flex md:flex'>
+            <div className='lg:mt-[-170px] mt-[-50px] grid lg:justify-between md:justify-between gap-x-6 lg:flex md:flex'>
                 <div style={{ background: '#19A7CE' }} className={`w-full card hover:shadow-2xl ${FoodProductStyle.moreFoodButton}`}>
                     <div className="p-3 lg:p-8 md:p-6">
                         <h2 className="mb-2 text-black card-title md:mb-4 lg:mb-6">Statistics</h2>

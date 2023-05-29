@@ -7,7 +7,7 @@ const MyTrade = () => {
     return (
         <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
             <h1 className="my-6 text-3xl text-black">My Trade</h1>
-            <div style={{
+            {/* <div style={{
                 borderRadius: '5px',
                 backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                 backgroundSize: "100%",
@@ -43,7 +43,7 @@ const MyTrade = () => {
                 </div>
                 <div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
