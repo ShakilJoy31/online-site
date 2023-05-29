@@ -41,7 +41,7 @@ const Dashboard = () => {
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <div className="w-full carousel">
                 <div id="slide1" className="relative w-full carousel-item">
-                    <img src="https://i.ibb.co/k9bCtfd/Whats-App-Image-2023-05-26-at-8-19-19-PM.jpg" className="w-full h-4/6" />
+                    <img src="https://img.freepik.com/free-vector/golden-coins-with-bitcoin-dollar-symbol-isolated-white-background_127544-993.jpg?size=626&ext=jpg&ga=GA1.1.190334821.1684960559&semt=ais"  className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
                         <a href="#slide4" className="btn btn-circle">❮</a>
                         <a href="#slide2" className="btn btn-circle">❯</a>
@@ -50,7 +50,7 @@ const Dashboard = () => {
 
 
                 <div id="slide2" className="relative w-full carousel-item">
-                    <img src="https://i.ibb.co/dLZmtNC/Whats-App-Image-2023-05-26-at-8-19-16-PM.jpg" className="w-full h-4/6" />
+                    <img src="https://img.freepik.com/premium-photo/gold-bullion-bars-usd-money-bills-success-concept-investment_359031-20842.jpg?size=626&ext=jpg&ga=GA1.1.190334821.1684960559&semt=ais" className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
                         <a href="#slide1" className="btn btn-circle">❮</a>
                         <a href="#slide3" className="btn btn-circle">❯</a>
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
 
                 <div id="slide4" className="relative w-full carousel-item">
-                    <img src="https://i.ibb.co/CVBkgFC/aakash-dhage-UElx0-ABtw6-M-unsplash-1.jpg" className="w-full h-4/6" />
+                    <img src="https://img.freepik.com/free-vector/gold-coin-pattern-phone-background-background-wallpaper-money-vector-finance-illustration_53876-144613.jpg?size=626&ext=jpg&ga=GA1.1.190334821.1684960559&semt=ais" className="w-full h-4/6" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
                         <a href="#slide3" className="btn btn-circle">❮</a>
                         <a href="#slide1" className="btn btn-circle">❯</a>
@@ -159,7 +159,7 @@ const Dashboard = () => {
                         
                     </div>
                     <div>
-                        <Link href="https://t.me/UASOFFICIALSUPPORTBOT">
+                        <Link target='_blank' href="https://t.me/tradesentsupport">
                             <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
                                 <div className="pt-2">
                                     <div>

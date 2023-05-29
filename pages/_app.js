@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import { useRouter } from 'next/router'
 import { getDataFromLocalStore } from './../getDataFromLocalStorage';
+import Footer from './Components/Footer';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
 
 
       </div>
+      <Footer></Footer>
     </div>
   )
 }
