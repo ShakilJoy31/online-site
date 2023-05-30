@@ -13,16 +13,21 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isPasswordVasible, setIsPasswordVasible] = useState(true);
-    const [signedInUser, setSignedInUser] = useState([]);
+    const [signedInUser, setSignedInUser] = useState(null);
     const [newPassword, setNewPassword] = useState('');
     const [checkingEmail, setCheckingEmail] = useState('');
     const [correctEmail, setCorrectEmail] = useState(false);
+    let databaseUser; 
     useEffect(()=>{
+
         getUser().then(res => {
             setSignedInUser(res);
+            
         });
-    },[])
-    const databaseUser = signedInUser.find(user => user?.email ==  email);
+        databaseUser = signedInUser.find(user => user?.email ==  email) || '';
+    },[signedInUser])
+
+    console.log(signedInUser);
     const handleLoginButton = () => {
         if((databaseUser?.email == email) && (databaseUser?.password == password)){
             localStorage.setItem('savedUser', JSON.stringify(databaseUser))

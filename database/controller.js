@@ -22,19 +22,9 @@ export async function postUsers(req, res) {
         if (!formData) {
             return res.status(404).json({ error: 'Form data is not provided!' })
         }
-        // chat GPT
-        // const savedUser = await Users.insertOne(formData);
-        // console.log(savedUser); 
-
-        // PH
         const user = new Users(formData);
         await user.save();
         return res.status(200).json(user);
-
-
-        // Users.create(formData, (error, data) => {
-        //     return res.status(200).json(data);
-        // })
     } catch (errors) {
         return res.status(404).json({ error: 'Failed to post.' });
     }
