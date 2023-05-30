@@ -38,7 +38,7 @@ const Deposit = () => {
             localStorage.setItem('amount', JSON.stringify({ amount: amountToPay }));
         }
         else {
-            console.log("Enter amount.")
+            console.log("")
         }
     }
 

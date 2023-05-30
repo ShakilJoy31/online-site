@@ -25,11 +25,10 @@ const Withdrawal = () => {
 
     
     const restAmount = parseFloat(newBalance - (withdrawAbleBalance + tax));
-    console.log(parseFloat(restAmount));
 
     const handleWithDraw = () =>{
         if (walletAddress && withdrawAbleBalance) {
-            updateUserWithTrId(user?._id, { withDrawAmount: withdrawAbleBalance, walletAddress: walletAddress, restAmount: restAmount}).then(res => console.log(res))
+            updateUserWithTrId(user?._id, { withDrawAmount: withdrawAbleBalance, walletAddress: walletAddress, restAmount: restAmount}).then(res => console.log(''))
         }
     }
     return (

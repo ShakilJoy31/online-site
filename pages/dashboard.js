@@ -13,7 +13,6 @@ const Dashboard = () => {
                 getUser().then(res=> {
                   if(localStorageSavedUser){
                       const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
-                      console.log(specificUser);
                       setUser(specificUser); 
                     }
                 })
@@ -39,8 +38,6 @@ const Dashboard = () => {
     });
     const amountFromRefer = parseInt((sum * (5 / 100)));
 
-    console.log(amountFromRefer);
-
     const amountFromSecondRefer = parseInt(((myRefersWithPayment[0]?.amountFromRefer * (100 / 5)) * (3 / 100)) || 0);
 
     const amountFromThirdRefer = parseInt(((myRefersWithPayment[0]?.amountFromSecondRefer * (100 / 3)) * (2 / 100)) || 0);
@@ -53,7 +50,6 @@ const Dashboard = () => {
         updateUserWithTrId(user?._id, { amountFromRefer: amountFromRefer, amountFromSecondRefer: amountFromSecondRefer, amountFromThirdRefer: amountFromThirdRefer }).then(res => {})
     }
 
-    console.log(user);
 
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>

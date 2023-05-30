@@ -10,7 +10,6 @@ const Referral = () => {
                 getUser().then(res=> {
                   if(localStorageSavedUser){
                       const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
-                      console.log(specificUser);
                       setUser(specificUser); 
                     }
                 })
