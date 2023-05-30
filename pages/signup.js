@@ -41,7 +41,7 @@ const Signup = () => {
     const userData = {fullName: fullName, email: email, phone: phone, userPhoto:hostedImage,  password: password, referId: referId, joinedSince: date};
 
     useEffect(()=>{
-        getUser().then(res => setSignedInUser(res));
+        getUser().then(res => setSignedInUser(res?.data));
     },[])
     const databaseUser = signedInUser.find(user => user?.email ==  email);
     const handleSignUp = () =>{

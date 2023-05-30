@@ -7,27 +7,44 @@ import { useEffect, useState } from 'react';
 import { getUser, updateUserWithTrId } from '@/lib/healper';
 
 const Dashboard = () => {
+    const [user, setUser] = useState(null); 
+    useEffect(()=>{
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+                getUser().then(res=> {
+                  if(localStorageSavedUser){
+                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      console.log(specificUser);
+                      setUser(specificUser); 
+                    }
+                })
+    },[])
     const router = useRouter();
-    const user = getDataFromLocalStore();
+    // const user = getDataFromLocalStore();
     const [refers, setRefers] = useState([]);
     useEffect(() => {
         getUser().then(res => {
-            setRefers(res);
+            setRefers(res?.data);
         })
     }, [])
 
     const myRefers = refers.filter(mySingleRefer => (user?._id == mySingleRefer?.referId));
-    const myRefersWithPayment = myRefers.filter(mySingleRefer => mySingleRefer?.isVerified == true);
+    const myRefersWithPayment = myRefers.filter(mySingleRefer => mySingleRefer?.isVerified == 'true');
+    
     
     let sum = 0;
     myRefersWithPayment.map(obj => obj.amount).forEach(amount => {
-        if(typeof amount == 'number'){
-            sum += amount;
+        if(typeof amount == 'string'){
+            sum += parseInt(amount);
         }
     });
-    const amountFromRefer = (sum * (5 / 100));
-    const amountFromSecondRefer = ((myRefersWithPayment[0]?.amountFromRefer * (100 / 5)) * (3 / 100)) || 0;
-    const amountFromThirdRefer = ((myRefersWithPayment[0]?.amountFromSecondRefer * (100 / 3)) * (2 / 100)) || 0;
+    const amountFromRefer = parseInt((sum * (5 / 100)));
+
+    console.log(amountFromRefer);
+
+    const amountFromSecondRefer = parseInt(((myRefersWithPayment[0]?.amountFromRefer * (100 / 5)) * (3 / 100)) || 0);
+
+    const amountFromThirdRefer = parseInt(((myRefersWithPayment[0]?.amountFromSecondRefer * (100 / 3)) * (2 / 100)) || 0);
+
     if (amountFromRefer) {
         updateUserWithTrId(user?._id, { amountFromRefer: amountFromRefer, amountFromSecondRefer: amountFromSecondRefer }).then(res => {})
     }
@@ -35,7 +52,8 @@ const Dashboard = () => {
     if (amountFromSecondRefer) {
         updateUserWithTrId(user?._id, { amountFromRefer: amountFromRefer, amountFromSecondRefer: amountFromSecondRefer, amountFromThirdRefer: amountFromThirdRefer }).then(res => {})
     }
-    console.log(myRefersWithPayment[0]);
+
+    console.log(user);
 
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
@@ -101,7 +119,7 @@ const Dashboard = () => {
                                 <div>
                                     <p className='text-xl'>Current Balance</p>
                                     {
-                                        user?.isVerified ? <p className='text-2xl'>$ {user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))}</p> : <p className='text-2xl'>$00.00</p>
+                                        user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$00.00</p>
                                     }
                                 </div>
                             </div>

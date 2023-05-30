@@ -4,11 +4,20 @@ import { IoIosSettings } from 'react-icons/io';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import FoodProductStyle from '../CSSfile/FoodProductStyle.module.css';
-import { useState } from 'react';
-import { getDataFromLocalStore } from './../../getDataFromLocalStorage';
+import { useEffect, useState } from 'react';
+import { getUser } from '@/lib/healper';
 const Sidebar = () => {
-    const user = getDataFromLocalStore();
-    console.log(user);
+    const [user, setUser] = useState(null); 
+    useEffect(()=>{
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+                getUser().then(res=> {
+                  if(localStorageSavedUser){
+                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      console.log(specificUser);
+                      setUser(specificUser); 
+                    }
+                })
+    },[])
     const router = useRouter();
     const [home, setHome] = useState(false)
     const [deposit, setDeposit] = useState(false)

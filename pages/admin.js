@@ -7,14 +7,13 @@ import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 const Admin = () => {
     const [data, setData] = useState([]);
     const [refers, setRefers] = useState([]);
-    const user = getDataFromLocalStore();
     const [level1, setLevel1] = useState(true);
     const [level2, setLevel2] = useState(false);
     useEffect(() => {
         getUser().then(res => {
-            const payAbleUsers = res.filter(user => user?.userTrId);
+            const payAbleUsers = res?.data?.filter(user => user?.userTrId);
             setData(payAbleUsers);
-            setRefers(res);
+            setRefers(res?.data);
         });
     }, [])
     // const paymentCalculationByAdmin = () => {
@@ -110,7 +109,7 @@ const Admin = () => {
                                         <td> <div className='flex justify-center'>
                                             <div className='items-center justify-between p-6 text-black rounded-sm'>
                                                 {
-                                                    (payAbleUser?.isVerified) || <label onClick={() => handleDeclineUserToPay(payAbleUser?._id)} style={{
+                                                    (payAbleUser?.isVerified == true) || <label onClick={() => handleDeclineUserToPay(payAbleUser?._id)} style={{
                                                         backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                                         backgroundSize: "100%",
                                                         backgroundRepeat: "repeat",

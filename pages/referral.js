@@ -4,11 +4,21 @@ import { useEffect, useState } from 'react';
 import { getUser } from '@/lib/healper';
 
 const Referral = () => {
-    const user = getDataFromLocalStore();
+    const [user, setUser] = useState(null); 
+    useEffect(()=>{
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+                getUser().then(res=> {
+                  if(localStorageSavedUser){
+                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      console.log(specificUser);
+                      setUser(specificUser); 
+                    }
+                })
+    },[])
     const [refers, setRefers] = useState([]);
     useEffect(() => {
         getUser().then(res => {
-            setRefers(res);
+            setRefers(res?.data);
         })
     }, [])
     const myRefers = refers.filter(mySingleRefer => user?._id == mySingleRefer?.referId);
@@ -29,7 +39,7 @@ const Referral = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified ? <p className='text-2xl'>$ {user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>

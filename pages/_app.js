@@ -7,7 +7,6 @@ import Footer from './Components/Footer';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const user = getDataFromLocalStore();
   return (
     <div>
       <Navbar></Navbar>

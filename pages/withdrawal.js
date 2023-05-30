@@ -1,22 +1,33 @@
 import { RiLuggageDepositFill } from 'react-icons/ri';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { updateUserWithTrId } from '@/lib/healper';
+import { useEffect, useState } from 'react';
+import { getUser, updateUserWithTrId } from '@/lib/healper';
 import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 
 const Withdrawal = () => {
-    const user = getDataFromLocalStore();
+    const [user, setUser] = useState(null); 
+    useEffect(()=>{
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+                getUser().then(res=> {
+                  if(localStorageSavedUser){
+                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      setUser(specificUser); 
+                    }
+                })
+    },[])
     const [walletAddress, setWalletAddress] = useState('');
     const [withdrawAbleBalance, setWithDrawableBalance] = useState(0);
 
     const tax = withdrawAbleBalance * (3/100);
 
-    const newBalance = user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0));
+    const newBalance = (user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''));
+
+    console.log(newBalance - (withdrawAbleBalance + tax))
     
     const restAmount = newBalance - (withdrawAbleBalance + tax);
     
-    console.log(user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)), withdrawAbleBalance);
+    // console.log(user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)), withdrawAbleBalance);
 
     const handleWithDraw = () =>{
         if (walletAddress && withdrawAbleBalance) {
@@ -47,7 +58,7 @@ const Withdrawal = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified ? <p className='text-2xl'>$ {user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>

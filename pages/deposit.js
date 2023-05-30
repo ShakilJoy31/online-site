@@ -19,13 +19,13 @@ const Deposit = () => {
         }
         if(localStorageUnsevedUser){
             getUser().then(res => {
-                const databaseUser = res.find(singleUser => singleUser?.email == localStorageUnsevedUser?.email);
+                const databaseUser = res?.data?.find(singleUser => singleUser?.email == localStorageUnsevedUser?.email);
                 setDatabaseUserFound(databaseUser?._id);
             });
         }
         if(localStorageSavedUser){
             getUser().then(res => {
-                const databaseUser = res.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                const databaseUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
                 setDatabaseUserFound(databaseUser?._id);
             });
         }
