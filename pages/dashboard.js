@@ -119,7 +119,7 @@ const Dashboard = () => {
                                 <div>
                                     <p className='text-xl'>Current Balance</p>
                                     {
-                                        user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$00.00</p>
+                                        user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (parseFloat(user?.restAmount)) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$00.00</p>
                                     }
                                 </div>
                             </div>

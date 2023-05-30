@@ -19,15 +19,13 @@ const Withdrawal = () => {
     const [walletAddress, setWalletAddress] = useState('');
     const [withdrawAbleBalance, setWithDrawableBalance] = useState(0);
 
-    const tax = withdrawAbleBalance * (3/100);
+    const tax = parseFloat(withdrawAbleBalance * (3/100));
 
     const newBalance = (user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''));
 
-    console.log(newBalance - (withdrawAbleBalance + tax))
     
-    const restAmount = newBalance - (withdrawAbleBalance + tax);
-    
-    // console.log(user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0)), withdrawAbleBalance);
+    const restAmount = parseFloat(newBalance - (withdrawAbleBalance + tax));
+    console.log(parseFloat(restAmount));
 
     const handleWithDraw = () =>{
         if (walletAddress && withdrawAbleBalance) {

@@ -106,11 +106,10 @@ const Profile = () => {
 
                                 <p onClick={() => router.push("/withdrawal")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>
 
-                                {/* <p onClick={() => router.push("/internalTransfer")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Internal Transfer</p> */}
 
                                 <p onClick={() => router.push("/walletAddress")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Wallet Address</p>
 
-                                {/* <p onClick={() => router.push("/paymentPassword")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Payment Password</p> */}
+                                
 
                                 <p onClick={() => router.push("/withdrawalReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal Reports</p>
 
@@ -118,7 +117,6 @@ const Profile = () => {
 
                                 <p onClick={() => router.push("/referralReports")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Referral Reports</p>
 
-                                {/* <label htmlFor='resetPinModal' className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Reset Pin</label> */}
 
                             </div>
                         </div>
