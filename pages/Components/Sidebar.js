@@ -33,7 +33,6 @@ const Sidebar = () => {
     }
     const handleLogOutFromMobile = () =>{
         const logOutConfirmation = window.confirm('Do you want to log out?')
-        console.log(logOutConfirmation);
         if(logOutConfirmation){
             localStorage.removeItem('savedUser')
             localStorage.removeItem('amount')

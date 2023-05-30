@@ -5,6 +5,15 @@ import { useRouter } from 'next/router';
 
 const Navbar = () => {
     const router = useRouter(); 
+    const handleSignUpButton = () =>{
+        const logOutConfirmation = window.confirm('Do you want to log out?')
+        if(logOutConfirmation){
+            router.push("/signup")
+            localStorage.removeItem('savedUser')
+            localStorage.removeItem('amount')
+        }
+        
+    }
     return (
         <div>
             <div style={{
@@ -23,11 +32,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-end">
-                    <a onClick={() => {
-                        router.push("/signup")
-                        localStorage.removeItem('savedUser')
-                        localStorage.removeItem('amount')
-                    }} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm `}><span className='flex justify-center'>Sign Up</span></a>
+                    <a onClick={handleSignUpButton} className={`cursor-pointer btn-sm text-white normal-case text-xl border-0 hover:text-black hover:bg-white rounded-sm `}><span className='flex justify-center'>Sign Up</span></a>
                 </div>
             </div>
         </div>
