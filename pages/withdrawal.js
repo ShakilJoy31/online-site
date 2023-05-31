@@ -36,11 +36,6 @@ const Withdrawal = () => {
         }
     }
     const today = new Date().toString().slice(11,15);
-    const [withDrawDate, setWithDrawDate] = useState(''); 
-    useEffect(()=>{
-        const showDate = new Date()
-        setWithDrawDate(showDate.slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1));
-    },[])
     
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
@@ -67,7 +62,7 @@ const Withdrawal = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}>Withdrawable after {withDrawDate}</span> </p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}>Available after 1 year</span> </p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
 
