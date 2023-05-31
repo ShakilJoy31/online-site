@@ -51,6 +51,16 @@ const Admin = () => {
             }
         });
     }
+
+
+    // After checked wallet.
+    const handleCheckedWallet = (getId) =>{
+        console.log(getId);
+        const restData = data.filter(singleData =>singleData._id != getId); 
+        setData(restData);
+    }
+
+
     const [accepted, setAccepted] = useState('');
     const [declined, setDeclined] = useState(false);
     const handleAcceptUserToPay = (id) => {
@@ -159,6 +169,7 @@ const Admin = () => {
                                     <th> <span className='flex justify-center'>Withdraw</span> </th>
                                     <th> <span className='flex justify-center'>Joined</span> </th>
                                     <th> <span className='flex justify-center'>Wallet Address</span> </th>
+                                    <th> <span className='flex justify-center'>Action</span> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -170,6 +181,12 @@ const Admin = () => {
                                         <td> <span className='flex justify-center'>{payAbleUser?.withDrawAmount}</span> </td>
                                         <td> <span className='flex justify-center'>{payAbleUser?.joinedSince}</span> </td>
                                         <td> <span className='flex justify-center'>{payAbleUser?.walletAddress}</span> </td>
+                                        <td> <span className='flex justify-center'> <label onClick={()=>handleCheckedWallet(payAbleUser?. _id)} style={{
+                                                        backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
+                                                        backgroundSize: "100%",
+                                                        backgroundRepeat: "repeat",
+                                                    }} className={`normal-case btn ${FoodProductStyle.paymentActionButton} border-0 mr-4 text-black btn-sm`}>Done</label> </span> 
+                                            </td>
                                     </tr>)
                                 }
     
