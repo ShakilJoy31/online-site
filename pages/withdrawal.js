@@ -38,7 +38,8 @@ const Withdrawal = () => {
     const today = new Date().toString().slice(11,15);
     const [withDrawDate, setWithDrawDate] = useState(''); 
     useEffect(()=>{
-        setWithDrawDate(new Date().slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1));
+        const showDate = new Date()
+        setWithDrawDate(showDate.slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1));
     },[])
     
     return (
