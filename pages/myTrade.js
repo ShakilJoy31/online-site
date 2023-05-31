@@ -16,10 +16,10 @@ const MyTrade = () => {
                     }
                 })
     },[])
-    let withDrawDate;
-    if(JSON.parse(localStorage.getItem('depositDate'))){
-        withDrawDate = new Date().toString().slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1);
-    }
+    const [withDrawDate, setWithDrawDate] = useState(''); 
+    useEffect(()=>{
+        setWithDrawDate(new Date().slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1));
+    },[])
     return (
         <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
             <h1 className="my-6 text-3xl ">My Trade</h1>
