@@ -24,14 +24,14 @@ const Dashboard = () => {
         getUser().then(res => {
             setRefers(res?.data);
         })
-        const date = new Date().toString().slice(4,15)
-        const tomorrow = JSON.parse(localStorage.getItem('depositDate')).toString().slice(1, 12);
-        if(date != tomorrow){
-            user?.isVerified == 'true' ? localStorage.setItem('dailyIncome', JSON.stringify((user?.amount) * ((2/100)))) : '';
-        }
-        console.log(date);
-        console.log(JSON.parse(localStorage.getItem('dailyIncome')))
-    }, [user?.isVerified, user?.amount])
+        // const date = new Date().toString().slice(4,15)
+        // const tomorrow = JSON.parse(localStorage.getItem('depositDate')).toString().slice(1, 12);
+        // if(date != tomorrow){
+        //     user?.isVerified == 'true' ? localStorage.setItem('dailyIncome', JSON.stringify((user?.amount) * ((2/100)))) : '';
+        // }
+        // console.log(date);
+        // console.log(JSON.parse(localStorage.getItem('dailyIncome')))
+    }, [])
 
     const myRefers = refers.filter(mySingleRefer => (user?._id == mySingleRefer?.referId));
     const myRefersWithPayment = myRefers.filter(mySingleRefer => mySingleRefer?.isVerified == 'true');
