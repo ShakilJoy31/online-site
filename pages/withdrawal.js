@@ -70,13 +70,6 @@ const Withdrawal = () => {
                             }
                         </div>
 
-
-                        {/* <div>
-                            <p className='text-xl'>Withdrawable</p>
-                            {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {newWithDrawBalance} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}></span> </p> : <p className='text-2xl'>$ 00.00</p>
-                            }
-                        </div> */}
                         </div>
 
                     </div>
@@ -113,7 +106,7 @@ const Withdrawal = () => {
                                     backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                     backgroundSize: "100%",
                                     backgroundRepeat: "repeat",
-                                }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={(((user?.restAmount) ? (user?.restAmount) : (parseFloat(user?.amount) + (parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress))}>Withdraw
+                                }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={(((user?.restAmount) ? (user?.restAmount) : (parseFloat(user?.amount) + (parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress) || withdrawAbleBalance < 20)}>Withdraw
                                 </label> : 
 
 
@@ -122,7 +115,7 @@ const Withdrawal = () => {
                                 backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                 backgroundSize: "100%",
                                 backgroundRepeat: "repeat",
-                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress))}>Withdraw
+                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress) || withdrawAbleBalance < 20)}>Withdraw
                             </label>
                             }
                         </div>
