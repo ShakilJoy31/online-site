@@ -22,10 +22,13 @@ const Withdrawal = () => {
     const tax = parseFloat(withdrawAbleBalance * (3/100));
 
     const newBalance = (user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''));
+
+    const newWithDrawBalance = (( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || '')) - parseInt(user?.withDrawAmount);
+    // console.log(newWithDrawBalance)
     
     const restAmount = parseFloat(newBalance - (withdrawAbleBalance + tax));
 
-    const [depositData, setDepositData] = useState(''); 
+    const [depositData, setDepositData] = useState('');
     useEffect(()=>{
         setDepositData(JSON.parse(localStorage.getItem('depositDate')))
     },[])
@@ -36,6 +39,7 @@ const Withdrawal = () => {
         }
     }
     const today = new Date().toString().slice(11,15);
+    console.log(user)
     
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
@@ -46,7 +50,7 @@ const Withdrawal = () => {
                     backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                     backgroundSize: "100%",
                     backgroundRepeat: "repeat",
-                }} className='w-full h-48 p-4 mb-4 lg:h-48 md:h-42 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
+                }} className='w-full h-32 p-4 mb-4 lg:h-32 md:h-32 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
                     <div className='flex items-center'>
                         <div style={{
                             padding: '10px',
@@ -67,15 +71,12 @@ const Withdrawal = () => {
                         </div>
 
 
-                        <div>
+                        {/* <div>
                             <p className='text-xl'>Withdrawable</p>
                             {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : (  
-                                    ( parseInt(user?.amountFromRefer) || '') + 
-                                    (parseInt(user?.amountFromSecondRefer) || '') + 
-                                    (parseInt(user?.amountFromThirdRefer) || ''))} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}></span> </p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {newWithDrawBalance} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}></span> </p> : <p className='text-2xl'>$ 00.00</p>
                             }
-                        </div>
+                        </div> */}
                         </div>
 
                     </div>
@@ -121,7 +122,7 @@ const Withdrawal = () => {
                                 backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                 backgroundSize: "100%",
                                 backgroundRepeat: "repeat",
-                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={(((user?.restAmount) ? (user?.restAmount) : ((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress))}>Withdraw
+                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress))}>Withdraw
                             </label>
                             }
                         </div>
