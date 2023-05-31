@@ -16,7 +16,10 @@ const MyTrade = () => {
                     }
                 })
     },[])
-    console.log(user);
+    let withDrawDate;
+    if(JSON.parse(localStorage.getItem('depositDate'))){
+        withDrawDate = new Date().toString().slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1);
+    }
     return (
         <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
             <h1 className="my-6 text-3xl ">My Trade</h1>
@@ -36,7 +39,7 @@ const MyTrade = () => {
                     <p className={`pt-3 lg:block md:block flex justify-between px-2 ${FoodProductStyle.mytrade}`}><span className="font-bold ">User Name:</span> <span>{user?.fullName}</span></p>
                     
                     <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Deposit Amount: </span> <span>{user?.amount}</span>  {
-                        user?.isVerified == 'true' && <span className='text-red-700 hover:underline' style={{fontSize:'15px'}}>Withdrawable after {new Date().toString().slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1)}</span>
+                        user?.isVerified == 'true' && <span className='text-red-700 hover:underline' style={{fontSize:'15px'}}>Withdrawable after {withDrawDate}</span>
                     }</p>
                     
                     <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Amount From Refer:</span> <span>{(( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</span></p>
