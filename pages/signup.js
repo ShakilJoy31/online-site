@@ -46,7 +46,7 @@ const Signup = () => {
     const databaseUser = signedInUser.find(user => user?.email ==  email);
     const handleSignUp = () =>{
         localStorage.setItem('savedUser', JSON.stringify(userData))
-        if((password == confirmPassword) && !databaseUser){
+        if((password == confirmPassword) && !databaseUser && (password && email)){
             addUser(userData).then(res => router.push('/'))
         }
     }
