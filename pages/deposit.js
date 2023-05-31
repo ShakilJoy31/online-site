@@ -44,8 +44,13 @@ const Deposit = () => {
 
     const [closeModal, setCloseModal] = useState(false);
     const handleConfirmPayment = () => {
+        const depositDate = new Date().toString().slice(3,16);
+
+        localStorage.setItem('depositDate', JSON.stringify(depositDate))
+
         const depositedAmount = JSON.parse(localStorage.getItem('amount')).amount
-        updateUserWithTrId(databaseUserFound, {userTrId: trInput, amount: depositedAmount, isVerified: false}).then(res => {if(res){setCloseModal(false)}});
+
+        updateUserWithTrId(databaseUserFound, {userTrId: trInput, amount: depositedAmount, isVerified: false, depositDate: depositDate}).then(res => {if(res){setCloseModal(false)}});
     }
     return (
         <div>

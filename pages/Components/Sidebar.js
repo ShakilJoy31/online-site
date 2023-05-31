@@ -55,7 +55,7 @@ const Sidebar = () => {
                     <span onClick={handleHome} className={` cursor-pointer lg:my-10 md:my-8 hover:text-white ${home ? 'text-white' : 'text-purple-800'}`}><ImHome3 size={25}></ImHome3></span>
 
                     {
-                        !user?.isVerified && <span onClick={handleDeposit} className={` cursor-pointer hover:text-white ${deposit ? 'text-white' : 'text-purple-800'}`}><RiLuggageDepositFill size={25}></RiLuggageDepositFill></span>
+                        user?.isVerified != 'true' && <span onClick={handleDeposit} className={` cursor-pointer hover:text-white ${deposit ? 'text-white' : 'text-purple-800'}`}><RiLuggageDepositFill size={25}></RiLuggageDepositFill></span>
                     }
 
                     <span onClick={handleProfile} className={` cursor-pointer ${!user?.isVerified ?'lg:my-10 md:my-8':'lg:mb-10 md:mb-8'} hover:text-white ${profile ? 'text-white' : 'text-purple-800'}`}><IoIosSettings size={28}></IoIosSettings></span>

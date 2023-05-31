@@ -22,15 +22,21 @@ const Withdrawal = () => {
     const tax = parseFloat(withdrawAbleBalance * (3/100));
 
     const newBalance = (user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''));
-
     
     const restAmount = parseFloat(newBalance - (withdrawAbleBalance + tax));
+
+    const [depositData, setDepositData] = useState(''); 
+    useEffect(()=>{
+        setDepositData(JSON.parse(localStorage.getItem('depositDate')))
+    },[])
 
     const handleWithDraw = () =>{
         if (walletAddress && withdrawAbleBalance) {
             updateUserWithTrId(user?._id, { withDrawAmount: withdrawAbleBalance, walletAddress: walletAddress, restAmount: restAmount}).then(res => console.log(''))
         }
     }
+    const today = new Date().toString().slice(11,15);
+    // console.log((parseInt(today) + 1) >= parseInt(depositData.slice(8,12)));
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <h1 className='my-6 ml-2 text-3xl text-black'>Withdrawal</h1>
@@ -40,7 +46,7 @@ const Withdrawal = () => {
                     backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
                     backgroundSize: "100%",
                     backgroundRepeat: "repeat",
-                }} className='w-full h-24 p-4 mb-4 lg:h-40 md:h-36 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
+                }} className='w-full h-48 p-4 mb-4 lg:h-48 md:h-42 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
                     <div className='flex items-center'>
                         <div style={{
                             padding: '10px',
@@ -53,11 +59,25 @@ const Withdrawal = () => {
                         </div>
 
                         <div>
+                        <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}>Withdrawable after {new Date().toString().slice(3,10) + ' '+ (parseInt(JSON.parse(localStorage.getItem('depositDate')).slice(8,13)) + 1)}</span> </p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
+
+
+                        <div>
+                            <p className='text-xl'>Withdrawable</p>
+                            {
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : (  
+                                    ( parseInt(user?.amountFromRefer) || '') + 
+                                    (parseInt(user?.amountFromSecondRefer) || '') + 
+                                    (parseInt(user?.amountFromThirdRefer) || ''))} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}></span> </p> : <p className='text-2xl'>$ 00.00</p>
+                            }
+                        </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -69,9 +89,8 @@ const Withdrawal = () => {
                     backgroundRepeat: "repeat",
                 }} className="flex items-center w-full mb-4 lg:mb-0 md:mb-0">
                     <div className="w-full p-2 lg:p-6 md:p-4">
-                    {
-                ((user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) ? <p className='flex justify-center p-3 mb-4 text-white bg-red-600 rounded-md'>UPPS! Insufficient Balance</p> : <p className='flex justify-center p-3 mb-4 text-white bg-blue-600 rounded-md'>Withdraw charge is 3%</p>
-            }
+                    
+                <p className='flex justify-center p-3 mb-4 text-white bg-blue-600 rounded-md'>Withdraw charge is 3%</p>
                         <div className='w-full'>
                             <span className="">Amount (USD)</span>
                             <input onChange={(e)=>setWithDrawableBalance( parseFloat(e.target.value))} type="number" className="w-full mt-1 text-blue-600 bg-black input focus:outline-none" />
@@ -88,12 +107,23 @@ const Withdrawal = () => {
                         </div>
 
                         <div className='mb-4 mt-7'>
-                            <label htmlFor='withDrawModal' onClick={handleWithDraw} style={{
+                            {
+                                ((parseInt(today)) > parseInt(depositData.slice(8,12))) ? <label htmlFor='withDrawModal' onClick={handleWithDraw} style={{
+                                    backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
+                                    backgroundSize: "100%",
+                                    backgroundRepeat: "repeat",
+                                }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={(((user?.restAmount) ? (user?.restAmount) : (parseFloat(user?.amount) + (parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress))}>Withdraw
+                                </label> : 
+
+
+
+                                <label htmlFor='withDrawModal' onClick={handleWithDraw} style={{
                                 backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                 backgroundSize: "100%",
                                 backgroundRepeat: "repeat",
-                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((user?.restAmount ? user?.restAmount : (user?.amount + (user?.amountFromRefer ? user?.amountFromRefer : 0) + (user?.amountFromSecondRefer || 0) + (user?.amountFromThirdRefer || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress)}>Withdraw
+                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={(((user?.restAmount) ? (user?.restAmount) : ((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress))}>Withdraw
                             </label>
+                            }
                         </div>
                     </div>
                 </div>

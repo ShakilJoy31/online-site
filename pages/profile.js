@@ -100,7 +100,7 @@ const Profile = () => {
                             <p className='my-2 lg:my-4'>You can perform various actions on your trading account like deposit and withdrawal.</p>
                             <div>
                                 {
-                                    !user?.isVerified && <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
+                                    user?.isVerified != 'true' && <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
                                 }
 
                                 <p onClick={() => router.push("/withdrawal")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>

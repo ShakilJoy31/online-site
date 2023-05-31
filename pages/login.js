@@ -21,14 +21,11 @@ const Login = () => {
 
         getUser().then(res => {
             setSignedInUser(res.data);
-            console.log(res.data);
         });
      
     },[])
     const databaseUser = signedInUser.find(user => user?.email ==  email);
     
-    console.log(databaseUser)
-    console.log(signedInUser.data);
     const handleLoginButton = () => {
         if((databaseUser?.email == email) && (databaseUser?.password == password)){
             localStorage.setItem('savedUser', JSON.stringify(databaseUser))
