@@ -161,7 +161,18 @@
     padding-top: 6px;
     padding-bottom: 6px;
 }
+.mytradeNonBorder {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
 
+.mytradeNonBorder:hover {
+    box-shadow: 2px 2px 15px 5px white;
+    transition-duration: 200ms;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
 .mytrade:hover {
     box-shadow: 2px 2px 15px 5px white;
     transition-duration: 200ms;

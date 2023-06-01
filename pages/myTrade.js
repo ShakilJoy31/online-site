@@ -42,21 +42,12 @@ const MyTrade = () => {
                     
                     <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Status: </span> <span>{user?.isVerified == 'true' ? 'Active' : 'Not Active'}</span></p>
                     
-                    <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Daily Income: </span>
+                    <p style={{borderBottom: 0}} className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Daily Income: </span>
                     {
                         user?.isVerified == 'true' && <span>{(user?.amount) * ((2/100))}</span>
                     }
                      </p>
                     
-                    
-                    <div className="px-2">
-                    <label style={{
-                        backgroundImage: "linear-gradient(45deg ,#B71375, #6C9BCF)",
-                        backgroundSize: "100%",
-                        backgroundRepeat: "repeat",
-                    }} className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-white lg:w-64 md:w-64 w-full btn-sm mt-2`}>Move to balance
-                    </label> 
-                    </div>
                 </div>
                 <div>
                 </div>
