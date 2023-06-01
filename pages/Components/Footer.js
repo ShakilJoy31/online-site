@@ -9,39 +9,14 @@ const Footer = () => {
         }
     }, [])
     return (
-        <div style={{ background: "linear-gradient(45deg, #FF8E9E,#C0DEFF)" }} className="pb-10 lg:pb-0 md:pb-0">
-             <div className='pt-4 mx-4 lg:pt-8 md:pt-6'>
-                <div style={{
-                    borderRadius: '5px',
-                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
-                    backgroundSize: "100%",
-                    backgroundRepeat: "repeat",
-                }} className='w-full p-4 mb-4 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
-                    <h1 className='mb-6 font-serif text-2xl'>User Information</h1>
-                    <div className='grid items-center justify-between lg:flex md:flex'>
-                        <div>
-                            <p className=''>Phone</p>
-                            <p className='text-xl text-black'>{localStorageUser?.phone}</p>
-                        </div>
-                        <div className='my-2 lg:my-0 md:my-0'>
-                            <p className=''>Email</p>
-                            <p className='text-xl text-black'>{localStorageUser?.email}</p>
-                        </div>
-                        <div>
-                            <p className=''>Joined since</p>
-                            <p className='text-xl text-black'>{localStorageUser?.joinedSince}</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <div style={{ background: "linear-gradient(45deg, #643843, #B799FF)" }} className="pb-10 lg:pb-0 md:pb-0">
             <footer class="footer p-10 Footer grid md:flex lg:flex justify-around text-base-content">
                 <div className=''>
                     <span style={{
                         fontWeight: "700",
                         fontSize: "22px",
                         lineHeight: "41px",
-                        color: "#B71375", 
+                        color: "White", 
                     }} class=" block mb-[20px] font-serif ">Trading Platform</span>
                     <p class="cursor-pointer font-serif  text-black">Minimum Deposit of 100 usdt</p>
                     <p class="cursor-pointer font-serif  text-black">Maximum Deposit 1,00,000 USD</p>
@@ -56,7 +31,7 @@ const Footer = () => {
                         fontWeight: "700",
                         fontSize: "22px",
                         lineHeight: "41px",
-                        color: "#B71375",
+                        color: "White",
                     }} class=" mb-[20px] font-serif ">Level 3 Commission (One time)</span>
                     <a class="cursor-pointer font-serif  text-black">Investment locked 365 days...</a>
                     <Link href='/' class="cursor-pointer font-serif  text-black">Weekly 2 days off ( Saturday & Sunday)</Link>
@@ -74,7 +49,7 @@ const Footer = () => {
                         fontWeight: "700",
                         fontSize: "22px",
                         lineHeight: "41px",
-                        color: "#B71375",
+                        color: "White",
                     }} class=" mb-[20px] font-serif">Lifetime Income Guaranteed</span>
                     <a class="cursor-pointer font-serif  text-black">Maximum withdrawal of 10000 usdt Daily</a>
                     <Link href='/' class="cursor-pointer font-serif  text-black">Withdrawal fee only 3%</Link>
