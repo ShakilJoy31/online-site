@@ -1,8 +1,41 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 const Footer = () => {
+    const [localStorageUser, setLocalStorageUser] = useState({});
+    useEffect(() => {
+        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
+        if (localStorageSavedUser) {
+            setLocalStorageUser(localStorageSavedUser);
+        }
+    }, [])
     return (
-        <div className="pb-10 lg:pb-0 md:pb-0">
-            <footer style={{ background: "linear-gradient(45deg, #FF8E9E, #C0DEFF)" }} class="footer p-10 Footer grid md:flex lg:flex justify-around text-base-content">
+        <div style={{ background: "linear-gradient(45deg, #FF8E9E,#C0DEFF)" }} className="pb-10 lg:pb-0 md:pb-0">
+             <div className='pt-4 mx-4 lg:pt-8 md:pt-6'>
+                <div style={{
+                    borderRadius: '5px',
+                    backgroundImage: "linear-gradient(45deg, #643843, #B799FF)",
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat",
+                }} className='w-full p-4 mb-4 lg:p-8 md:p-6 lg:mb-0 md:mb-0'>
+                    <h1 className='mb-6 font-serif text-2xl'>User Information</h1>
+                    <div className='grid items-center justify-between lg:flex md:flex'>
+                        <div>
+                            <p className=''>Phone</p>
+                            <p className='text-xl text-black'>{localStorageUser?.phone}</p>
+                        </div>
+                        <div className='my-2 lg:my-0 md:my-0'>
+                            <p className=''>Email</p>
+                            <p className='text-xl text-black'>{localStorageUser?.email}</p>
+                        </div>
+                        <div>
+                            <p className=''>Joined since</p>
+                            <p className='text-xl text-black'>{localStorageUser?.joinedSince}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <footer class="footer p-10 Footer grid md:flex lg:flex justify-around text-base-content">
                 <div className=''>
                     <span style={{
                         fontWeight: "700",
