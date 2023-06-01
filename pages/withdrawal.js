@@ -100,7 +100,9 @@ const Withdrawal = () => {
                         </div>
 
                         {
-                            (holyday === 'Sat' || holyday === 'Sun') ? <p className='flex justify-center p-2 text-white bg-red-700 rounded-sm'>Today is weekend</p> : <div className='mb-4 mt-7'>
+                            (holyday === 'Sat' || holyday === 'Sun') ? <div>
+                                <p className='flex justify-center p-2 text-white bg-red-700 rounded-sm'>Today is weekend</p>
+                            </div> : <div className='mb-4 mt-7'>
                             {
                                 ((parseInt(today)) > parseInt(depositData.slice(8,12))) ? <label htmlFor='withDrawModal' onClick={handleWithDraw} style={{
                                     backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
