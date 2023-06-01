@@ -10,7 +10,7 @@ const Footer = () => {
     }, [])
     return (
         <div style={{ background: "linear-gradient(45deg, #643843, #B799FF)" }} className="pb-10 lg:pb-0 md:pb-0">
-            <footer class="footer p-10 Footer grid md:flex lg:flex justify-around text-base-content">
+            <footer class="footer p-10 Footer grid md:flex lg:flex justify-evenly text-base-content">
                 <div className=''>
                     <span style={{
                         fontWeight: "700",
