@@ -39,7 +39,8 @@ const Withdrawal = () => {
         }
     }
     const today = new Date().toString().slice(11,15);
-    console.log(user)
+    const holyday = new Date().toString().slice(0, 3);
+    console.log(holyday)
     
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
@@ -66,12 +67,10 @@ const Withdrawal = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))} <span className='hover:underline' style={{fontSize:'15px', color:'black'}}>Available after 1 year</span> </p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))} </p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
-
                         </div>
-
                     </div>
 
                 </div>
@@ -100,7 +99,8 @@ const Withdrawal = () => {
                             <input onChange={(e)=>setWalletAddress(e.target.value)} type="text" className="w-full mt-1 text-blue-600 bg-black input focus:outline-none" />
                         </div>
 
-                        <div className='mb-4 mt-7'>
+                        {
+                            (holyday === 'Sat' || holyday === 'Sun') ? <p className='flex justify-center p-2 text-white bg-red-700 rounded-sm'>Today is weekend</p> : <div className='mb-4 mt-7'>
                             {
                                 ((parseInt(today)) > parseInt(depositData.slice(8,12))) ? <label htmlFor='withDrawModal' onClick={handleWithDraw} style={{
                                     backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
@@ -115,10 +115,13 @@ const Withdrawal = () => {
                                 backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
                                 backgroundSize: "100%",
                                 backgroundRepeat: "repeat",
-                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress) || withdrawAbleBalance < 20)}>Withdraw
+                            }} className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`} disabled={((((parseFloat(user?.amountFromRefer) ? parseFloat(user?.amountFromRefer) : 0) + (parseFloat((user?.amountFromSecondRefer) || 0) + (parseFloat(user?.amountFromThirdRefer) || 0))) < (withdrawAbleBalance + (withdrawAbleBalance * (3/100)))) || (!withdrawAbleBalance || !walletAddress) || withdrawAbleBalance < 20)}>
+                                Withdraw   
                             </label>
                             }
                         </div>
+                        }
+
                     </div>
                 </div>
             </div>

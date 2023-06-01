@@ -34,13 +34,16 @@ const MyTrade = () => {
             }} className="pb-2">
                     <p className={`pt-3 lg:block md:block flex justify-between px-2 ${FoodProductStyle.mytrade}`}><span className="font-bold ">User Name:</span> <span>{user?.fullName}</span></p>
                     
-                    <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Deposit Amount: </span> <span>{user?.amount}</span>  {
-                        user?.isVerified == 'true' && <span className='text-red-700 hover:underline' style={{fontSize:'15px'}}>Available after 1 year</span>
-                    }</p>
+                    <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Deposit Amount: </span> <span>{user?.amount}</span></p>
                     
                     <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Amount From Refer:</span> <span>{(( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</span></p>
                     
                     <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Status: </span> <span>{user?.isVerified == 'true' ? 'Active' : 'Not Active'}</span></p>
+
+                    {/* <p className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Remaining: </span> <span>{setInterval(function() {
+                        console.log('Remaining time: ');
+                        }, 1000)}
+                    </span></p> */}
                     
                     <p style={{borderBottom: 0}} className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}><span className="font-bold ">Daily Income: </span>
                     {
