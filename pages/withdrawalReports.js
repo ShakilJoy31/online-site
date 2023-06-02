@@ -11,7 +11,7 @@ const WithdrawalReports = () => {
                       const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
                       setUser(specificUser); 
                     }
-                })
+            })
     },[])
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
