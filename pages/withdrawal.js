@@ -54,6 +54,7 @@ const Withdrawal = () => {
     }
   };
   const holyday = new Date().toString().slice(0, 3);
+  console.log(holyday)
 
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
@@ -145,35 +146,37 @@ const Withdrawal = () => {
                 className="w-full mt-1 text-blue-600 bg-black input focus:outline-none"
               />
             </div>
-              
-              <div className="mb-4 mt-7">
-                {
-                  <label
-                    htmlFor="withDrawModal"
-                    onClick={handleWithDraw}
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
-                      backgroundSize: "100%",
-                      backgroundRepeat: "repeat",
-                    }}
-                    className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`}
-                    disabled={
-                      (parseFloat(user?.amountFromRefer)
-                        ? parseFloat(user?.amountFromRefer)
-                        : 0) +
-                        (parseFloat(user?.amountFromSecondRefer || 0) +
-                          (parseFloat(user?.amountFromThirdRefer) || 0)) <
-                        withdrawAbleBalance + withdrawAbleBalance * (3 / 100) ||
-                      !withdrawAbleBalance ||
-                      !walletAddress ||
-                      withdrawAbleBalance < 20
-                    }
-                  >
-                    Withdraw
-                  </label>
-                }
-              </div>
+
+            {
+              (holyday == 'Sat' || holyday == 'Fri') ? <div><p className="flex justify-center p-4 text-white bg-red-700 rounded">Today is weekend.</p></div> : <div className="mb-4 mt-7">
+              {
+                <label
+                  htmlFor="withDrawModal"
+                  onClick={handleWithDraw}
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat",
+                  }}
+                  className={`normal-case btn ${FoodProductStyle.foodCard} border-0 text-xl text-black w-full`}
+                  disabled={
+                    (parseFloat(user?.amountFromRefer)
+                      ? parseFloat(user?.amountFromRefer)
+                      : 0) +
+                      (parseFloat(user?.amountFromSecondRefer || 0) +
+                        (parseFloat(user?.amountFromThirdRefer) || 0)) <
+                      withdrawAbleBalance + withdrawAbleBalance * (3 / 100) ||
+                    !withdrawAbleBalance ||
+                    !walletAddress ||
+                    withdrawAbleBalance < 20
+                  }
+                >
+                  Withdraw
+                </label>
+              }
+            </div>
+            }
           </div>
         </div>
       </div>
