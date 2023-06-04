@@ -37,7 +37,7 @@ const DepositReports = () => {
                             <th> <span className='flex justify-center'>1</span> </th>
                             <td> <span className='flex justify-center'>{user?.fullName}</span> </td>
                             <td> <span className='flex justify-center'>{user?.userTrId}</span> </td>
-                            <td> <span className='flex justify-center'>{user?.isVerified == 'true' ? user?.amount : 'In active yet'}</span> </td>
+                            <td> <span className='flex justify-center'>{user?.isVerified == true ? user?.amount : 'In active yet'}</span> </td>
                             <td> <span className='flex justify-center'>{user?.userTrId}</span> </td>
                         </tr>
                     </tbody>

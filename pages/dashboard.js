@@ -30,7 +30,7 @@ const Dashboard = () => {
     (mySingleRefer) => user?._id == mySingleRefer?.referId
   );
   const myRefersWithPayment = myRefers.filter(
-    (mySingleRefer) => mySingleRefer?.isVerified == "true"
+    (mySingleRefer) => mySingleRefer?.isVerified == true
   );
 
   let sum = 0;
@@ -50,6 +50,7 @@ const Dashboard = () => {
   const amountFromThirdRefer = parseInt(
     myRefersWithPayment[0]?.amountFromSecondRefer * (100 / 3) * (2 / 100) || 0
   );
+  
 
   if (amountFromRefer) {
     updateUserWithTrId(user?._id, {
@@ -65,6 +66,8 @@ const Dashboard = () => {
       amountFromThirdRefer: amountFromThirdRefer,
     }).then((res) => {});
   }
+
+  console.log(user);
 
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
@@ -175,10 +178,10 @@ const Dashboard = () => {
                       ${" "}
                       {user?.restAmount
                         ? parseFloat(user?.restAmount)
-                        : parseInt(user?.amount) + user?.dailyIncome +
-                          (parseInt(user?.amountFromRefer) || "") +
-                          (parseInt(user?.amountFromSecondRefer) || "") +
-                          (parseInt(user?.amountFromThirdRefer) || "")}
+                        : (parseFloat(user?.amount) + (parseFloat(user?.dailyIncome) || 0) +
+                          (parseInt(user?.amountFromRefer) || 0) +
+                          (parseInt(user?.amountFromSecondRefer) || 0) +
+                          (parseInt(user?.amountFromThirdRefer) || 0))}
                     </p>
                   ) : (
                     <p className="text-2xl">$00.00</p>

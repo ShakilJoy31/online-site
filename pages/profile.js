@@ -117,10 +117,10 @@ const Profile = () => {
                   ${" "}
                   {user?.restAmount
                     ? user?.restAmount
-                    : parseInt(user?.amount) + user?.dailyIncome +
-                      (parseInt(user?.amountFromRefer) || "") +
-                      (parseInt(user?.amountFromSecondRefer) || "") +
-                      (parseInt(user?.amountFromThirdRefer) || "")}
+                    : parseInt(user?.amount) + (parseFloat(user?.dailyIncome) || 0) +
+                      (parseInt(user?.amountFromRefer) || 0) +
+                      (parseInt(user?.amountFromSecondRefer) || 0) +
+                      (parseInt(user?.amountFromThirdRefer) || 0)}
                 </p>
               ) : (
                 <p className="text-2xl">$ 00.00</p>

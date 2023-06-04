@@ -9,9 +9,10 @@ const MyTrade = () => {
   const [user, setUser] = useState(null);
   const [getDay, setGetDay] = useState(0);
 
-  const dailyMultiply = 365 - getDay;
-  const dailyIncomeMultiplier = dailyMultiply; 
+  const dailyMultiply = 364 - getDay;
+  const dailyIncomeMultiplier = dailyMultiply;
  
+  console.log(getDay)
 
   useEffect(() => {
     const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
@@ -25,14 +26,15 @@ const MyTrade = () => {
     });
   }, []);
 
-
 const [updateDailyIncome, setUpdateDailyIncome] = useState(true); 
   const handleDailyAddIncome = () =>{
     updateUserWithTrId(user?._id, {
-      dailyIncome: (dailyIncomeMultiplier * (user?.amount * (1.5 / 100)))
+      dailyIncome: (dailyIncomeMultiplier * (user?.amount * (1.5 / 100))),
+      getDay: getDay
     }).then((res) => {setUpdateDailyIncome(false)});
   }
 
+  console.log(user);
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
       <h1 className="my-6 text-3xl ">My Trade</h1>
@@ -90,7 +92,9 @@ const [updateDailyIncome, setUpdateDailyIncome] = useState(true);
           <p
             className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
           >
-            <span className="flex items-center justify-between md:justify-start"><div className="mr-2 font-bold">Remaining:</div> <div><Timer setGetDay={setGetDay}></Timer></div></span>
+            <span className="flex items-center justify-between md:justify-start"><div className="mr-2 font-bold">Remaining:</div> {
+              user?.isVerified == true ? <div><Timer setGetDay={setGetDay}></Timer></div> : ''
+            } </span>
             
           </p>
 

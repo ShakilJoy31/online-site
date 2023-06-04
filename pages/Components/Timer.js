@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Timer = ({setGetDay}) => {
+const Timer = ({ setGetDay }) => {
   const [timeRemaining, setTimeRemaining] = useState('');
 
   useEffect(() => {
@@ -11,9 +11,9 @@ const Timer = ({setGetDay}) => {
     if (storedTargetDate) {
       targetDate = new Date(storedTargetDate);
     } else {
-      // Set the target date as one year from now if not stored
+      // Set the target date as 365 days from now if not stored
       targetDate = new Date();
-      targetDate.setFullYear(targetDate.getFullYear() - 1);
+      targetDate.setFullYear(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate() + 365);
       localStorage.setItem('targetDate', targetDate);
     }
 
@@ -27,7 +27,7 @@ const Timer = ({setGetDay}) => {
       const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-      setGetDay(362);
+      setGetDay(days);
 
       // Update the timer state with the remaining time
       setTimeRemaining(`${days}d ${hours}h ${minutes}m ${seconds}s`);
