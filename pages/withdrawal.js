@@ -11,7 +11,7 @@ const Withdrawal = () => {
     const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
     getUser().then((res) => {
       if (localStorageSavedUser) {
-        const specificUser = res?.data?.find(
+        const specificUser = res?.find(
           (singleUser) => singleUser?.email == localStorageSavedUser?.email
         );
         setUser(specificUser);
@@ -91,7 +91,7 @@ const Withdrawal = () => {
             <div>
               <div>
                 <p className="text-xl">Current Balance</p>
-                {user?.isVerified == "true" ? (
+                {user?.isVerified == true ? (
                   <p className="text-2xl">
                     ${" "}
                     {user?.restAmount

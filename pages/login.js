@@ -18,9 +18,8 @@ const Login = () => {
     const [checkingEmail, setCheckingEmail] = useState('');
     const [correctEmail, setCorrectEmail] = useState(false);
     useEffect(()=>{
-
         getUser().then(res => {
-            setSignedInUser(res.data);
+            setSignedInUser(res);
         });
      
     },[])

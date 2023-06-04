@@ -12,25 +12,20 @@ const Dashboard = () => {
         const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
                 getUser().then(res=> {
                   if(localStorageSavedUser){
-                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      const specificUser = res?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
                       setUser(specificUser); 
                     }
-                })
+        })
+        // updateUserWithTrId(user?._id, {})
     },[])
+    // console.log(new Date().toString().slice(4,15));
     const router = useRouter();
     // const user = getDataFromLocalStore();
     const [refers, setRefers] = useState([]);
     useEffect(() => {
         getUser().then(res => {
-            setRefers(res?.data);
+            setRefers(res);
         })
-        // const date = new Date().toString().slice(4,15)
-        // const tomorrow = JSON.parse(localStorage.getItem('depositDate')).toString().slice(1, 12);
-        // if(date != tomorrow){
-        //     user?.isVerified == 'true' ? localStorage.setItem('dailyIncome', JSON.stringify((user?.amount) * ((2/100)))) : '';
-        // }
-        // console.log(date);
-        // console.log(JSON.parse(localStorage.getItem('dailyIncome')))
     }, [])
 
     const myRefers = refers.filter(mySingleRefer => (user?._id == mySingleRefer?.referId));
@@ -122,7 +117,7 @@ const Dashboard = () => {
                                 <div>
                                     <p className='text-xl'>Current Balance</p>
                                     {
-                                        user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (parseFloat(user?.restAmount)) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$00.00</p>
+                                        user?.isVerified == true ? <p className='text-2xl'>$ {(user?.restAmount) ? (parseFloat(user?.restAmount)) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$00.00</p>
                                     }
                                 </div>
                             </div>

@@ -3,7 +3,6 @@ import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getUser, updateUserWithTrId } from '@/lib/healper';
-import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 
 const Profile = () => {
     const router = useRouter();
@@ -22,12 +21,12 @@ const Profile = () => {
         const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
                 getUser().then(res=> {
                   if(localStorageSavedUser){
-                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      const specificUser = res?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
                       setUser(specificUser); 
                     }
                 })
     },[])
-
+    console.log(user);
     const handleResetPassword = () => {
         updateUserWithTrId(localStorageUser?._id, { password: newPassword }).then(res => { })
     }
@@ -77,7 +76,7 @@ const Profile = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == true ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>
@@ -100,7 +99,7 @@ const Profile = () => {
                             <p className='my-2 lg:my-4'>You can perform various actions on your trading account like deposit and withdrawal.</p>
                             <div>
                                 {
-                                    user?.isVerified != 'true' && <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
+                                    user?.isVerified != true && <p onClick={() => router.push("/deposit")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Deposit</p>
                                 }
 
                                 <p onClick={() => router.push("/withdrawal")} className={`flex justify-center py-2 ${FoodProductStyle.quickMenu}`}>Withdrawal</p>

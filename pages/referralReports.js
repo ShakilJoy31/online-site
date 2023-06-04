@@ -12,14 +12,14 @@ const ReferralReports = () => {
         const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
                 getUser().then(res=> {
                   if(localStorageSavedUser){
-                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      const specificUser = res?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
                       setUser(specificUser); 
                     }
                 })
     },[])
     useEffect(() => {
         getUser().then(res => {
-            setRefers(res?.data);
+            setRefers(res);
         })
     }, [])
     const myRefers = refers.filter(mySingleRefer => user?._id == mySingleRefer?.referId);

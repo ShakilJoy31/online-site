@@ -9,7 +9,7 @@ const Referral = () => {
         const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
                 getUser().then(res=> {
                   if(localStorageSavedUser){
-                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
+                      const specificUser = res?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
                       setUser(specificUser); 
                     }
                 })
@@ -17,7 +17,7 @@ const Referral = () => {
     const [refers, setRefers] = useState([]);
     useEffect(() => {
         getUser().then(res => {
-            setRefers(res?.data);
+            setRefers(res);
         })
     }, [])
     const myRefers = refers.filter(mySingleRefer => user?._id == mySingleRefer?.referId);
@@ -38,7 +38,7 @@ const Referral = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified == 'true' ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == true ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>

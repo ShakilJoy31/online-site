@@ -2,61 +2,54 @@ import { useRouter } from "next/router";
 import FoodProductStyle from "../pages/CSSfile/FoodProductStyle.module.css";
 import { getUser, updateUserWithTrId } from "@/lib/healper";
 import { useEffect, useState } from "react";
+import Timer from "./Components/Timer";
 
 const MyTrade = () => {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const holyday = new Date().toString().slice(0, 3);
-  const [remaining, setRemaining] = useState(365);
-  // const [income, setIncome] = useState();
+  const checkingToday = new Date().toString().slice(4,15); 
+  const [getDay, setGetDay] = useState(0);
+
+  const dailyMultiply = 365 - getDay;
+  const dailyIncomeMultiplier = dailyMultiply;
+  console.log(dailyIncomeMultiplier); 
+ 
+
   useEffect(() => {
     const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
     getUser().then((res) => {
       if (localStorageSavedUser) {
-        const specificUser = res?.data?.find(
+        const specificUser = res?.find(
           (singleUser) => singleUser?.email == localStorageSavedUser?.email
         );
         setUser(specificUser);
       }
     });
-    const localStorageRemainingDay = JSON.parse(
-      localStorage.getItem("timeRemaining")
-    );
-    const checkingDate = new Date().toString().slice(3, 16);
-    const checkDateFromLocalStorage = JSON.parse(
-      localStorage.getItem("dailyIncomeCounter")
-    );
-    if (holyday !== "Sat" && holyday !== "Sun" && user?.isVerified == "true") {
-      if (checkDateFromLocalStorage !== checkingDate) {
+  }, []);
+
+  useEffect(() => {
+    if (
+      (holyday !== "Sat" && holyday !== "Fri") &&
+      (user?.isVerified == true) &&
+      checkingToday == user?.depositDate.slice(1, 12)
+    ) {
+      if (checkingToday != user?.lastUpdatedDate) {
         updateUserWithTrId(user?._id, {
-          amountFromRefer: user?.amountFromRefer + user?.amount * (1.5 / 100),
+          amountFromRefer: user?.amountFromRefer + user?.amount * (1.5 / 100), dailyIncome: dailyIncomeMultiplier * (user?.amount * (1.5 / 100))
         }).then((res) => {});
       } else {
-        localStorage.setItem(
-          "dailyIncomeCounter",
-          JSON.stringify(checkingDate)
-        );
-      }
-
-      setInterval(function() {
-          if(localStorageRemainingDay){
-              localStorage.setItem('timeRemaining', JSON.stringify( localStorageRemainingDay - 1));
-          }
-          else{
-              localStorage.setItem('timeRemaining', JSON.stringify(365));
-          }
-        }, 86400);
-      setRemaining(localStorageRemainingDay)
-    }
-
-    if (holyday !== "Sat" && holyday !== "Sun") {
-      setInterval(function () {
         updateUserWithTrId(user?._id, {
           amountFromRefer: user?.amountFromRefer + user?.amount * (1.5 / 100),
-        }).then((res) => {});
-      }, 3000);
+          lastUpdatedDate: new Date().toString().slice(4, 15),
+          verifiedDaysRemaining: user?.verifiedDaysRemaining
+        }).then((res) => {
+          console.log(res);
+        });
+      }
     }
-  }, []);
+  }, [user, checkingToday, holyday]);
+
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
       <h1 className="my-6 text-3xl ">My Trade</h1>
@@ -108,14 +101,14 @@ const MyTrade = () => {
             className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
           >
             <span className="font-bold ">Status: </span>{" "}
-            <span>{user?.isVerified == "true" ? "Active" : "Not Active"}</span>
+            <span>{user?.isVerified == true ? "Active" : "Not Active"}</span>
           </p>
 
           <p
             className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
           >
-            <span className="font-bold ">Remaining: </span>
-            <span>{remaining}</span>
+            <span className="flex items-center"><span className="mr-2 font-bold">Remaining:</span> <div><Timer setGetDay={setGetDay}></Timer></div></span>
+            
           </p>
 
           <p
@@ -123,8 +116,8 @@ const MyTrade = () => {
             className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
           >
             <span className="font-bold ">Daily Income: </span>
-            {user?.isVerified == "true" && (
-              <span>{user?.amount * (1.5 / 100)}</span>
+            {user?.isVerified == true && (
+              <span>{dailyIncomeMultiplier * (user?.amount * (1.5 / 100))}</span>
             )}
           </p>
         </div>

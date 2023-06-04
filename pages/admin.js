@@ -11,7 +11,7 @@ const Admin = () => {
     const [level2, setLevel2] = useState(false);
     useEffect(() => {
         getUser().then(res => {
-            const payAbleUsers = res?.data?.filter(user => user?.userTrId);
+            const payAbleUsers = res?.filter(user => user?.userTrId);
             setData(payAbleUsers);
             setRefers(res?.data);
         });
@@ -64,7 +64,7 @@ const Admin = () => {
     const [accepted, setAccepted] = useState('');
     const [declined, setDeclined] = useState(false);
     const handleAcceptUserToPay = (id) => {
-        updateUserWithTrId(id, { isVerified: true }).then(res => {
+        updateUserWithTrId(id, { isVerified: true, verifiedDate: new Date().toString().slice(4,15), verifiedDaysRemaining: 365 }).then(res => {
             setDeclined(true)
         });
         setAccepted(id);
