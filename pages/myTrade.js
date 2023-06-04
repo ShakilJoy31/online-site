@@ -3,17 +3,14 @@ import FoodProductStyle from "../pages/CSSfile/FoodProductStyle.module.css";
 import { getUser, updateUserWithTrId } from "@/lib/healper";
 import { useEffect, useState } from "react";
 import Timer from "./Components/Timer";
+import { BiRefresh } from 'react-icons/bi';
 
 const MyTrade = () => {
-  const router = useRouter();
   const [user, setUser] = useState(null);
-  const holyday = new Date().toString().slice(0, 3);
-  const checkingToday = new Date().toString().slice(4,15); 
   const [getDay, setGetDay] = useState(0);
 
   const dailyMultiply = 365 - getDay;
-  const dailyIncomeMultiplier = dailyMultiply;
-  console.log(dailyIncomeMultiplier); 
+  const dailyIncomeMultiplier = dailyMultiply; 
  
 
   useEffect(() => {
@@ -28,27 +25,13 @@ const MyTrade = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (
-      (holyday !== "Sat" && holyday !== "Fri") &&
-      (user?.isVerified == true) &&
-      checkingToday == user?.depositDate.slice(1, 12)
-    ) {
-      if (checkingToday != user?.lastUpdatedDate) {
-        updateUserWithTrId(user?._id, {
-          amountFromRefer: user?.amountFromRefer + user?.amount * (1.5 / 100), dailyIncome: dailyIncomeMultiplier * (user?.amount * (1.5 / 100))
-        }).then((res) => {});
-      } else {
-        updateUserWithTrId(user?._id, {
-          amountFromRefer: user?.amountFromRefer + user?.amount * (1.5 / 100),
-          lastUpdatedDate: new Date().toString().slice(4, 15),
-          verifiedDaysRemaining: user?.verifiedDaysRemaining
-        }).then((res) => {
-          console.log(res);
-        });
-      }
-    }
-  }, [user, checkingToday, holyday]);
+
+const [updateDailyIncome, setUpdateDailyIncome] = useState(true); 
+  const handleDailyAddIncome = () =>{
+    updateUserWithTrId(user?._id, {
+      dailyIncome: (dailyIncomeMultiplier * (user?.amount * (1.5 / 100)))
+    }).then((res) => {setUpdateDailyIncome(false)});
+  }
 
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
@@ -107,18 +90,25 @@ const MyTrade = () => {
           <p
             className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
           >
-            <span className="flex items-center"><span className="mr-2 font-bold">Remaining:</span> <div><Timer setGetDay={setGetDay}></Timer></div></span>
+            <span className="flex items-center justify-between md:justify-start"><div className="mr-2 font-bold">Remaining:</div> <div><Timer setGetDay={setGetDay}></Timer></div></span>
             
           </p>
 
           <p
             style={{ borderBottom: 0 }}
-            className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
+            className={`px-2 flex justify-between lg:justify-start ${FoodProductStyle.mytrade}`}
           >
             <span className="font-bold ">Daily Income: </span>
             {user?.isVerified == true && (
-              <span>{dailyIncomeMultiplier * (user?.amount * (1.5 / 100))}</span>
+              <div className="flex items-center ml-3">
+              <span>{dailyIncomeMultiplier * (user?.amount * (1.5 / 100))}  </span>
+              {
+                updateDailyIncome ? <span onClick={handleDailyAddIncome} className="cursor-pointer hover:color-black"><BiRefresh size={25}></BiRefresh></span> : ''
+              }
+              
+              </div>
             )}
+            
           </p>
         </div>
         <div></div>

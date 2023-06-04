@@ -23,7 +23,6 @@ const ReferralReports = () => {
         })
     }, [])
     const myRefers = refers.filter(mySingleRefer => user?._id == mySingleRefer?.referId);
-    console.log(myRefers);
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <h1 className='my-6 ml-2 text-3xl text-black'>Referral Reports</h1>

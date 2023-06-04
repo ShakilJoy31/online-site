@@ -32,7 +32,6 @@ const Signup = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result)
                     setHostedImage(result?.data?.display_url)
                 })
                 setImage('');

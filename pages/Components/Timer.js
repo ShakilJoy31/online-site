@@ -13,7 +13,7 @@ const Timer = ({setGetDay}) => {
     } else {
       // Set the target date as one year from now if not stored
       targetDate = new Date();
-      targetDate.setFullYear(targetDate.getFullYear() + 1);
+      targetDate.setFullYear(targetDate.getFullYear() - 1);
       localStorage.setItem('targetDate', targetDate);
     }
 
@@ -35,7 +35,7 @@ const Timer = ({setGetDay}) => {
       // Check if the target date has passed
       if (timeDifference < 0) {
         clearInterval(timerInterval);
-        setTimeRemaining('Timer Expired!');
+        setTimeRemaining('You can withdraw your deposit.');
         localStorage.removeItem('targetDate');
       }
     };

@@ -55,7 +55,6 @@ const Admin = () => {
 
     // After checked wallet.
     const handleCheckedWallet = (getId) =>{
-        console.log(getId);
         const restData = data.filter(singleData =>singleData._id != getId); 
         setData(restData);
     }

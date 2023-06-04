@@ -35,7 +35,6 @@ const Withdrawal = () => {
     (parseInt(user?.amountFromSecondRefer) || "") +
     (parseInt(user?.amountFromThirdRefer) || "") -
     parseInt(user?.withDrawAmount);
-  // console.log(newWithDrawBalance)
 
   const restAmount = parseFloat(newBalance - (withdrawAbleBalance + tax));
 
@@ -50,11 +49,10 @@ const Withdrawal = () => {
         withDrawAmount: withdrawAbleBalance,
         walletAddress: walletAddress,
         restAmount: restAmount,
-      }).then((res) => console.log(""));
+      }).then((res) => {});
     }
   };
   const holyday = new Date().toString().slice(0, 3);
-  console.log(holyday)
 
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
@@ -96,7 +94,7 @@ const Withdrawal = () => {
                     ${" "}
                     {user?.restAmount
                       ? user?.restAmount
-                      : parseInt(user?.amount) +
+                      : parseInt(user?.amount) + user?.dailyIncome +
                         (parseInt(user?.amountFromRefer) || "") +
                         (parseInt(user?.amountFromSecondRefer) || "") +
                         (parseInt(user?.amountFromThirdRefer) || "")}{" "}
