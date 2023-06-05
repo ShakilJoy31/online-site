@@ -53,7 +53,7 @@ const Withdrawal = () => {
     }
   };
   const holyday = new Date().toString().slice(0, 3);
-  console.log(withdrawAbleBalance > ((parseFloat(user?.amountFromRefer)) + parseFloat(user?.amountFromSecondRefer || 0) +  (parseFloat(user?.amountFromThirdRefer) || 0)))
+  console.log(user);
 
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">

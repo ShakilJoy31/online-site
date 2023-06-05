@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router';
 import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useEffect, useState } from 'react';
 import { getUser, updateUserWithTrId } from '@/lib/healper';
-import { getDataFromLocalStore } from './../getDataFromLocalStorage';
 
 const Admin = () => {
     const [data, setData] = useState([]);

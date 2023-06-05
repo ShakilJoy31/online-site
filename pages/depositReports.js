@@ -3,16 +3,19 @@ import FoodProductStyle from '../pages/CSSfile/FoodProductStyle.module.css';
 import { useEffect, useState } from 'react';
 
 const DepositReports = () => {
-    const [user, setUser] = useState(null); 
-    useEffect(()=>{
-        const localStorageSavedUser = JSON.parse(localStorage.getItem('savedUser'));
-                getUser().then(res=> {
-                  if(localStorageSavedUser){
-                      const specificUser = res?.data?.find(singleUser => singleUser?.email == localStorageSavedUser?.email);
-                      setUser(specificUser); 
-                    }
-                })
-    },[])
+    const [user, setUser] = useState(null);
+  useEffect(() => {
+    const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
+    getUser().then((res) => {
+      if (localStorageSavedUser) {
+        const specificUser = res?.find(
+          (singleUser) => singleUser?.email == localStorageSavedUser?.email
+        );
+        setUser(specificUser);
+      }
+    });
+  }, []);
+    console.log(user)
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <h1 className='my-6 ml-2 text-3xl text-black'>Deposit Reports</h1>
