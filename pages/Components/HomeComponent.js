@@ -14,7 +14,7 @@ const HomeComponent = () => {
             <h1 className="px-4 font-serif text-2xl font-bold text-black lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
               What is the Trade Sent System
             </h1>
-            <p className={`py-6 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
+            <p className={`py-6 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               The TRADE SENT is a venture procedure wherein a financial backer
               at the same time trades a resource in various business sectors to
               exploit a cost distinction and produce a benefit. When multiplied
@@ -26,22 +26,22 @@ const HomeComponent = () => {
               <div>
                 <label onClick={()=>router.push('/signup')}
                   style={{
-                    backgroundImage: "linear-gradient(45deg ,#FEA1BF, #BFEAF5)",
+                    backgroundImage: "linear-gradient(45deg ,#B31312, #4F709C)",
                     backgroundSize: "100%",
                     backgroundRepeat: "repeat",
                   }}
-                  className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-black btn-sm`}
+                  className={`normal-case btn ${FoodProductStyle.moreFoodButton} border-0 text-xl text-white btn-sm`}
                 >
                   Sign up <span className="text-2xl"><BsArrowRightShort></BsArrowRightShort></span>
                 </label>
 
                 <label  onClick={()=>router.push('/login')}
                   style={{
-                    backgroundImage: "linear-gradient(45deg ,green ,white)",
+                    backgroundImage: "linear-gradient(45deg ,#B31312, #4F709C)",
                     backgroundSize: "100%",
                     backgroundRepeat: "repeat",
                   }}
-                  className={`normal-case btn ${FoodProductStyle.moreFoodButton} lg:ml-5 md:ml-3 ml-2 border-0 text-xl text-black btn-sm`}
+                  className={`normal-case btn ${FoodProductStyle.moreFoodButton} lg:ml-5 md:ml-3 ml-2 border-0 text-xl text-white btn-sm`}
                 >
                   Log in <span className="text-2xl"><BsArrowRightShort></BsArrowRightShort></span>
                 </label>
@@ -64,7 +64,7 @@ const HomeComponent = () => {
             <h1 className="px-4 font-serif text-2xl font-bold text-black lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
               Acquire hugely with these Tarde sent
             </h1>
-            <p className={`pt-4 mr-2 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
+            <p className={`pt-4 mr-2 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               <span className="text-black cursor-pointer hover:underline">
                Trade Sent
               </span>{" "}
@@ -75,7 +75,7 @@ const HomeComponent = () => {
             </p>
           </div>
           <div>
-            <p className={`py-4 mr-2 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
+            <p className={`py-4 mr-2 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               <span className="text-black cursor-pointer hover:underline">
                 Trade sent Alpha
               </span>{" "}
@@ -90,7 +90,7 @@ const HomeComponent = () => {
             </p>
           </div>
           <div>
-            <p className={`mr-2 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
+            <p className={`mr-2 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               <span className="text-black cursor-pointer hover:underline">
                 Trade Sent Premium
               </span>{" "}
@@ -114,7 +114,7 @@ const HomeComponent = () => {
             <h1 className="px-4 font-serif text-2xl font-bold text-black lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
             Who We Are?
             </h1>
-            <p className={`py-6 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
+            <p className={`py-6 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
                TRADE SENT was established in 2019 TARDE SENT SYSTEM was established in 2019 by two brothers. One brother is a successful GOLD TARDER  and  FX TARDER with more than ten years of experience, while the other brother is an IT specialist. With the mix of an effective GOLD MARKET, FOREX MARKET, CRYPTO MARKET, Worldwide Capital Market Technical Examination, crucial investigation subject matter expert and an IT expert you make certain to have a manageable, steady and solid framework certainly.
             </p>
           </div>
