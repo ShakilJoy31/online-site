@@ -15,9 +15,10 @@ const Navbar = () => {
         
     }
     return (
-        <div>
+        <div className=''>
             <div style={{
                 backgroundColor: '#247f9e',
+                position:'fixed'
             }} className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">

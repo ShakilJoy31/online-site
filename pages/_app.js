@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
     <div>
       <Navbar></Navbar>
       <div style={{
-        backgroundImage: "linear-gradient(45deg, #BFEAF5, #FEA1BF)",
+        backgroundImage: `${router.pathname == '/' ? 'linear-gradient(45deg, black, black' : 'linear-gradient(45deg, #BFEAF5, #FEA1BF'})`,
         backgroundSize: "100%",
         backgroundRepeat: "repeat",
       }} className='min-h-screen'
