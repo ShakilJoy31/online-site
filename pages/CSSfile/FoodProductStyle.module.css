@@ -157,10 +157,6 @@
     transition-duration: 200ms;
 }
 
-.para:hover{
-    color: indianred;
-    transition-duration: 1500ms;
-}
 
 
 .userUpdateButton:hover {

@@ -11,10 +11,10 @@ const HomeComponent = () => {
         <div className="flex-col hero-content lg:flex-row">
           
           <div className="">
-            <h1 className="font-serif text-2xl font-bold text-black lg:text-4xl md:text-3xl">
+            <h1 className="px-4 font-serif text-2xl font-bold text-black lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
               What is the Trade Sent System
             </h1>
-            <p className={`py-6 font-mono ${FoodProductStyle.para}`}>
+            <p className={`py-6 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               The TRADE SENT is a venture procedure wherein a financial backer
               at the same time trades a resource in various business sectors to
               exploit a cost distinction and produce a benefit. When multiplied
@@ -22,7 +22,7 @@ const HomeComponent = () => {
               typically modest price differences when multiplied by a large
               volume.
             </p>
-            <div>
+            <div className="ml-4 lf:ml-0 md:ml-0">
               <div>
                 <label onClick={()=>router.push('/signup')}
                   style={{
@@ -50,7 +50,7 @@ const HomeComponent = () => {
           </div>
           <img
             src="https://img.freepik.com/free-photo/closeup-shot-pile-shiny-gold-coins-bars_181624-60854.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture}`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
           />
         </div>
       </div>
@@ -61,10 +61,10 @@ const HomeComponent = () => {
           
           <div className="">
           <div>
-            <h1 className="font-serif text-2xl font-bold text-black lg:text-4xl md:text-3xl">
+            <h1 className="px-4 font-serif text-2xl font-bold text-black lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
               Acquire hugely with these Tarde sent
             </h1>
-            <p className={`pt-4 mr-2 font-mono ${FoodProductStyle.para}`}>
+            <p className={`pt-4 mr-2 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               <span className="text-black cursor-pointer hover:underline">
                Trade Sent
               </span>{" "}
@@ -75,7 +75,7 @@ const HomeComponent = () => {
             </p>
           </div>
           <div>
-            <p className={`py-4 mr-2 font-mono ${FoodProductStyle.para}`}>
+            <p className={`py-4 mr-2 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               <span className="text-black cursor-pointer hover:underline">
                 Trade sent Alpha
               </span>{" "}
@@ -90,7 +90,7 @@ const HomeComponent = () => {
             </p>
           </div>
           <div>
-            <p className={`mr-2 font-mono ${FoodProductStyle.para}`}>
+            <p className={`mr-2 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
               <span className="text-black cursor-pointer hover:underline">
                 Trade Sent Premium
               </span>{" "}
@@ -102,7 +102,7 @@ const HomeComponent = () => {
           </div>
           <img
             src="https://img.freepik.com/premium-photo/gold-bar-overlay-money-dollars-concept-poor-economy-investors-hold-dollar-gold_431724-6147.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture}`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
           />
         </div>
       </div>
@@ -111,17 +111,17 @@ const HomeComponent = () => {
       <div className="mb-4 lg:mb-8 md:mb-6">
         <div className="flex-col hero-content lg:flex-row">
           <div>
-            <h1 className="font-serif text-2xl font-bold text-black lg:text-4xl md:text-3xl">
+            <h1 className="px-4 font-serif text-2xl font-bold text-black lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
             Who We Are?
             </h1>
-            <p className={`py-6 font-mono ${FoodProductStyle.para}`}>
+            <p className={`py-6 font-mono ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
                TRADE SENT was established in 2019 TARDE SENT SYSTEM was established in 2019 by two brothers. One brother is a successful GOLD TARDER  and  FX TARDER with more than ten years of experience, while the other brother is an IT specialist. With the mix of an effective GOLD MARKET, FOREX MARKET, CRYPTO MARKET, Worldwide Capital Market Technical Examination, crucial investigation subject matter expert and an IT expert you make certain to have a manageable, steady and solid framework certainly.
             </p>
           </div>
 
           <img
             src="https://t4.ftcdn.net/jpg/05/32/81/25/360_F_532812571_2Fzs20otX5pbSCqZG4jXEROYEiBExPQA.jpg"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture}`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
           />
         </div>
       </div>
