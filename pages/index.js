@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useEffect } from "react";
 import { useRouter } from 'next/router';
+import HomeComponent from './Components/HomeComponent';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function Home() {
       router.push('/dashboard');
     }
     else{
-      router.push('/login')
+      // router.push('/login')
     }
   },[]);
   return (
@@ -26,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        
+        <HomeComponent></HomeComponent>
       </main>
     </>
   )

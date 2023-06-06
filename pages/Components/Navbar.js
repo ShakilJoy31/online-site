@@ -21,8 +21,8 @@ const Navbar = () => {
             }} className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabIndex={0} className="lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        <label tabIndex={0} className="">
+                            <img className='w-16 h-16 rounded-md' src="https://i.ibb.co/L0jX9xc/Whats-App-Image-2023-06-06-at-15-02-22.jpg" alt="" />
                         </label>
                         <ul style={{
                             backgroundColor: '#247f9e',

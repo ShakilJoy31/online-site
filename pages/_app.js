@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
       >
         <div className='flex'>
           {
-            (router.pathname == '/login' || router.pathname == '/signup') || <div className='hidden h-auto lg:block md:block'>
+            (router.pathname == '/login' || router.pathname == '/signup' || router.pathname == '/') || <div className='hidden h-auto lg:block md:block'>
               <Sidebar></Sidebar>
             </div>
           }
@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
         </div>
 
         {
-          (router.pathname == '/login' || router.pathname == '/signup') || <div style={{
+          (router.pathname == '/login' || router.pathname == '/signup' || router.pathname == '/') || <div style={{
             position: 'fixed',
             bottom: '0px',
             backgroundColor: '#247f9e'

@@ -148,6 +148,20 @@
     color: black;
 }
 
+.homePIcture:hover{
+    box-shadow: 2px 2px 15px 5px black;
+    transition-duration: 200ms;
+}
+.para{
+    color: white;
+    transition-duration: 200ms;
+}
+
+.para:hover{
+    color: indianred;
+    transition-duration: 1500ms;
+}
+
 
 .userUpdateButton:hover {
     box-shadow: 2px 2px 15px 5px white;
