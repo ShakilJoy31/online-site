@@ -266,20 +266,21 @@ const Dashboard = () => {
             </Link>
           </div>
           <div>
-            <div
+            <label htmlFor="certificateModal"
               className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}
             >
               <div className="pt-2">
                 <div>
                   <img
                     className="block mx-auto rounded-full w-14 h-14"
-                    src="https://i.ibb.co/y4d7sYv/cert1.jpg"
+                    src="https://i.ibb.co/HVfcrxX/certificate.png"
                     alt=""
                   />
+                  {/* https://i.ibb.co/y4d7sYv/cert1.jpg */}
                   <p className="flex justify-center text-black">Certificate</p>
                 </div>
               </div>
-            </div>
+            </label>
           </div>
         </div>
       </div>
@@ -334,6 +335,14 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {/* Certificate modal */}
+      <div>
+                <input type="checkbox" id="certificateModal" className="modal-toggle" />
+                <label htmlFor="certificateModal" className="cursor-pointer modal">
+                <img className="p-2 rounded-lg" src="https://i.ibb.co/y4d7sYv/cert1.jpg" alt="" />
+                </label>
+            </div>
     </div>
   );
 };

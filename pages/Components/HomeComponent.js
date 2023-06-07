@@ -40,7 +40,7 @@ const HomeComponent = () => {
               The Trade Sent System
             </h1>
             <p className={`mb-4 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}>
-              The TRADE SENT is a venture procedure wherein a financial backer
+              The TRADE SENT is a venture procedure where in a financial backer
               at the same time trades a resource in various business sectors to
               exploit a cost distinction and produce a benefit. When multiplied
               by a large volume, the returns can be impressive despite the
