@@ -96,7 +96,7 @@ const HomeComponent = () => {
                 <p>Our Trades</p>
               </div>
               <h1 className="px-4 py-4 font-serif text-2xl font-bold text-white lg:px-0 md:px-0 lg:text-4xl md:text-3xl">
-                Acquire hugely with these Tarde sent
+                Acquire hugely with these Trade sent
               </h1>
               <div
                 className={`pt-4 mr-2 ${FoodProductStyle.para} px-4 md:px-0 lg:px-0`}
