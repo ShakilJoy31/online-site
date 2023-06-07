@@ -8,11 +8,18 @@ import { BiRefresh } from 'react-icons/bi';
 const MyTrade = () => {
   const [user, setUser] = useState(null);
   const [getDay, setGetDay] = useState(0);
+  const [targetDate, setTargetDate] = useState('');
+  useEffect(()=>{
+    if(targetDate){
+      updateUserWithTrId(user?._id, {
+        targetDate: targetDate
+      }).then((res) => {})
+    }
+  },[targetDate])
+  console.log(targetDate);
 
   const dailyMultiply = 364 - getDay;
   const dailyIncomeMultiplier = dailyMultiply;
- 
-  console.log(getDay)
 
   useEffect(() => {
     const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
@@ -93,7 +100,7 @@ const [updateDailyIncome, setUpdateDailyIncome] = useState(true);
             className={`px-2 lg:block md:block flex justify-between ${FoodProductStyle.mytrade}`}
           >
             <span className="flex items-center justify-between md:justify-start"><div className="mr-2 font-bold">Remaining:</div> {
-              user?.isVerified == true ? <div><Timer setGetDay={setGetDay}></Timer></div> : ''
+              user?.isVerified == true ? <div><Timer setGetDay={setGetDay} setTargetDate={setTargetDate}></Timer></div> : ''
             } </span>
             
           </p>
@@ -105,7 +112,7 @@ const [updateDailyIncome, setUpdateDailyIncome] = useState(true);
             <span className="font-bold ">Daily Income: </span>
             {user?.isVerified == true && (
               <div className="flex items-center ml-3">
-              <span>{dailyIncomeMultiplier * (user?.amount * (1.5 / 100))}  </span>
+              <span>{dailyIncomeMultiplier * (user?.amount * (1.5 / 100) || 0)}  </span>
               {
                 updateDailyIncome ? <span onClick={handleDailyAddIncome} className="cursor-pointer hover:color-black"><BiRefresh size={25}></BiRefresh></span> : ''
               }

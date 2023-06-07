@@ -67,14 +67,12 @@ const Dashboard = () => {
     }).then((res) => {});
   }
 
-  console.log(user);
-
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
       <div className="w-full carousel">
         <div id="slide1" className="relative w-full carousel-item">
           <img
-            src="https://img.freepik.com/free-vector/golden-coins-with-bitcoin-dollar-symbol-isolated-white-background_127544-993.jpg?size=626&ext=jpg&ga=GA1.1.190334821.1684960559&semt=ais"
+            src="https://i.ibb.co/80xr60f/tred-banner.jpg"
             className="w-full h-4/6"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/3">
@@ -275,7 +273,7 @@ const Dashboard = () => {
                 <div>
                   <img
                     className="block mx-auto rounded-full w-14 h-14"
-                    src="https://i.ibb.co/HVfcrxX/certificate.png"
+                    src="https://i.ibb.co/y4d7sYv/cert1.jpg"
                     alt=""
                   />
                   <p className="flex justify-center text-black">Certificate</p>

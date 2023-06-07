@@ -72,7 +72,7 @@ const HomeComponent = () => {
             </div>
           </div>
           <img
-            src="https://img.freepik.com/free-photo/closeup-shot-pile-shiny-gold-coins-bars_181624-60854.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
+            src="https://i.ibb.co/PYCzfdr/tred-1.jpg"
             className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos='fade-down'
           />
         </div>
@@ -222,7 +222,7 @@ const HomeComponent = () => {
             </div>
           </div>
           <img
-            src="https://img.freepik.com/premium-photo/gold-bar-overlay-money-dollars-concept-poor-economy-investors-hold-dollar-gold_431724-6147.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
+            src="https://i.ibb.co/hMqzK8n/tred-2.jpg"
             className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos='zoom-out'
           />
         </div>
@@ -280,7 +280,7 @@ const HomeComponent = () => {
           </div>
 
           <img
-            src="https://t4.ftcdn.net/jpg/05/32/81/25/360_F_532812571_2Fzs20otX5pbSCqZG4jXEROYEiBExPQA.jpg"
+            src="https://i.ibb.co/tKQq4vL/tred-3.jpg"
             className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos="fade-up-left"
           />
         </div>

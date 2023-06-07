@@ -1,10 +1,23 @@
+import { getUser, updateUserWithTrId } from '@/lib/healper';
 import React, { useEffect, useState } from 'react';
 
 const Timer = ({ setGetDay }) => {
   const [timeRemaining, setTimeRemaining] = useState('');
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
+    getUser().then((res) => {
+      if (localStorageSavedUser) {
+        const specificUser = res?.find(
+          (singleUser) => singleUser?.email == localStorageSavedUser?.email
+        );
+        setUser(specificUser);
+      }
+    });
+  }, []);
 
   useEffect(() => {
-    const storedTargetDate = localStorage.getItem('targetDate');
+    const storedTargetDate = localStorage.getItem("targetDate");
     let targetDate;
 
     // Check if the target date is stored in local storage
@@ -14,7 +27,10 @@ const Timer = ({ setGetDay }) => {
       // Set the target date as 365 days from now if not stored
       targetDate = new Date();
       targetDate.setFullYear(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate() + 365);
-      localStorage.setItem('targetDate', targetDate);
+      localStorage.setItem("targetDate", targetDate);
+      updateUserWithTrId(user?._id, {
+        targetDate: targetDate
+      }).then((res) => {console.log(res)})
     }
 
     // Function to update the timer

@@ -85,7 +85,7 @@ const Deposit = () => {
                     </p>
                     <img
                       className="block mx-auto my-4 w-36 h-36"
-                      src="https://i.ibb.co/zswYgY3/Whats-App-Image-2023-05-21-at-11-01-15-PM.jpg"
+                      src="https://i.ibb.co/ZYMCXtR/Whats-App-Image-2023-06-08-at-00-25-36.jpg"
                       alt=""
                     />
 
@@ -107,7 +107,7 @@ const Deposit = () => {
                         <div className="form-control">
                           <div className="input-group">
                             <input
-                              value="TR41ZFhesqyNDVXLFY7XePj65kz7EQ47CH"
+                              value="TLeiYNatkQTnZH7mfjHoXCupXcRik9SfA1"
                               type="text"
                               className="w-full text-white bg-purple-500 input focus:outline-none"
                             />
@@ -115,7 +115,7 @@ const Deposit = () => {
                               <span
                                 onClick={() => {
                                   navigator.clipboard.writeText(
-                                    "TR41ZFhesqyNDVXLFY7XePj65kz7EQ47CH"
+                                    "TLeiYNatkQTnZH7mfjHoXCupXcRik9SfA1"
                                   );
                                   setCopy(true);
                                 }}
