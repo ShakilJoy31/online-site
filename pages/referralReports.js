@@ -23,6 +23,7 @@ const ReferralReports = () => {
         })
     }, [])
     const myRefers = refers.filter(mySingleRefer => user?._id == mySingleRefer?.referId);
+    console.log(myRefers); 
     return (
         <div className='mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0'>
             <h1 className='my-6 ml-2 text-3xl text-black'>Referral Reports</h1>
@@ -59,19 +60,48 @@ const ReferralReports = () => {
                         </tr>
                     </thead>
                     {
-                        level1 ? <tbody>
-                        {
-                            myRefers.map((refer, index) => <tr key={index} className={`${FoodProductStyle.tableRow}`}>
-                            <th> <span className='flex justify-center'>{index + 1}</span> </th>
-                            <td> <span className='flex justify-center'>{refer?.fullName}</span> </td>
-                            <td> <span className='flex justify-center'>{refer?.email}</span> </td>
-                            <td> <span className='flex justify-center'>{refer?.amount}</span> </td>
-                            <td> <span className='flex justify-center'>{refer?.joinedSince}</span> </td>
-                        </tr>)
-                        }
+                        level1 && <tbody>
+                        
+                            <tr className={`${FoodProductStyle.tableRow}`}>
+                            <th> <span className='flex justify-center'>1</span> </th>
+                            <td> <span className='flex justify-center'>{myRefers[0]?.fullName}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[0]?.email}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[0]?.amount}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[0]?.joinedSince}</span> </td>
+                        </tr>
                         
                         
-                    </tbody> : <p className='flex justify-center py-4 text-red-600'>No refer found!</p>
+                    </tbody>
+                    }
+
+                    {
+                        level2 && <tbody>
+                        
+                            <tr className={`${FoodProductStyle.tableRow}`}>
+                            <th> <span className='flex justify-center'>1</span> </th>
+                            <td> <span className='flex justify-center'>{myRefers[1]?.fullName}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[1]?.email}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[1]?.amount}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[1]?.joinedSince}</span> </td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                    }
+
+                    {
+                        level3 && <tbody>
+                        
+                            <tr className={`${FoodProductStyle.tableRow}`}>
+                            <th> <span className='flex justify-center'>1</span> </th>
+                            <td> <span className='flex justify-center'>{myRefers[2]?.fullName}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[2]?.email}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[2]?.amount}</span> </td>
+                            <td> <span className='flex justify-center'>{myRefers[2]?.joinedSince}</span> </td>
+                        </tr>
+                        
+                        
+                    </tbody>
                     }
                     
                 </table>
