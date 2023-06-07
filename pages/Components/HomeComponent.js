@@ -4,6 +4,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TbRosetteNumber1 } from "react-icons/tb";
 import { TbRosetteNumber2 } from "react-icons/tb";
+import { TbRosetteNumber3 } from "react-icons/tb";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import { useEffect } from 'react';
@@ -168,7 +169,7 @@ const HomeComponent = () => {
               >
                 <div className="flex items-center">
                   <span className="mr-4 text-4xl text-blue-600">
-                    <TbRosetteNumber1></TbRosetteNumber1>
+                    <TbRosetteNumber3></TbRosetteNumber3>
                   </span>
 
                   <span className="">
