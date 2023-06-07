@@ -385,6 +385,8 @@ const HomeComponent = () => {
           />
         </div>
       </div>
+
+      <div className={`${FoodProductStyle.homePageDivider}`}></div>
     </div>
   );
 };

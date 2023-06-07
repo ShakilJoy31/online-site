@@ -43,8 +43,6 @@ const Footer = () => {
                     <a class={`cursor-pointer font-serif ${router.pathname == '/' ? 'text-white' : 'text-black'}`}>Minimum Withdrawal 20 usdt</a>
                     
                 </div>
-
-
                 <div className=''>
                     <span style={{
                         color: '#61876E',
