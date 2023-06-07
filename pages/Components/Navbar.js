@@ -23,7 +23,7 @@ const Navbar = () => {
             }} className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabIndex={0} className="">
+                        <label onClick={()=>{router.push('/')}} tabIndex={0} className="">
                             <img className='w-16 h-16 rounded-md' src="https://i.ibb.co/L0jX9xc/Whats-App-Image-2023-06-06-at-15-02-22.jpg" alt="" />
                         </label>
                         <ul style={{
