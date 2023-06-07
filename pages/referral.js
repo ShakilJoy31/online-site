@@ -38,7 +38,7 @@ const Referral = () => {
                         <div>
                             <p className='text-xl'>Current Balance</p>
                             {
-                                user?.isVerified == true ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + (parseFloat(user?.dailyIncome) || '') + ( parseInt(user?.amountFromRefer) || '') + (parseInt(user?.amountFromSecondRefer) || '') + (parseInt(user?.amountFromThirdRefer) || ''))}</p> : <p className='text-2xl'>$ 00.00</p>
+                                user?.isVerified == true ? <p className='text-2xl'>$ {(user?.restAmount) ? (user?.restAmount) : ( parseInt(user?.amount) + (parseFloat(user?.dailyIncome) || 0) + ( parseInt(user?.amountFromRefer) || 0) + (parseInt(user?.amountFromSecondRefer) || 0) + (parseInt(user?.amountFromThirdRefer) || 0))}</p> : <p className='text-2xl'>$ 00.00</p>
                             }
                         </div>
                     </div>
