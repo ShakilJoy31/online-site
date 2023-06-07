@@ -137,7 +137,7 @@ const Dashboard = () => {
       <div className="lg:mt-[-170px] mt-[-50px] grid lg:justify-between md:justify-between gap-x-6 lg:flex md:flex">
         <div
           style={{ background: "#19A7CE" }}
-          className={`w-full card hover:shadow-2xl ${FoodProductStyle.moreFoodButton}`}
+          className={`w-full card hover:shadow-2xl ${FoodProductStyle.statics}`}
         >
           <div className="p-3 lg:p-8 md:p-6">
             <h2 className="mb-2 text-black card-title md:mb-4 lg:mb-6">
@@ -198,7 +198,7 @@ const Dashboard = () => {
           <div>
             <div
               onClick={() => router.push("/myTrade")}
-              className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+              className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}
             >
               <div className="pt-2">
                 <div>
@@ -214,7 +214,7 @@ const Dashboard = () => {
           </div>
           <div>
             <div
-              className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+              className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}
             >
               <div className="pt-2">
                 <div>
@@ -234,7 +234,7 @@ const Dashboard = () => {
               href="https://goldprice.org/live-gold-price.html"
             >
               <div
-                className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+                className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}
               >
                 <div className="pt-2">
                   <div>
@@ -252,7 +252,7 @@ const Dashboard = () => {
           <div>
             <Link target="_blank" href="https://t.me/tradesentsupport">
               <div
-                className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+                className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}
               >
                 <div className="pt-2">
                   <div>
@@ -269,7 +269,7 @@ const Dashboard = () => {
           </div>
           <div>
             <div
-              className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+              className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}
             >
               <div className="pt-2">
                 <div>
@@ -290,7 +290,7 @@ const Dashboard = () => {
       <div className="mt-4 lg:mt-8 md:mt-6">
         <div
           style={{ background: "#19A7CE" }}
-          className={`w-full card ${FoodProductStyle.moreFoodButton}`}
+          className={`w-full card ${FoodProductStyle.blackShadow}`}
         >
           <div className="">
             <h2 className="p-4 text-black card-title ">Market Analysis</h2>
@@ -302,7 +302,7 @@ const Dashboard = () => {
                     href="https://in.tradingview.com/symbols/USDTUSD/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com"
                   >
                     <div
-                      className={`w-full rounded-lg cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+                      className={`w-full rounded-lg cursor-pointer ${FoodProductStyle.blackShadow}`}
                     >
                       <div>
                         <img
@@ -319,7 +319,7 @@ const Dashboard = () => {
                     href="https://in.tradingview.com/symbols/USDTUSD/?utm_campaign=single-quote&utm_medium=widget_new&utm_source=www.combattradebots.com"
                   >
                     <div
-                      className={`w-full rounded-lg cursor-pointer ${FoodProductStyle.moreFoodButton}`}
+                      className={`w-full rounded-lg cursor-pointer ${FoodProductStyle.blackShadow}`}
                     >
                       <div>
                         <img
@@ -424,7 +424,7 @@ export default Dashboard;
 
 //             {/* Statics */}
 //             <div className='lg:mt-[-250px] mt-[-50px] grid lg:justify-between md:justify-between gap-x-6 lg:flex md:flex'>
-//                 <div style={{ background: '#19A7CE' }} className={`w-full card hover:shadow-2xl ${FoodProductStyle.moreFoodButton}`}>
+//                 <div style={{ background: '#19A7CE' }} className={`w-full card hover:shadow-2xl ${FoodProductStyle.blackShadow}`}>
 //                     <div className="p-3 lg:p-8 md:p-6">
 //                         <h2 className="mb-2 text-black card-title md:mb-4 lg:mb-6">Statistics</h2>
 //                         <div style={{
@@ -459,7 +459,7 @@ export default Dashboard;
 //                 {/* More card */}
 //                 <div className='grid w-full grid-cols-3 gap-2 mt-4 lg:gap-4 md:gap-4 lg:mt-0 md:mt-0'>
 //                     <div>
-//                         <div onClick={() => router.push('/tradeBot')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
+//                         <div onClick={() => router.push('/tradeBot')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}>
 //                             <div className="pt-2">
 //                                 <div>
 //                                     <img className='block mx-auto rounded-full w-14 h-14' src='https://i.ibb.co/5sKhkbt/images.jpg' alt="" />
@@ -470,7 +470,7 @@ export default Dashboard;
 //                         </div>
 //                     </div>
 //                     <div>
-//                         <div onClick={() => router.push('/myTrade')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
+//                         <div onClick={() => router.push('/myTrade')} className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}>
 //                             <div className="pt-2">
 //                                 <div>
 //                                     <img className='block mx-auto rounded-full w-14 h-14' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bg469-A3XjN0w7263R_lWbw4gAogrTT_YA&usqp=CAU" alt="" />
@@ -481,7 +481,7 @@ export default Dashboard;
 //                         </div>
 //                     </div>
 //                     <div>
-//                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.moreFoodButton}`}>
+//                         <div className={`h-24 bg-white w-42 card cursor-pointer ${FoodProductStyle.blackShadow}`}>
 //                             <div className="pt-2">
 //                                 <div>
 //                                     <img className='block mx-auto rounded-full w-14 h-14' src="https://i.ibb.co/9VMpp5J/team-image.jpg" alt="" />

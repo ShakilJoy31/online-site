@@ -4,8 +4,14 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TbRosetteNumber1 } from "react-icons/tb";
 import { TbRosetteNumber2 } from "react-icons/tb";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+import { useEffect } from 'react';
 
 const HomeComponent = () => {
+  useEffect(()=>{
+    AOS.init({duration: 1000})
+  },[])
   const router = useRouter();
   return (
     <div
@@ -13,12 +19,13 @@ const HomeComponent = () => {
         background: "black",
         backgroundSize: "100%",
         backgroundRepeat: "repeat",
+        zIndex: '0'
       }}
     >
       {/* First one */}
       <div className="mt-8 mb-4 lg:mb-8 md:mb-6">
         <div className="flex-col hero-content lg:flex-row">
-          <div className="">
+          <div className="" data-aos='fade-up'>
             <div
               style={{ borderBottom: "1px solid purple", paddingBottom: "6px" }}
               className="flex items-center px-4 text-yellow-600 lg:px-0 md:px-0"
@@ -65,7 +72,7 @@ const HomeComponent = () => {
           </div>
           <img
             src="https://img.freepik.com/free-photo/closeup-shot-pile-shiny-gold-coins-bars_181624-60854.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos='fade-down'
           />
         </div>
       </div>
@@ -73,7 +80,7 @@ const HomeComponent = () => {
       {/* Second One */}
       <div className="">
         <div className="flex-col hero-content lg:flex-row-reverse">
-          <div className="">
+          <div className="" data-aos='zoom-in'>
             <div>
               <div
                 style={{
@@ -215,7 +222,7 @@ const HomeComponent = () => {
           </div>
           <img
             src="https://img.freepik.com/premium-photo/gold-bar-overlay-money-dollars-concept-poor-economy-investors-hold-dollar-gold_431724-6147.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos='zoom-out'
           />
         </div>
       </div>
@@ -223,7 +230,7 @@ const HomeComponent = () => {
       {/* Third one */}
       <div className="mb-4 lg:mb-8 md:mb-6">
         <div className="flex-col hero-content lg:flex-row">
-          <div>
+          <div data-aos="fade-up-right">
             <div
               style={{ borderBottom: "1px solid purple", paddingBottom: "6px" }}
               className="flex items-center px-4 text-yellow-600 lg:px-0 md:px-0"
@@ -273,7 +280,7 @@ const HomeComponent = () => {
 
           <img
             src="https://t4.ftcdn.net/jpg/05/32/81/25/360_F_532812571_2Fzs20otX5pbSCqZG4jXEROYEiBExPQA.jpg"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos="fade-up-left"
           />
         </div>
       </div>
@@ -281,7 +288,7 @@ const HomeComponent = () => {
       {/* Fourth one */}
       <div className="mb-4 lg:mb-8 md:mb-6">
         <div className="flex-col hero-content lg:flex-row-reverse">
-          <div>
+          <div data-aos="fade-down-right">
             <div
               style={{ borderBottom: "1px solid purple", paddingBottom: "6px" }}
               className="flex items-center px-4 text-yellow-600 lg:px-0 md:px-0"
@@ -373,7 +380,7 @@ const HomeComponent = () => {
 
           <img
             src="https://img.freepik.com/free-photo/business-strategy-success-target-goals_1421-33.jpg?size=626&ext=jpg&ga=GA1.2.190334821.1684960559&semt=ais"
-            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`}
+            className={`max-w-sm rounded-lg shadow-2xl lg:max-w-md md:max-w-md ${FoodProductStyle.homePIcture} px-4 lg:px-0 md:px-0`} data-aos="fade-down-left"
           />
         </div>
       </div>

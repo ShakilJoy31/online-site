@@ -19,6 +19,16 @@
     transition-duration: 200ms;
 }
 
+.statics:hover {
+    box-shadow: 2px 2px 15px 5px black;
+    transition-duration: 200ms;
+}
+
+.blackShadow:hover{
+    box-shadow: 2px 2px 15px 5px black;
+    transition-duration: 200ms;
+}
+
 .trading {
     border: 1px solid white;
     border-radius: 2px;

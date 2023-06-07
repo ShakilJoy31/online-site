@@ -61,7 +61,7 @@ const Signup = () => {
   return (
     <div className="pb-20 mt-4 lg:pb-6 md:pb-6 lg:t-6 md:pt-6">
       <div className="flex items-center justify-center mb-3">
-        <img className="w-16 h-16 mr-4 rounded-md"
+        <img className="w-24 h-24 mr-4 rounded-md"
           src="https://i.ibb.co/L0jX9xc/Whats-App-Image-2023-06-06-at-15-02-22.jpg"
           alt=""
         />

@@ -42,7 +42,7 @@ const Login = () => {
     <div className="py-20">
       <div className="flex items-center justify-center mb-3">
         <img
-          className="w-16 h-16 mr-4 rounded-md"
+          className="w-24 h-24 mr-4 rounded-md"
           src="https://i.ibb.co/L0jX9xc/Whats-App-Image-2023-06-06-at-15-02-22.jpg"
           alt=""
         />
