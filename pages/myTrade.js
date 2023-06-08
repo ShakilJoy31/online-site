@@ -7,7 +7,7 @@ import { BiRefresh } from 'react-icons/bi';
 
 const MyTrade = () => {
   const [user, setUser] = useState(null);
-  const [getDay, setGetDay] = useState(0);
+  const [getDay, setGetDay] = useState(null);
   const [targetDate, setTargetDate] = useState('');
   useEffect(()=>{
     if(targetDate){
@@ -16,10 +16,6 @@ const MyTrade = () => {
       }).then((res) => {})
     }
   },[targetDate])
-  console.log(targetDate);
-
-  const dailyMultiply = 364 - getDay;
-  const dailyIncomeMultiplier = dailyMultiply;
 
   useEffect(() => {
     const localStorageSavedUser = JSON.parse(localStorage.getItem("savedUser"));
@@ -41,7 +37,6 @@ const [updateDailyIncome, setUpdateDailyIncome] = useState(true);
     }).then((res) => {setUpdateDailyIncome(false)});
   }
 
-  console.log(user);
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
       <h1 className="my-6 text-3xl ">My Trade</h1>
@@ -112,7 +107,7 @@ const [updateDailyIncome, setUpdateDailyIncome] = useState(true);
             <span className="font-bold ">Daily Income: </span>
             {user?.isVerified == true && (
               <div className="flex items-center ml-3">
-              <span>{dailyIncomeMultiplier * (user?.amount * (1.5 / 100) || 0)}  </span>
+              <span>{getDay == null ? "Please Wait..." : (getDay * (user?.amount * (1.5 / 100) || 0))}  </span>
               {
                 updateDailyIncome ? <span onClick={handleDailyAddIncome} className="cursor-pointer hover:color-black"><BiRefresh size={25}></BiRefresh></span> : ''
               }

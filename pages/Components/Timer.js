@@ -43,7 +43,7 @@ const Timer = ({ setGetDay }) => {
       const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-      setGetDay(days);
+      setGetDay(364 - days);
 
       // Update the timer state with the remaining time
       setTimeRemaining(`${days}d ${hours}h ${minutes}m ${seconds}s`);
