@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import FoodProductStyle from "../pages/CSSfile/FoodProductStyle.module.css";
 // import Spinner from "./Spinner";
 import { useRouter } from "next/router";
-import { addUser, getUser } from "./../lib/healper";
+import { addUser, getUser, updateUserWithTrId } from "./../lib/healper";
 
 const Signup = () => {
   const router = useRouter();
@@ -38,6 +38,9 @@ const Signup = () => {
     setImage("");
   }
   const date = new Date().toString().slice(3, 16);
+  const myRefer = signedInUser.find(refer => refer?._id == referId);
+  console.log(myRefer)
+
   const userData = {
     fullName: fullName,
     email: email,
@@ -47,14 +50,42 @@ const Signup = () => {
     referId: referId,
     joinedSince: date,
   };
-
   useEffect(() => {
     getUser().then((res) => setSignedInUser(res));
   }, []);
   const databaseUser = signedInUser.find((user) => user?.email == email);
+
+  const updateUserWithRefer = {
+        fullName: fullName,
+        email: email,
+        phone: phone,
+        userPhoto: hostedImage,
+        password: password,
+        referId: referId,
+        joinedSince: date,
+      };
+  console.log(updateUserWithRefer);
+
   const handleSignUp = () => {
     localStorage.setItem("savedUser", JSON.stringify(userData));
     if (password == confirmPassword && !databaseUser && password && email) {
+      if(myRefer){
+        if(myRefer?.myRefers){
+          const previousRefers = [myRefer.myRefers];
+          console.log(previousRefers);
+          updateUserWithTrId(myRefer?._id, {
+            myRefers: [...myRefer.myRefers, updateUserWithRefer],
+          }).then((res) => {
+            console.log(res);
+          });
+        }else{
+          updateUserWithTrId(myRefer?._id, {
+            myRefers: [updateUserWithRefer],
+          }).then((res) => {
+            console.log(res);
+          });
+        }
+      }
       addUser(userData).then((res) => router.push("/"));
     }
   };
