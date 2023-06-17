@@ -30,3 +30,23 @@
     color: black;
     transition-duration: 200ms;
 }
+
+.gaping {
+    margin-left: 110px;
+    margin-right: 110px;
+}
+
+@media (min-width: 769px) and (max-width: 1281px) {
+    .gaping {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+@media (max-width: 768px) {
+    .gaping {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+}

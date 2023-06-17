@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import FoodProductStyle from "../pages/CSSfile/FoodProductStyle.module.css";
 import { getUser, updateUserWithTrId } from "@/lib/healper";
+import Footer from "./Components/Footer";
+import { RiLuggageDepositFill } from "react-icons/ri";
+import Link from "next/link";
+import { useRouter } from "next/router";
 // import { IoCopySharp } from 'react-icons/io';
 const Deposit = () => {
+  const router = useRouter(); 
   const [copiedAccountNumber, setCopiedAccountNumber] = useState(false);
   const [copy, setCopy] = useState(false);
   const [amountToPay, setAmountToPay] = useState(0);
@@ -63,11 +68,11 @@ const Deposit = () => {
     });
   };
   return (
-    <div>
+    <div className="block w-full">
       {copiedAccountNumber ? (
-        <div className="w-full min-h-screen pb-36 lg:mx-12 md:mx-8">
-          <h1 className="my-6 ml-2 text-3xl text-black ">Deposit</h1>
-          <div className="mx-3 ">
+        <div className="w-full min-h-screen pb-36">
+          <h1 className="my-6 ml-2 text-3xl text-black lg:ml-12 md:ml-8 ">Deposit</h1>
+          <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
             <div
               style={{
                 borderRadius: "5px",
@@ -75,7 +80,7 @@ const Deposit = () => {
                 backgroundSize: "100%",
                 backgroundRepeat: "repeat",
               }}
-              className="w-full card hover:shadow-2xl"
+              className="card hover:shadow-2xl"
             >
               <div className="p-3 lg:p-6 md:p-4">
                 <div className="p-6 text-black bg-white rounded-sm">
@@ -196,7 +201,7 @@ const Deposit = () => {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="">
           <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
             <h1 className="my-6 ml-2 text-3xl text-black ">Deposit</h1>
             <div
@@ -206,7 +211,7 @@ const Deposit = () => {
                 backgroundSize: "100%",
                 backgroundRepeat: "repeat",
               }}
-              className="w-full p-2 mb-4 lg:p-6 md:p-4 lg:mb-0 md:mb-0"
+              className={`${FoodProductStyle.customWidth} p-2 mb-4 lg:p-6 md:p-4 lg:mb-0 md:mb-0`}
             >
               <div>
                 <p className="text-black">
@@ -234,7 +239,8 @@ const Deposit = () => {
                   Proceed
                 </label>
               </div>
-            </div>
+            </div> 
+
           </div>
         </div>
       )}
@@ -294,3 +300,5 @@ const Deposit = () => {
 };
 
 export default Deposit;
+
+

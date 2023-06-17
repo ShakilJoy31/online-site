@@ -300,3 +300,18 @@
     transition-duration: 200ms;
     box-shadow: 2px 2px 15px 5px black;
 }
+
+.DepositFooter{
+    width: 100% !important;
+    border: 1px solid red;
+}
+
+.customWidth{
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+    .customWidth{
+        width: 100%;
+    }
+  }
