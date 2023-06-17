@@ -38,14 +38,31 @@ const ReferralReports = () => {
     setLevel1(false);
     setLevel3(false);
   };
-  const handleToShowThirdRefer = (getEmail) =>{
-    console.log(getEmail)
-    const thirdGeneration = refers?.find(refer => refer?.email === getEmail);
+  const handleToShowThirdRefer = (getEmail) => {
+    console.log(getEmail);
+    const thirdGeneration = refers?.find((refer) => refer?.email === getEmail);
     setThirdGeneration(thirdGeneration.myRefers);
     setLevel2(false);
     setLevel1(false);
     setLevel3(true);
-  }
+  };
+
+  const handleLevel1 = () => {
+    setLevel1(true);
+    setLevel2(false);
+    setLevel3(false);
+  };
+  let allSecondGeneration = []
+  const handleLevel2 = () => {
+    setLevel1(false);
+    setLevel2(true);
+    setLevel3(false);
+  };
+  const handleLevel3 = () => {
+    setLevel1(false);
+    setLevel2(false);
+    setLevel3(true);
+  };
   return (
     <div className="mx-2 mt-4 pb-36 lg:mx-12 md:mx-8 lg:mt-0 md:mt-0">
       <h1 className="my-6 ml-2 text-3xl text-black">Referral Reports</h1>
@@ -60,11 +77,7 @@ const ReferralReports = () => {
         className="flex"
       >
         <div
-          onClick={() => {
-            setLevel1(true);
-            setLevel2(false);
-            setLevel3(false);
-          }}
+          onClick={handleLevel1}
           className={`${
             level1 ? FoodProductStyle.newLevel : ""
           } w-full hover:cursor-pointer`}
@@ -73,11 +86,7 @@ const ReferralReports = () => {
         </div>
 
         <div
-          onClick={() => {
-            setLevel1(false);
-            setLevel2(true);
-            setLevel3(false);
-          }}
+          onClick={handleLevel2}
           className={`${
             level2 ? FoodProductStyle.newLevel : ""
           } w-full hover:cursor-pointer`}
@@ -86,11 +95,7 @@ const ReferralReports = () => {
         </div>
 
         <div
-          onClick={() => {
-            setLevel1(false);
-            setLevel2(false);
-            setLevel3(true);
-          }}
+          onClick={handleLevel3}
           className={`${
             level3 ? FoodProductStyle.newLevel : ""
           } w-full hover:cursor-pointer`}
@@ -179,7 +184,11 @@ const ReferralReports = () => {
           {level2 && (
             <tbody>
               {secondGenerationToShow?.map((secondRefer, index) => (
-                <tr onClick={()=> handleToShowThirdRefer(secondRefer?.email)} key={index} className={`${FoodProductStyle.tableRow}`}>
+                <tr
+                  onClick={() => handleToShowThirdRefer(secondRefer?.email)}
+                  key={index}
+                  className={`${FoodProductStyle.tableRow}`}
+                >
                   <th>
                     {" "}
                     <span className="flex justify-center">
@@ -217,39 +226,38 @@ const ReferralReports = () => {
 
           {level3 && (
             <tbody>
-              {
-                thirdGeneration?.map((thirdRefer, index) => <tr key={index} className={`${FoodProductStyle.tableRow}`}>
-                <th>
-                  {" "}
-                  <span className="flex justify-center">1</span>{" "}
-                </th>
-                <td>
-                  {" "}
-                  <span className="flex justify-center">
-                    {thirdRefer?.fullName}
-                  </span>{" "}
-                </td>
-                <td>
-                  {" "}
-                  <span className="flex justify-center">
-                    {thirdRefer?.email}
-                  </span>{" "}
-                </td>
-                <td>
-                  {" "}
-                  <span className="flex justify-center">
-                    {thirdRefer?.amount}
-                  </span>{" "}
-                </td>
-                <td>
-                  {" "}
-                  <span className="flex justify-center">
-                    {thirdRefer?.joinedSince}
-                  </span>{" "}
-                </td>
-              </tr>)
-              }
-              
+              {thirdGeneration?.map((thirdRefer, index) => (
+                <tr key={index} className={`${FoodProductStyle.tableRow}`}>
+                  <th>
+                    {" "}
+                    <span className="flex justify-center">1</span>{" "}
+                  </th>
+                  <td>
+                    {" "}
+                    <span className="flex justify-center">
+                      {thirdRefer?.fullName}
+                    </span>{" "}
+                  </td>
+                  <td>
+                    {" "}
+                    <span className="flex justify-center">
+                      {thirdRefer?.email}
+                    </span>{" "}
+                  </td>
+                  <td>
+                    {" "}
+                    <span className="flex justify-center">
+                      {thirdRefer?.amount}
+                    </span>{" "}
+                  </td>
+                  <td>
+                    {" "}
+                    <span className="flex justify-center">
+                      {thirdRefer?.joinedSince}
+                    </span>{" "}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           )}
         </table>
