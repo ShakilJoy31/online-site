@@ -28,6 +28,7 @@ const MyTrade = () => {
       }
     });
   }, []);
+  console.log((getDay * (user?.amount * (1.5 / 100) || 0)));
 
 const [updateDailyIncome, setUpdateDailyIncome] = useState(true); 
   const handleDailyAddIncome = () =>{
